@@ -282,11 +282,7 @@
                   <div id="fancybox-callback" style="display:none">
                     <div class="fancybox-wrapper">
                       <div class="fancybox-header">
-                        <strong class="title">Заказать звонок</strong>
-                        <p class="promoText">Бесплатно оставьте заявку, <br> ответим на все Ваши вопросы</p>         
-                        <svg class="icon block-icon">
-                          <use xlink:href="#flower"></use>
-                        </svg>                        
+                        <strong class="title">Заказать звонок</strong>                            
                       </div>
                       <div class="fancybox-body">
                         <form method="post" action="{CALLBACK_URL}" class="callbackForm" enctype="multipart/form-data">
@@ -294,25 +290,30 @@
                           <input class="callbackredirect" type="hidden" name="return_to" value="{CALLBACK_URL}"/>
                           <!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
                           {ANTISPAM_CODE}
-                          <div class="callback-input">
-                            <label class="callback-label required" for="callback_person_header">Ваше имя <em>*</em></label>
-                            <input id="callback_person_header" class="input callback_person required" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="{FORM_CALLBACK_PERSON}"  maxlength="50" title="Представьтесь, пожалуйста" autocomplete="off">
+                          <div class="callback-input">                            
+                            <input id="callback_person_header"
+                             class="input callback_person required"
+                             type="text"
+                             name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]"
+                             value="{FORM_CALLBACK_PERSON}"
+                             maxlength="50"
+                             title="Представьтесь, пожалуйста"
+                             placeholder="Ваше имя"
+                             autocomplete="off">
                           </div>
-                          <div class="callback-input">
-                            <label class="callback-label required" for="callback_phone_header">Номер телефона <em>*</em></label>
-                            <input id="callback_phone_header" class="input callback_phone required" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}"  maxlength="50" title="Введите номер телефона" autocomplete="off">
+                          <div class="callback-input">                            
+                            <input id="callback_phone_header" class="input callback_phone required" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}"  maxlength="50" title="Введите номер телефона" placeholder="Номер телефона" autocomplete="off">
                           </div>
-                          <div class="callback-input">
-                            <label class="callback-label" for="callback_comment_header">Комментарий</label>
-                            <textarea id="callback_comment_header" class="input textarea" rows="4" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_COMMENT}]" >{FORM_CALLBACK_COMMENT}</textarea>
+                          <div class="callback-input">                            
+                            <textarea id="callback_comment_header" class="input textarea" rows="2" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_COMMENT}]" placeholder="Ваш комментарий">{FORM_CALLBACK_COMMENT}</textarea>
                           </div>                      
-                          <button type="submit" title="Отправить" class="callback-btn button button3">Отправить</button>
                           <div class="pp">
                             <input id="pp1" class="checkbox-hidden" type="checkbox" name="form[pp]" value="" required checked>
-                            <label for="pp1" class="checkbox-name _colored">
-                              Нажимая на кнопку Отправить, я соглашаюсь с <a href="#">правилами обработки персональных данных</a>  
+                            <label for="pp1" class="checkbox-name">
+                              Нажимая на кнопку "Оставить заявку", Вы даете согласие на обработку персональных даных и соглашаетесь с <a href="#">правилами обработки персональных данных</a>                                
                             </label>
                           </div>
+                          <button type="submit" title="Отправить" class="callback-btn button button3">Оставить заявку</button>
                         </form>
                       </div>
                     </div>
@@ -606,8 +607,7 @@
                   <div class="main-featuresIcon">
                     <img src="/design/features-1.svg">
                   </div>
-                  <div class="main-featuresTitle">Бесплатная доставка</div>
-                  <div class="main-featuresText">от 2500 рублей, за 2 часа</div>
+                  <div class="main-featuresTitle">Гарантия качества <br> 100% свежий букет</div>
                 </div>
               </a>
               <a class="main-featuresItem" href="#" >
@@ -615,8 +615,7 @@
                   <div class="main-featuresIcon">
                     <img src="/design/features-2.svg">
                   </div>
-                  <div class="main-featuresTitle">Розы от 80 рублей</div>
-                  <div class="main-featuresText">у нас низкие цены!</div>
+                  <div class="main-featuresTitle">Розы от 80 рублей! <br> У нас низкие цены!</div>
                 </div>
               </a>
               <a class="main-featuresItem" href="#" >
@@ -624,8 +623,7 @@
                   <div class="main-featuresIcon">
                     <img src="/design/features-3.svg">
                   </div>
-                  <div class="main-featuresTitle">Гарантия свежести</div>
-                  <div class="main-featuresText">поставки каждый день</div>
+                  <div class="main-featuresTitle">Бесплатная доставка <br> от 2500 рублей</div>
                 </div>
               </a>
               <a class="main-featuresItem " href="#" >
@@ -633,8 +631,7 @@
                   <div class="main-featuresIcon">
                     <img src="/design/features-4.svg">
                   </div>
-                  <div class="main-featuresTitle ">Пришлем фото букета</div>
-                  <div class="main-featuresText">перед отправкой</div>
+                  <div class="main-featuresTitle ">Пришлем фото букета перед отправкой</div>
                 </div>
               </a>          
           </div>
@@ -2313,7 +2310,7 @@
       'hideOnContentClick': true,
       'title': false,
       padding: 0,
-      maxWidth: 360,
+      maxWidth: 420,
       autoHeight: true,
   		openMethod: 'slidebottomIn',
   		closeMethod: 'slidebottomOut'      
