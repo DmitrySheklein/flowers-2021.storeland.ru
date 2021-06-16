@@ -269,6 +269,14 @@ label.invalidInput {color: #E80636;font-size: 90%;}
 /*** Кнопки ***/
 .button {position: relative;max-width: -webkit-fit-content;max-width: -moz-fit-content;max-width: fit-content;width: 100%;display: inline-block;overflow: visible;font-size: 14px;font-family: 'Arimo',sans-serif;line-height: 41px;padding: 0 20px;border: 0;color: #fff;opacity: 1;text-shadow: none;text-align: center;white-space: nowrap;margin: 0;outline: 0;cursor: pointer;-webkit-appearance: none;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-color: #ff9daf;box-shadow: 0px 2px 0px 0px #ff6277;border-radius: 5px;}
 .button:before {content: '';display: none;position: absolute;left: 0;top: 0;border: 1px solid #fff;width: 100%;height: 100%;border-radius: 20px;}
+.button._reverse {
+  background-color: #2abf99;
+  box-shadow: 0px 2px 0px 0px #1ca481;  
+}
+.button._reverse:hover {
+  background-color: #ff9daf;
+  box-shadow: 0px 2px 0px 0px #ff6277;
+}
 .button.added,.button:focus,.button:hover {
   background-color: #2abf99;
   box-shadow: 0px 2px 0px 0px #1ca481;  
@@ -827,35 +835,61 @@ label.invalidInput {color: #E80636;font-size: 90%;}
 @media (max-width:991px) {.header-overlay {z-index: 2}}
 
 /*** Преимущества ***/
-#features {margin-bottom: 15px;padding-top: 15px;padding-bottom: 35px;background: #f2f6f7;}
+#features {margin-bottom: 15px;padding-top: 15px;padding-bottom: 23px;background: #f2f6f7;}
 #features .features__wrapper {display: -webkit-box;display: -ms-flexbox;display: flex}
 #features .main-featuresItem {display: block;margin-bottom: 4px;text-align: center}
-#features .main-featuresInner {height: 100%;padding: 0 10px 0;background-image: linear-gradient(0.0deg, #fdb3c0 0%, #fcccd5 100%);box-shadow: 0px 2px 0px 0px #fb879c;border-radius: 6px;}
-#features .main-featuresTitle {margin: 0;font-size: 14px;line-height: 20px;font-weight: 400;color: #373737;}
-#features .main-featuresIcon {max-width: 100%;margin: auto;line-height: 40px;color: #ff7e7a;position: absolute;top: 0;right: 0;}
-#features .main-featuresIcon img {max-height: 80px}
+#features .main-featuresInner {height: 100%;height: 64px;padding: 0;background-image: linear-gradient(0.0deg, #fdb3c0 0%, #fcccd5 100%);box-shadow: 0px 2px 0px 0px #fb879c;border-radius: 6px;}
+#features .main-featuresTitle {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #373737;
+  height: 100%;
+  padding-right: 80px;
+  padding-left: 15px; 
+}
+#features .main-featuresIcon {max-width: 100%;margin: auto;line-height: 40px;color: #ff7e7a;position: absolute;top: 0;right: -25px;}
+
 #features .features-list .owl-stage {display: -webkit-box;display: -ms-flexbox;display: flex;-ms-flex-wrap: wrap;flex-wrap: wrap}
-#features .features-list .main-featuresItem {margin-bottom: 0;height: 100%}
+#features .owl-carousel .owl-stage-outer {
+  overflow:visible
+}
+#features .features-list .main-featuresItem {margin-bottom: 0;height: 100%;padding: 12px 0;}
 #features .owl-dots:not(.disabled) {display: block;float: right;margin: 5px auto;position: static;width: auto;text-align: right;padding: 2px 2px;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;-webkit-tap-highlight-color: transparent;background-color: rgba(42,48,52,.5)}
 #features .owl-dots .owl-dot {display: inline-block;zoom: 1}
 #features .owl-dots .owl-dot span {display: block;position: relative;width: 8px;height: 8px;border-radius: 100%;background: #fff;margin: 0 2px}
 #features .owl-dots .owl-dot.active span,#slideshow .owl-dots .owl-dot:hover span {background: #ff7e7a}
+@media (min-width:1200px) {
+  #features .features__wrapper {
+    padding-right: 25px;
+  }  
+}
 @media (max-width:1199px) {#features .main-featuresItem {margin-bottom: 20px}}
-@media (max-width: 481px) {
+@media (max-width: 991px) {
   #features .main-featuresInner {
-    max-width: 135px;
-  }  
-  #features .main-featuresIcon img {
-      max-height: 50px;
-  }  
+    height: 50px;
+  }
+  #features .main-featuresIcon {
+    display: none;
+  }
   #features .main-featuresTitle {
-    font-size: 14px;
+    padding-right: 15px;
+    justify-content: center;    
+  }
+}
+@media (max-width: 481px) {
+  #features {
+    padding-bottom: 3px;
+  }
+  #features .main-featuresInner {
+    width: 195px;
   }
 }
 @media (max-width: 320px) {
-  #features .main-featuresInner {
-    max-width: 125px;
-  }
+
 }
 
 #features .features-list._goods {display: -webkit-box;display: -ms-flexbox;}

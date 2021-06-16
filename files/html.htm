@@ -597,6 +597,164 @@
     
     
     {% IF index_page %}
+    <!-- Баннеры -->
+    <style>
+.banner-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: calc(100% - 695px);
+  margin-left: auto;
+  margin-bottom: -15px;
+}
+.index-banner {
+  padding-top: 33px;
+  background: #f2f6f7;
+}      
+.banner-list-item {
+  width: calc(50% - 7.5px);
+  margin-bottom: 15px;  
+  height: 193px;
+  background-color: #f2f6f7;
+  border-radius: 5px;
+  background-size: cover;
+}      
+.banner-list-title {
+    height: 25px;
+    background-color: #2abf99;
+    border-radius: 3px;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 4px 10px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.banner-list-text {
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 700;
+    font-style: italic;
+    color: #ffffff;
+    margin-bottom: 0;
+}
+
+.banner-list-inner {
+    padding: 10px 15px;
+    height: 100%;
+    display: flex;
+}
+.banner-list-content {
+    margin-top: auto;
+} 
+      
+    </style>
+    <style>
+      .index-banner-container {
+        display: flex;
+      }
+      .slideshow {
+          width: 680px;
+      }      
+      .slideshow-item {
+        height: 400px;
+        background-color: #f2f6f7;
+        border-radius: 5px;   
+        padding: 0 40px;
+        display: flex;
+        align-items: center;             
+      }
+      .slideshow-inner {
+        margin-top: -20px;
+      }
+      .slideshow-title {
+        font-size: 34px;
+        font-weight: 700;
+        color: #373737;        
+        margin-bottom: 20px;
+      }
+      .slideshow-text {
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 700;
+        font-style: italic;
+        color: #373737;   
+        margin-bottom: 30px;     
+      }
+      .slideshow-text strong {
+        color: #ff6277;
+      }
+    </style>
+    <div class="index-banner">
+      <div class="container">
+        <div class="index-banner-container">
+          <div class="slideshow">
+            <div class="slideshow-item lozad" data-background-image="{ASSETS_IMAGES_PATH}banner-main.jpg">
+              <div class="slideshow-inner">
+                <div class="slideshow-title">
+                  Цветы <br> по поводу и без!
+                </div>
+                <p class="slideshow-text">
+                  Доставим букет в течение <br> <strong>2 часов</strong> с момента заказа
+                </p>
+                <a href="#" class="slideshow-button button _reverse">
+                  Перейти в каталог
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="banner-list owl-carousel">
+  
+            <div class="banner-list-item lozad" data-background-image="{ASSETS_IMAGES_PATH}banner1.jpg">
+              <a href="#">
+                <div class="banner-list-inner">
+                  <div class="banner-list-content">
+                    <div class="banner-list-title">Сборные букеты</div>
+                    <p class="banner-list-text">Самые оригинальные
+                      композиции в городе!</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+  
+            <div class="banner-list-item lozad" data-background-image="{ASSETS_IMAGES_PATH}banner2.jpg">
+              <a href="#">
+                <div class="banner-list-inner">
+                  <div class="banner-list-content">
+                    <div class="banner-list-title">Розы</div>
+                    <p class="banner-list-text">Букеты из роз от 700 рублей</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+  
+            <div class="banner-list-item lozad" data-background-image="{ASSETS_IMAGES_PATH}banner3.jpg">
+              <a href="#">
+                <div class="banner-list-inner">
+                  <div class="banner-list-content">
+                    <div class="banner-list-title">Дополнения к букету</div>
+                    <p class="banner-list-text">Игрушки, топеры, шары, конфеты и др.</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+  
+            <div class="banner-list-item lozad" data-background-image="{ASSETS_IMAGES_PATH}banner4.jpg">
+              <a href="#">
+                <div class="banner-list-inner">
+                  <div class="banner-list-content">
+                    <div class="banner-list-title">Свадебные композиции</div>
+                    <p class="banner-list-text">Букет невесты от 1000 рублей</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Преимущества -->
     <div id="features">
       <div class="container">
@@ -605,7 +763,8 @@
               <a class="main-featuresItem" href="#" >
                 <div class="main-featuresInner">
                   <div class="main-featuresIcon">
-                    <img src="/design/features-1.svg">
+                    <!-- <img src="/design/features-1.svg"> -->
+                    <img src="{ASSETS_IMAGES_PATH}preim1.png">
                   </div>
                   <div class="main-featuresTitle">Гарантия качества <br> 100% свежий букет</div>
                 </div>
@@ -613,7 +772,8 @@
               <a class="main-featuresItem" href="#" >
                 <div class="main-featuresInner">
                   <div class="main-featuresIcon">
-                    <img src="/design/features-2.svg">
+                    <!-- <img src="/design/features-2.svg"> -->
+                    <img src="{ASSETS_IMAGES_PATH}preim2.png">
                   </div>
                   <div class="main-featuresTitle">Розы от 80 рублей! <br> У нас низкие цены!</div>
                 </div>
@@ -621,7 +781,8 @@
               <a class="main-featuresItem" href="#" >
                 <div class="main-featuresInner">
                   <div class="main-featuresIcon">
-                    <img src="/design/features-3.svg">
+                    <!-- <img src="/design/features-3.svg"> -->
+                    <img src="{ASSETS_IMAGES_PATH}preim3.png">
                   </div>
                   <div class="main-featuresTitle">Бесплатная доставка <br> от 2500 рублей</div>
                 </div>
@@ -629,7 +790,8 @@
               <a class="main-featuresItem " href="#" >
                 <div class="main-featuresInner">
                   <div class="main-featuresIcon">
-                    <img src="/design/features-4.svg">
+                    <!-- <img src="/design/features-4.svg"> -->
+                    <img src="{ASSETS_IMAGES_PATH}preim4.png">
                   </div>
                   <div class="main-featuresTitle ">Пришлем фото букета перед отправкой</div>
                 </div>
@@ -645,10 +807,7 @@
     <div class="pdt-sale products-container index">
       <div class="container">
           <div class="content">
-            <div class="block-title _iconed">
-              <svg class="icon block-icon">
-                <use xlink:href="#flower"></use>
-              </svg>               
+            <div class="block-title">              
               <h2 class="title">Распродажа</h2>
               <div class="navigation owl-nav"></div>
             </div>
@@ -838,10 +997,7 @@
     <div class="pdt-best products-container index">
       <div class="container">
           <div class="content">
-            <div class="block-title _iconed">
-              <svg class="icon block-icon">
-                <use xlink:href="#flower"></use>
-              </svg>               
+            <div class="block-title">              
               <h2 class="title">Хиты продаж</h2>
               <div class="navigation owl-nav"></div>
             </div>
@@ -1031,10 +1187,7 @@
     <div class="pdt-new products-container index">
       <div class="container">
           <div class="content">
-            <div class="block-title _iconed">
-              <svg class="icon block-icon">
-                <use xlink:href="#flower"></use>
-              </svg>               
+            <div class="block-title">            
               <h2 class="title">Новинки</h2>
               <div class="navigation owl-nav"></div>
             </div>
@@ -1235,10 +1388,7 @@
           </script>
           <div class="container">
             <div class="content">
-              <div class="block-title _iconed">
-                <svg class="icon block-icon">
-                  <use xlink:href="#flower"></use>
-                </svg>               
+              <div class="block-title">           
                 <h2 class="title">{catalog_full.NAME}</h2>
                 <div class="navigation owl-nav"></div>
               </div>              
@@ -1564,10 +1714,7 @@
       <div class="pdt-sale products-container index">
         <div class="container">
             <div class="content">
-              <div class="block-title _iconed">
-                <svg class="icon block-icon">
-                  <use xlink:href="#flower"></use>
-                </svg>               
+              <div class="block-title">              
                 <h2 class="title">Товары на главной</h2>
                 <div class="navigation owl-nav"></div>
               </div>
@@ -1802,10 +1949,7 @@
     {% IF news_list_all_empty=0 || news_list_shop_empty=0 || news_list_articles_empty=0 ||  news_list_mass_media_empty=0 %}
     <div id="news" class="gradient-bg">
       <div class="container">
-        <div class="block-title _iconed">
-          <svg class="icon block-icon">
-            <use xlink:href="#flower"></use>
-          </svg>               
+        <div class="block-title">             
           <h2 class="title">Новости магазина</h2>
         </div>        
         <div class="">

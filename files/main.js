@@ -2691,6 +2691,30 @@ function address(){
 // Функции для главной страницы
 function indexPage() {
 
+  if(getClientWidth() < 1200){
+    // Баннеры на главной
+    $(".banner-list").owlCarousel({
+      loop: false,
+      rewind: true,
+      lazyLoad: false,
+      nav: false,
+      dots: false,
+      autoplay: false,
+      smartSpeed: 500,
+      touchDrag: true,
+      pullDrag: true,
+      responsiveClass: true,
+      responsiveRefreshRate: 100,
+      responsive: {
+        0:{items:1},
+        320:{items:2,margin: 15,autoWidth:true},
+        480:{items:2,margin: 15,autoWidth:false},
+        768:{items:3,margin: 15},
+        991:{items:3,margin: 80},
+        1200:{items:4,margin: 50}
+      }
+    });
+  }
   // Преимущества
   $("#features .features-list").owlCarousel({
     items: 4,
@@ -2707,10 +2731,11 @@ function indexPage() {
     responsiveRefreshRate: 100,
     responsive: {
       0:{items:1},
-      320:{items:2,margin: 5,autoWidth:true},
-      480:{items:3,margin: 15,autoWidth:false},
-      768:{items:4,margin: 15},
-      1200:{items:4,margin: 15}
+      320:{items:2,margin: 15,autoWidth:true},
+      480:{items:2,margin: 15,autoWidth:false},
+      768:{items:3,margin: 15},
+      991:{items:3,margin: 80},
+      1200:{items:4,margin: 50}
     }
   });
   // Клик по табам в блоке новости
