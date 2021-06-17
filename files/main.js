@@ -2738,6 +2738,38 @@ function indexPage() {
       1200:{items:4,margin: 50}
     }
   });
+    // Отсчет даты до окончания акции
+    counterDate();
+    function counterDate() {
+      // Устанавливаем дату обратного отсчета ММ-ДД-ГГ
+      var end = $('.sale-counter').first().attr('end');
+      if(!end) return;
+      var countDownDate = new Date(end).getTime();
+      function drawCounter() {
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);     
+        // Вывод
+        $('.sale-counter').each(function(i, el){
+          $(el).find('.days span').text(days);
+          $(el).find('.hours span').text(hours);
+          $(el).find('.minutes span').text(minutes);
+          $(el).find('.seconds span').text(seconds);
+        })
+        // Счетчик завершен
+        if (distance < 0) {
+          clearInterval(x);
+          $(el).find('span').text("0");
+        }
+      }
+      // Обновление счетчика каждую минуту
+      var x = setInterval(drawCounter, 60000);      
+      drawCounter();
+
+    }  
   // Клик по табам в блоке новости
   $('#news .tabs-headerList').on('click', '.tabs-headerLink', function(event){
     event.preventDefault()
@@ -2867,6 +2899,95 @@ function indexPage() {
     }
   })
 
+  // Товары на главной
+  ;(function(element){
+      var $element = $(element);
+      var itemNav = $('.item-nav', $element);
+      var itemContent = $('.products-container', $element);  
+      var $arrows = $('.pdt-nav-arrows .navigation')  
+      itemNav.on('click', function(){
+        var $this = $(this);
+        var id = $this.data('href');
+        console.log(id);
+        if($this.hasClass('tab-nav-actived')) return false;
+        itemNav.removeClass('tab-nav-actived');
+        $this.addClass('tab-nav-actived');
+        var itemActive = '.' + $this.data('href');
+        itemContent.hide();
+        $(itemActive, $element).fadeIn();
+        $arrows.removeClass('_show').filter('[data-id="'+ id +'"]').addClass('_show')
+      });
+  })('#producttabs');
+
+  $(".products-container.pdt-sale").each(function () {
+    var $navBlock = $(this).find('.navigation');
+    // 
+    $(this).find('.products-grid').owlCarousel({        
+      loop: false,
+      rewind: true,
+      lazyLoad: true,
+      nav: true,
+      dots: false,
+      autoplay: false,
+      autoplayTimeout: 3000,
+      autoplayHoverPause: true,
+      navContainer: $navBlock,
+      navText: [, ],        
+      navText: ['<span class="material-icons">chevron_left</span>','<span class="material-icons">chevron_right</span>'],
+      smartSpeed: 500,
+      mouseDrag: true,
+      touchDrag: true,
+      pullDrag: true,
+      responsiveClass: true,
+      responsiveRefreshRate: 100,
+      responsive: {
+        0:{items:1, margin: 15},
+        320:{items:2, margin: 15},
+        480:{items:2, margin: 15},
+        540:{items:2, margin: 15},
+        768:{items:3,margin: 30},
+        992:{items:3,margin: 30},
+        1200:{items:4,margin: 30}
+      },          
+      onInitialized: changeNavBtn
+    });            
+  })
+
+  $(".products-container.pdt-best, .products-container.pdt-new, .products-container.pdt-index ").each(function () {
+    var productId =  $(this).attr('data-id');
+    var $navBlock = $(this).closest('#producttabs').find('.navigation[data-id="'+ productId +'"]');
+
+    // 
+    $(this).find('.products-grid').owlCarousel({        
+      loop: false,
+      rewind: true,
+      lazyLoad: true,
+      nav: true,
+      dots: false,
+      autoplay: false,
+      autoplayTimeout: 3000,
+      autoplayHoverPause: true,
+      navContainer: $navBlock,
+      navText: [, ],        
+      navText: ['<span class="material-icons">chevron_left</span>','<span class="material-icons">chevron_right</span>'],
+      smartSpeed: 500,
+      mouseDrag: true,
+      touchDrag: true,
+      pullDrag: true,
+      responsiveClass: true,
+      responsiveRefreshRate: 100,
+      responsive: {
+        0:{items:1, margin: 15},
+        320:{items:2, margin: 15},
+        480:{items:2, margin: 15},
+        540:{items:2, margin: 15},
+        768:{items:3,margin: 30},
+        992:{items:3,margin: 30},
+        1200:{items:4,margin: 30}
+      },          
+      onInitialized: changeNavBtn
+    });            
+  })  
 
   function changeNavBtn(event){
     var items = event.item.count;
