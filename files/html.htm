@@ -933,6 +933,7 @@
     </div>
     {% ENDIF %}
 
+    {% IF index_page_goods_empty !=1 || index_page_new_goods_empty !=1 || index_page_favorites_goods_empty !=1 %}
     <div id="producttabs">
       <div class="container">
         <div class="pdt-nav">
@@ -1119,6 +1120,9 @@
                           <!-- /END Добавление товара в корзину -->
                         </div>
                       </div>
+                      <div class="product-delivery">
+                        Бесплатная доставка
+                      </div>                      
                     </form>
                   </div>
                 </div>
@@ -1305,6 +1309,9 @@
                           <!-- /END Добавление товара в корзину -->
                         </div>
                       </div>
+                      <div class="product-delivery">
+                        Бесплатная доставка
+                      </div>                       
                     </form>
                   </div>
                 </div>
@@ -1491,6 +1498,9 @@
                           <!-- /END Добавление товара в корзину -->
                         </div>
                       </div>
+                      <div class="product-delivery">
+                        Бесплатная доставка
+                      </div>                       
                     </form>
                   </div>
                 </div>
@@ -1506,39 +1516,25 @@
       </div>
       {% ENDIF %} 
     </div>
+    {% ENDIF %}
     
     
     <!-- Категории каталога -->
     {% IFNOT catalog_full_empty %}
-      <script>
-        var catalog_full = [];
-      </script>
-      {% FOR catalog_full %}   
-        {% IF catalog_full.LEVEL = 0 && catalog_full.GOODS_COUNT > 0  && catalog_full.HIDE=0 %}
-        <div class="pdt-{catalog_full.ID} products-container index">
-          <script>
-            catalog_full.push({
-              'id': 'pdt-{catalog_full.ID}',
-              'href': '{catalog_full.URL}'
-            })
-          </script>
-          <div class="container">
-            <div class="content">
-              <div class="block-title">           
-                <h2 class="title">
-                  <span class="title-text">
-                    {catalog_full.NAME}
-                  </span>
-                </h2>
-                <div class="navigation owl-nav"></div>
-              </div>              
-              <div class="products-grid row"></div>
+    <div id="scroll-goods-container"></div>
+    <!-- status elements -->
+    <div class="container">
+            <div class="scroller-status">
+            <div class="infinite-scroll-request loader-ellips">
+                    <span class="loader-ellips__dot"></span>
+                    <span class="loader-ellips__dot"></span>
+                    <span class="loader-ellips__dot"></span>
+                    <span class="loader-ellips__dot"></span>
             </div>
-          </div>                    
-        </div>
-        {% ENDIF %} 
-      {% ENDFOR %}
-    {% ENDIF %}    
+            <p class="infinite-scroll-error">Ошибка загрузки</p>
+            </div>
+    </div>
+    {% ENDIF %}   
 
     {% ENDIF %}
     
@@ -1816,7 +1812,7 @@
     {% ENDIF %}
     
     {% IF index_page %}
-      <div id="main" class="index gradient-bg">
+      <div id="main" class="index">
         <div class="container">
           <div class="row">
             <div class="main-body col-xs-12">
@@ -1830,7 +1826,7 @@
     <!-- /END Основная часть -->
     
     <!-- Контакты -->
-    <div class="block-contact" itemscope itemtype="https://schema.org/Organization">
+    <div class="block-contact" itemscope itemtype="https://schema.org/Organization" style="display: none;">
         <div class="container">
           <div class="row">
         <div class="block-contact-item">
@@ -1875,10 +1871,14 @@
     <!-- Если в тарифном плане подключен модуль новостей -->
     {% IF TARIFF_FEATURE_NEWS && index_page %}
     {% IF news_list_all_empty=0 || news_list_shop_empty=0 || news_list_articles_empty=0 ||  news_list_mass_media_empty=0 %}
-    <div id="news" class="gradient-bg">
+    <div id="news">
       <div class="container">
         <div class="block-title">             
-          <h2 class="title">Новости магазина</h2>
+          <h2 class="title">
+            <span class="title-text">
+              Новости магазина
+            </span>
+          </h2>
         </div>        
         <div class="">
            <!-- Все новости-->
@@ -1898,11 +1898,11 @@
                         <div class="post-content-header">
                           {% IF news_list_shop.SHOW_TIME %}<div class="date">{news_list_shop.TIME | date("d")}.{news_list_shop.TIME | date("m")}.{news_list_shop.TIME | date("y")}</div>{% ENDIF %}
                           <img class="news-image owl-lazy" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}">
-                          <a href="{news_list_shop.URL}" class="read-more">Читать <svg class="icon"><use xlink:href="#arrow-right"></use></svg></a>
                         </div>
                         <div class="post-content-body">
                           <a class="title" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">{news_list_shop.TITLE}</a>
                           <p class="description">{news_list_shop.TEXT_SHORT}</p>
+                          <a href="{news_list_shop.URL}" class="read-more">Подробнее</svg></a>
                         </div>
                       </div>
                     </div>
@@ -1919,11 +1919,11 @@
                         <div class="post-content-header">
                           {% IF news_list_articles.SHOW_TIME %}<div class="date">{news_list_articles.TIME | date("d")}.{news_list_articles.TIME | date("m")}.{news_list_articles.TIME | date("y")}</div>{% ENDIF %}
                           <img class="news-image owl-lazy" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}">
-                          <a href="{news_list_articles.URL}" class="read-more">Читать <svg class="icon"><use xlink:href="#arrow-right"></use></svg></a>
                         </div>
                         <div class="post-content-body">
                           <a class="title" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;">{news_list_articles.TITLE}</a>
                           <p class="description">{news_list_articles.TEXT_SHORT}</p>
+                          <a href="{news_list_articles.URL}" class="read-more">Подробнее</svg></a>
                         </div>
                       </div>
                     </div>
@@ -1941,11 +1941,11 @@
                         <div class="post-content-header">
                           {% IF news_list_mass_media.SHOW_TIME %}<div class="date">{news_list_mass_media.TIME | date("d")}.{news_list_mass_media.TIME | date("m")}.{news_list_mass_media.TIME | date("y")}</div>{% ENDIF %}
                           <img class="news-image owl-lazy" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}">
-                          <a href="{news_list_mass_media.URL}" class="read-more">Читать <svg class="icon"><use xlink:href="#arrow-right"></use></svg></a>
                         </div>
                         <div class="post-content-body">
                           <a class="title" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;">{news_list_mass_media.TITLE}</a>
                           <p class="description">{news_list_mass_media.TEXT_SHORT}</p>
+                          <a href="{news_list_mass_media.URL}" class="read-more">Подробнее</svg></a>
                         </div>
                       </div>
                     </div>
@@ -1964,11 +1964,11 @@
                         <div class="post-content-header">
                           {% IF news_list_all.SHOW_TIME %}<div class="date">{news_list_all.TIME | date("d")}.{news_list_all.TIME | date("m")}.{news_list_all.TIME | date("y")}</div>{% ENDIF %}
                           <img class="news-image owl-lazy" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}">
-                          <a href="{news_list_all.URL}" class="read-more">Читать <svg class="icon"><use xlink:href="#arrow-right"></use></svg></a>
                         </div>
                         <div class="post-content-body">
                           <a class="title" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;">{news_list_all.TITLE}</a>
                           <p class="description">{news_list_all.TEXT_SHORT}</p>
+                          <a href="{news_list_all.URL}" class="read-more">Подробнее</svg></a>
                         </div>
                       </div>
                     </div>
@@ -2396,13 +2396,60 @@
   })
   </script>
   <!-- /END Обратный звонок в шапке -->
-  
+
+  <!-- Скрипты ленивой подгрузки товаров на главной -->
+  {% IF index_page %}
+  <script>
+  var catalog_full = [];
+
+  {% FOR catalog_full %}
+          {% IF catalog_full.LEVEL = 0 && catalog_full.GOODS_COUNT > 0 && catalog_full.HIDE=0 %}
+                  catalog_full.push({
+                  'id': 'pdt-{catalog_full.ID}',
+                  'href': '{catalog_full.URL}',
+                  'name': '{catalog_full.NAME}'
+                  })
+          {% ENDIF %}
+  {% ENDFOR %}
+  // Массив страниц с товарами
+  var nextPages = catalog_full.map(el => {
+    try {
+      var url = new URL(el.href);
+      return url.pathname + `?only_body=1&goods_view_type=1`
+    } catch (error) {
+      console.error(error);
+    }
+  });
+  // Плагин ленивой загрузки
+  $('#scroll-goods-container').infiniteScroll({
+      path: function() {
+        return nextPages[this.loadCount];
+      },
+      append: '.products-container._ajax', // Искомый контейнер с товарами
+      history: false,
+      status: '.scroller-status'
+    })
+    .on('load.infiniteScroll', function(event, body, path, response) {
+      // console.log('Loaded: ${ path }');
+    })
+    .on('append.infiniteScroll', function(event, body, path, items, response) {
+      // console.log('Appended ${ items.length } items on ${ path }');
+      if (typeof(lozad) === "function") {
+        lozad().observe();
+      }
+      Addto();
+    });
+  </script>
+  <style>
+  .scroller-status{display:none;padding:20px 0}.scroller-status__message{text-align:center;color:#777}.loader-ellips{font-size:20px;position:relative;width:4em;height:1em;margin:10px auto}.loader-ellips__dot{display:block;width:1em;height:1em;border-radius:.5em;background:#555;background:#e8dbcf;position:absolute;animation-duration:.5s;animation-timing-function:ease;animation-iteration-count:infinite}.loader-ellips__dot:nth-child(1),.loader-ellips__dot:nth-child(2){left:0}.loader-ellips__dot:nth-child(3){left:1.5em}.loader-ellips__dot:nth-child(4){left:3em}@keyframes reveal{from{transform:scale(0.001)}to{transform:scale(1)}}@keyframes slide{to{transform:translateX(1.5em)}}.loader-ellips__dot:nth-child(1){animation-name:reveal}.loader-ellips__dot:nth-child(2),.loader-ellips__dot:nth-child(3){animation-name:slide}.loader-ellips__dot:nth-child(4){animation-name:reveal;animation-direction:reverse}.loader-wheel{font-size:64px;position:relative;height:1em;width:1em;padding-left:.45em;overflow:hidden;margin:0 auto;animation:loader-wheel-rotate .5s steps(12) infinite}.loader-wheel i{display:block;position:absolute;height:.3em;width:.1em;border-radius:.05em;background:#333;opacity:.8;transform:rotate(-30deg);transform-origin:center .5em}@keyframes loader-wheel-rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  </style>
+  {% ENDIF %}
   <!-- Overlay -->
   <div class="overlay"></div>  
 
   <!-- Debug -->
   <div class="container">
-    <!--{print_r}-->
+    <!-- {print_r} -->
   </div>
 </body> 
 </html>

@@ -2789,7 +2789,6 @@ function indexPage() {
   })
   // Слайдер новостей (все новости без группировки)
   $("#news .all.owl-carousel").owlCarousel({
-    items: 3,
     margin: 30,
     loop: false,
     rewind: true,
@@ -2810,12 +2809,11 @@ function indexPage() {
       481:{items:1},
       768:{items:2},
       992:{items:3},
-      1199:{items:3}
+      1199:{items:4}
     }
   });
   // Слайдер новостей (группы)
   $("#news .owl-carousel").owlCarousel({
-    items: 3,
     margin: 30,
     loop: false,
     rewind: true,
@@ -2840,7 +2838,7 @@ function indexPage() {
       0:{items:1},
       768:{items:1},
       992:{items:3},
-      1199:{items:3}
+      1199:{items:4}
     }
   });
   // Количество товара для показа 
