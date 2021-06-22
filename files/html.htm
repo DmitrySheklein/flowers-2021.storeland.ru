@@ -87,124 +87,7 @@
 
         <div class="container">
             <div class="header-top-wrapper">
-              {% IFNOT MOD_LNAME = cart %}
-              <!-- Навигация -->
-              <ul class="header-nav unstyled _header-mobile" id="headerNav">
-                  {% FOR menu %}
-                    {% FOR header %}
-                      {% FOR links %}
-                        {% IF menu.header.links.index < 7 %}
-                        <li class="header-navItem  {% IF menu.header.links.SELECTED %}active{%ENDIF%}"><a class="header-navLink" href="{menu.header.links.URL}"  {% IF menu.header.links.TITLE %}title="{menu.header.links.TITLE}"{% ENDIF %} itemprop="url"><span>{menu.header.links.NAME}</span></a></li>
-                        {% ENDIF %}
-                      {% ENDFOR %}
-                    {% ENDFOR %}
-                  {% ENDFOR %}  
-  
-                  <li class="header-nav-all" style="{% FOR menu %}{% FOR header %}{% FOR links %}{% IF menu.header.links.index >= 7 %}display: inline-block; {break}{% ELSE %}display: none;{% ENDIF %}{% ENDFOR %}{% ENDFOR %}{% ENDFOR %}">
-                  <!--<li class="header-nav-all" {% FOR menu %}{% FOR header %}{% FOR links %}{% IF menu.header.links.index >= 7 %}style="display: inline-block;"{break}{% ELSE %}style="display: none;"{% ENDIF %}{% ENDFOR %}{% ENDFOR %}{% ENDFOR %}>-->
-                    <a class="header-navLink" href="{menu.header.links.URL}">Ещё ...</a>
-                    <ul class="header-nav-allList">                    
-                    {% FOR menu %}
-                      {% FOR header %}
-                        {% FOR links %}
-                              {% IF menu.header.links.index >= 7 %}
-                              <li class="header-navItem  {% IF menu.header.links.SELECTED %}active{%ENDIF%}"><a class="header-navLink" href="{menu.header.links.URL}"  {% IF menu.header.links.TITLE %}title="{menu.header.links.TITLE}"{% ENDIF %} itemprop="url"><span>{menu.header.links.NAME}</span></a></li>
-                              {% ENDIF %}     
-                        {% ENDFOR %}
-                      {% ENDFOR %}
-                    {% ENDFOR %}
-                  </ul>                    
-                  </li>                
-  
-                </ul>
-              <!-- /Навигация -->
-              {% ENDIF %}
-            
-  						<!-- Поиск -->
-              <div class="header-search _header-mobile" id="headerSearch">
-                  <div class="search">
-                    <a class="header-searchLink" href="{SEARCH_URL}" title="Поиск по магазину" rel="nofollow">                
-      									<i class="material-icons">
-                        search
-                        </i>
-      									<span>Поиск</span>
-            				</a>                  
-                    <form id="search_mini_form" action="{SEARCH_URL}" method="get" title="Поиск по магазину">
-                      <input type="hidden" name="goods_search_field_id" value="0">
-                      <input required type="text" name="q" value="{SEARCH_QUERY}" class="input search-string" placeholder="Поиск по магазину..." autocomplete="off">
-                      <button type="submit" title="Искать" class="search-submit">
-                        <span class="header-searchIcon">
-        									<i class="material-icons">
-                          search
-                          </i>                          
-                        </span>
-                      </button>
-                      <button type="reset" title="Закрыть" class="search-close">
-                        <span class="header-searchIcon">
-                          <i class="material-icons">
-                          close
-                          </i>                          
-                        </span>
-                      </button>
-                    </form>
-                  </div> 
-              </div>	
-              <!-- /Поиск -->
-              
-              <!-- Логин -->
-              <div class="_header-mobile header-login {% IF CLIENT_IS_LOGIN %}isLogin{% ENDIF %}" id="headerLogin">
-                {% IFNOT CLIENT_IS_LOGIN %}
-                <div class="header-loginMenu">
-                  <div class="header-loginList">
-                    <a class="header-loginLink" href="{USER_LOGIN_URL}" title="Вход в личный кабинет" rel="nofollow">                
-                        <i class="material-icons">person_outline</i>   									
-      									<span>Войти</span>
-            				</a>
-                  </div>
-                </div>
-                {% ELSE %}
-                <div class="header-loginMenu">
-                  <button class="header-loginBtn" type="button">
-  										<span class="fal fa-user-circle"></span>
-  										<span class="header-loginArrow fal fa-angle-down"></span>
-  								</button>
-  								<div class="header-loginFlyout">
-  								  <div class="header-loginList">
-                      <a class="header-loginLink" href="{USER_SETTINGS_URL}" title="Личный кабинет" rel="nofollow">
-                        <i class="fal fa-user" aria-hidden="true"></i>
-                        <span class="">Мой кабинет</span>
-                      </a>
-                      <a class="header-loginLink" href="{USER_HISTORY_LIST_URL}" title="История заказов" rel="nofollow">
-                        <i class="fal fa-history" aria-hidden="true"></i>
-                        <span class="">История</span>
-                      </a>
-                      <a class="header-loginLink" href="{USER_LOGOUT_URL}" title="Выход" rel="nofollow">
-                        <i class="fal fa-sign-out" aria-hidden="true"></i>
-                        <span class="">Выход</span>
-                      </a>									    
-  								  </div>
-  								</div>                
-                </div>
-                {% ENDIF %}              
-              </div>
-              <!-- /Логин -->
-            
-              <!-- Режим работы -->
-              {% IF SETTINGS_STORE_WORK_TIME %}
-              <div class="header-phoneSub">
-                <i class="material-icons">
-                access_time
-                </i>                    
-                {SETTINGS_STORE_WORK_TIME}
-              </div>
-              {% ENDIF %} 
-            
-              <div class="favorites {% IF MOD_LNAME = user && ACT = favorites %}page{% ENDIF %}">
-                <a class="favorites-link" href="{%IF CLIENT_IS_LOGIN%}{USER_FAVORITES_URL}{%ELSE%}{USER_REGISTER_URL}{%ENDIF%}" title="Перейти к Избранному">
-              		<i class="material-icons">favorite_border</i>
-                  <span class="favorites-title">Избранное</span>
-                </a>
-              </div>
+
             </div>
         </div>
       </div>
@@ -426,48 +309,7 @@
       {% IFNOT MOD_LNAME = cart %}
       <div class="header-menu">
         <div class="container">
-          <div class="row no-gutters">
-            <!-- Каталог -->
-            <div class="header-catalog col-xs-12">
-              <span class="header-catalogBtn unselectable"><span class="header-catalogIcon fal fa-bars"></span><span>Каталог товаров</span></span>
-              <ul class="header-catalogMenu unstyled">
-                    <li class="header-catalogMenuTitle">
-                      <a href="/catalog">Каталог</a>
-                      <button class="header-closeBtn"><i class="fal fa-times"></i></button>
-                    </li>
-                    {% IFNOT catalog_full_empty %}
-                      {% FOR catalog_full %}
-                        {% IF catalog_full.FIRST %}
-                          {% IFNOT catalog_full.LEVEL = 0 %}
-                          <ul class="sub{% IF catalog_full.LEVEL = 1 %} header-subcatalog{% ENDIF %}{% IF catalog_full.LEVEL = 2 %} header-subcatalog-third{% ENDIF %}{% IF catalog_full.LEVEL > 3 %} hide{% ENDIF %}">
-                          {% ENDIF %}
-                        {% ENDIF %}
-                        <li {% IF catalog_full.HIDE %}style="display:none;"{% ENDIF %} class="{% IF catalog_full.LEVEL = 0 %}header-catalogItem {% ENDIF %}{% IF catalog_full.LEVEL = 1 %}header-subcatalogCol {% ENDIF %}{% IF catalog_full.LEVEL = 2 %}header-subcatalogItem {% ENDIF %}{% IF catalog_full.ISSET_VISIBLE_SUB %} parent{% ENDIF %}{% IF catalog_full.CURRENT || catalog_full.CURRENT_PARENT %} active{% ENDIF %}">
-                              <a href="{catalog_full.URL}" class="{% IF catalog_full.LEVEL = 0 %}header-catalogLink {% ENDIF %}{% IF catalog_full.LEVEL = 1 %}header-subcatalogTitle {% ENDIF %}{% IF catalog_full.LEVEL >= 2 %}header-subcatalogLink {% ENDIF %}{% IF catalog_full.CURRENT %} active{% ENDIF %}" title="{catalog_full.NAME}" itemprop="url">
-                                {catalog_full.NAME}
-                                {% IF catalog_full.ISSET_VISIBLE_SUB &&  catalog_full.LEVEL = 0 %}<span class="header-arrow header-catalogArrow fal fa-angle-down {% IF catalog_full.CURRENT_PARENT || catalog_full.CURRENT %}active{% ENDIF %}"></span>{% ENDIF %}
-                                {% IF catalog_full.ISSET_VISIBLE_SUB &&  catalog_full.LEVEL != 0 %}<span class="header-arrow header-secondArrow  fal fa-caret-right {% IF catalog_full.CURRENT_PARENT || catalog_full.CURRENT %}active{% ENDIF %}"></span>{% ENDIF %}
-                              </a>
-                        {% IF catalog_full.ISSET_SUB=0 %}
-                        </li>
-                        {% ENDIF %}
-                        
-                    {% IF catalog_full.LAST && catalog_full.LEVEL > 0 %}
-                      {%FOR out%}
-                        </ul> 
-                        {%IFNOT catalog_full.out.LAST %}
-                        </li>
-                        {%ENDIF%}
-                      {%ENDFOR%}
-                    {% ENDIF %}
-                        
-                        
-                      {% ENDFOR %}
-                    {% ENDIF %}                
-              </ul>
-            </div>
-            <!-- /Каталог -->
-            
+          <div class="row no-gutters">            
             <!-- Меню -->
             <div class="header-sections col-xs-12" {% IF MOD_LNAME = cart %}style="visibility: hidden;"{% ENDIF%}>
                 <ul class="header-sectionsList header-catalogMenu">
@@ -503,6 +345,78 @@
                   {% ENDIF %}                    
                 </ul>
                 <ul class="overflowMenu"></ul>
+                <div class="header-action">
+                  <!-- Поиск -->
+                  <div class="header-search _header-mobile" id="headerSearch">
+                      <div class="search">
+                        <a class="header-searchLink" href="{SEARCH_URL}" title="Поиск по магазину" rel="nofollow">                
+                          <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
+                            <use xlink:href="#img-loupe"></use>
+                          </svg>
+                        </a>                  
+                        <form id="search_mini_form" action="{SEARCH_URL}" method="get" title="Поиск по магазину">
+                          <input type="hidden" name="goods_search_field_id" value="0">
+                          <input required type="text" name="q" value="{SEARCH_QUERY}" class="input search-string" placeholder="Поиск по магазину..." autocomplete="off">
+                          <button type="reset" title="Закрыть" class="search-close">
+                            <span class="header-searchIcon">
+                              <i class="material-icons">
+                                close
+                              </i>                          
+                            </span>
+                          </button>
+                          <button type="submit" title="Искать" class="search-submit">
+                            <span class="header-searchIcon">
+                              Искать
+                            </span>
+                          </button>
+                        </form>
+                      </div> 
+                  </div>	
+                  <!-- /Поиск -->
+
+                  <!-- Навигация -->
+                  <button class="header-nav-btn">
+                    <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
+                      <use xlink:href="#img-menu"></use>
+                    </svg>
+                  </button>
+                  <ul class="header-nav unstyled" id="headerNav">
+                    {% FOR menu %}
+                      {% FOR header %}
+                        {% FOR links %}
+                          <li class="header-navItem  {% IF menu.header.links.SELECTED %}active{%ENDIF%}"><a class="header-navLink" href="{menu.header.links.URL}"  {% IF menu.header.links.TITLE %}title="{menu.header.links.TITLE}"{% ENDIF %} itemprop="url"><span>{menu.header.links.NAME}</span></a></li>
+                        {% ENDFOR %}
+                      {% ENDFOR %}
+                    {% ENDFOR %} 
+                  </ul>
+                  <!-- /Навигация -->                  
+                  
+                  <!-- Логин -->
+                  <div class="_header-mobile header-login {% IF CLIENT_IS_LOGIN %}isLogin{% ENDIF %}" id="headerLogin">
+                    {% IFNOT CLIENT_IS_LOGIN %}
+                    <div class="header-loginMenu">
+                      <div class="header-loginList">
+                        <a class="header-loginLink" href="{USER_LOGIN_URL}" title="Вход в личный кабинет" rel="nofollow">                
+                          <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
+                            <use xlink:href="#img-user"></use>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                    {% ELSE %}
+                    <div class="header-loginMenu">
+                      <div class="header-loginList">
+                        <a class="header-loginLink" href="{USER_SETTINGS_URL}" title="Мой кабинет" rel="nofollow">                
+                          <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
+                            <use xlink:href="#img-user"></use>
+                          </svg>
+                        </a>
+                      </div>
+                    </div>                    
+                    {% ENDIF %}              
+                  </div>
+                  <!-- /Логин -->                  
+                </div>
             </div>            
           </div>
         </div>
@@ -1535,7 +1449,65 @@
             </div>
     </div>
     {% ENDIF %}   
-
+    <!-- Обратный звонок -->
+    <div class="index-callback">
+      <div class="container">
+        <div class="index-callback__wrap">  
+          <div class="row">
+            <div class="index-callback__img-wrap col-lg-5">
+              <img class="index-callback__img" src="{ASSETS_IMAGES_PATH}callback-index.png" alt="">
+            </div>
+            <div class="callback-block col-lg-7">
+              <h3 class="callback-block__title">Не нашли подходящий букет?</h3>
+              <p class="callback-block__subtext">
+                Оставьте заявку, и мы свяжемся с Вами в ближайшее время для уточнения деталей и соберем для Вас уникальный букет с учетом Ваших пожеланий!
+              </p>
+              <form method="post" action="{CALLBACK_URL}" class="callback-form" enctype="multipart/form-data">
+                <input type="hidden" name="hash" value="{HASH}" />
+                <input class="callbackredirect" type="hidden" name="return_to" value="{CALLBACK_URL}"/>
+                <!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
+                {ANTISPAM_CODE}
+                <div class="callback-input">                            
+                  <input id="callback_person_index"
+                   class="input callback_person required"
+                   type="text"
+                   name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]"
+                   value="{FORM_CALLBACK_PERSON}"
+                   maxlength="50"
+                   title="Представьтесь, пожалуйста"
+                   placeholder="Ваше имя"
+                   autocomplete="off">
+                </div>
+                <div class="callback-input">                            
+                  <input id="callback_phone_index" class="input callback_phone required" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}"  maxlength="50" title="Введите номер телефона" placeholder="Номер телефона" autocomplete="off">
+                </div>                     
+                <div class="pp callback-pp">
+                  <input id="pp1" class="checkbox-hidden" type="checkbox" name="form[pp]" value="" required checked>
+                  <label for="pp1" class="checkbox-name">
+                    Нажимая на кнопку "Оставить заявку", Вы даете согласие на обработку персональных даных и соглашаетесь с <a href="#">правилами обработки персональных данных</a>                                
+                  </label>
+                </div>
+                <button type="submit" title="Отправить" class="callback-btn button button3">Оставить заявку</button>
+              </form>    
+              <div class="callback-block__recall">                
+                <span>
+                  Или позвоните по телефону
+                </span>
+                {% IF SETTINGS_STORE_PHONE_NUMBER1 %}
+                  <a class="callback-block__recall-phone"
+                   href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}{SETTINGS_STORE_PHONE_CITY_CODE1}{SETTINGS_STORE_PHONE_NUMBER1}">
+                   <span class="material-icons">
+                    phone
+                    </span>
+                   {SETTINGS_STORE_PHONE_COUNTRY_CODE1} ({SETTINGS_STORE_PHONE_CITY_CODE1}) {SETTINGS_STORE_PHONE_NUMBER1}
+                  </a>
+                {% ENDIF %}                
+              </div>        
+            </div>
+          </div>        
+        </div>
+      </div>
+    </div>
     {% ENDIF %}
     
     <!-- Основная часть -->
@@ -1942,7 +1914,7 @@
     {% ENDIF %}
     {% ENDIF %}
     <!-- /END Если в тарифном плане подключен модуль новостей -->
-    
+    {% IF index_page %}
     <!-- Контакты -->
     <div class="index-contacts">
       <div class="container">
@@ -1952,39 +1924,58 @@
               Посетите наш магзин
             </span>
           </h2>          
-        </div>        
-        <div class="block-contact" itemscope itemtype="https://schema.org/Organization">
-          <div class="block-contact-item">
-            {% IF SETTINGS_STORE_PHONE_NUMBER1 %}
-            <div class="block-contact-content">
-              <div itemprop="telephone"><a class="footer-phone" href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}{SETTINGS_STORE_PHONE_CITY_CODE1}{SETTINGS_STORE_PHONE_NUMBER1}">{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}</a></div>              
-            </div>
-            {% ENDIF %}
-          </div>
-          <div class="block-contact-item">
-            {% IF SETTINGS_STORE_EMAIL_MAIN %}
-            <div class="block-contact-icon">
-              <i class="material-icons">mail</i>
-            </div>
-            <div class="block-contact-content">
-              <div itemprop="email"><a href="mailto:{SETTINGS_STORE_EMAIL_MAIN}">{SETTINGS_STORE_EMAIL_MAIN}</a></div>
-            </div>
-            {% ENDIF %}
-          </div>
-          <div class="block-contact-item">
+        </div>    
+        <div class="index-contacts-inner">
+          <div class="block-contact" itemscope itemtype="https://schema.org/Organization">
             {% IF SETTINGS_STORE_REGION %}
-            <div class="block-contact-icon">
-              <i class="material-icons">place</i>
+            <div class="block-contact-item">
+              <div class="block-contact-title">
+                Адрес
+              </div>            
+              <div class="block-contact-content">
+                <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span itemprop="addressLocality">{SETTINGS_STORE_REGION}</span></div>
+              </div>
             </div>
-            <div class="block-contact-content">
-              <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span itemprop="addressLocality">{SETTINGS_STORE_REGION}</span></div>
+            {% ENDIF %}          
+            {% IF SETTINGS_STORE_PHONE_NUMBER1 %}
+            <div class="block-contact-item">
+              <div class="block-contact-title">
+                Телефоны
+              </div>
+              <div class="block-contact-content">
+                <div itemprop="telephone"><a class="footer-phone" href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}{SETTINGS_STORE_PHONE_CITY_CODE1}{SETTINGS_STORE_PHONE_NUMBER1}">{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}</a></div>              
+              </div>
             </div>
             {% ENDIF %}
+            {% IF SETTINGS_STORE_EMAIL_MAIN %}
+            <div class="block-contact-item">
+              <div class="block-contact-title">
+                Почта
+              </div>            
+              <div class="block-contact-content">
+                <div itemprop="email"><a href="mailto:{SETTINGS_STORE_EMAIL_MAIN}">{SETTINGS_STORE_EMAIL_MAIN}</a></div>
+              </div>
+            </div>
+            {% ENDIF %}
+            <!-- Режим работы -->
+            {% IF SETTINGS_STORE_WORK_TIME %}
+            <div class="block-contact-item">
+              <div class="block-contact-title">
+                Режим работы
+              </div>            
+              <div class="block-contact-content">
+                {SETTINGS_STORE_WORK_TIME}
+              </div>
+            </div>          
+            {% ENDIF %}         
           </div>
-        </div>
+          <div class="index-contacts-map">
+            <iframe src="https://api-maps.yandex.ru/frame/v1/-/CZRYYCOw" width="100%" height="430" frameborder="0"></iframe>
+          </div>
+        </div>    
       </div>
     </div>
-      
+    {% ENDIF %}
     <!-- Подвал -->
     <div id="footer">
       <div class="container">
@@ -2267,34 +2258,6 @@
     </symbol>  
   </svg>
 
-<!--   <svg display="none">
-    <defs>
-      <g id="img-tiktok">
-        <path xmlns="http://www.w3.org/2000/svg"  d="M292,27.1c-8.4-14.5-20.9-23.2-37.5-25.9c-1.9-0.3-3.8-0.5-5.7-0.7H60c-1.5,0.1-3.1,0.3-4.6,0.5 c-12,1.5-22.8,6.1-32.3,13.5c-9.4,7.2-16.2,16.3-20,27.6C1.8,46,1,50,0.7,54.1c-0.1,0.3-0.1,0.5-0.2,0.8v188.2 c0.3,1.8,0.4,3.5,0.7,5.4c1.5,9.2,5.3,17.5,10.9,24.9c9.3,12.3,21.4,20.4,36.3,24.5c4.8,1.4,9.8,2,14.8,2c60.8,0,121.6,0,182.4-0.1 c19.7-0.1,34.6-9.2,45-25.8c5.2-8.3,8-17.5,8.9-27.2c0.3-2.6,0.4-5.1,0.4-7.7V58.4C299.9,47.3,297.6,36.8,292,27.1z M251.6,104.3 v27.2c-12.8,0-25.3-2.5-37.1-7.5c-7.6-3.2-14.6-7.3-21.1-12.3l0.2,83.9c-0.1,18.9-7.6,36.6-21.1,50c-11,10.9-25,17.8-40.1,20 c-3.6,0.5-7.2,0.8-10.8,0.8c-16.2,0-31.5-5.2-44.1-14.9c-2.4-1.8-4.6-3.8-6.8-5.9c-14.7-14.5-22.2-34.1-20.9-54.8 c1-15.7,7.3-30.7,17.8-42.5c13.9-15.6,33.3-24.2,54.1-24.2c3.7,0,7.3,0.3,10.8,0.8v10.1v28c-3.4-1.1-7-1.7-10.7-1.7 c-19,0-34.3,15.5-34,34.5c0.2,12.1,6.8,22.8,16.6,28.6c4.6,2.8,9.9,4.5,15.5,4.8c4.4,0.2,8.7-0.4,12.6-1.7 c13.6-4.5,23.3-17.2,23.3-32.2l0-56.2V36.7h37.5c0,3.7,0.4,7.3,1.1,10.9c2.8,14.2,10.9,26.6,22,35c9.7,7.3,21.9,11.7,35,11.7 c0,0,0.1,0,0.1,0V104.3z"/>
-      </g>
-      <g id="img-twit">
-        <path xmlns="http://www.w3.org/2000/svg"  d="M292,27.1c-8.4-14.5-20.9-23.2-37.5-25.9c-1.9-0.3-3.8-0.5-5.7-0.7H60c-1.5,0.1-3.1,0.3-4.6,0.5 c-12,1.5-22.8,6.1-32.3,13.5c-9.4,7.2-16.2,16.3-20,27.6C1.8,46,1,50,0.7,54.1c-0.1,0.3-0.1,0.5-0.2,0.8v188.2 c0.3,1.8,0.4,3.5,0.7,5.4c1.5,9.2,5.3,17.5,10.9,24.9c9.3,12.3,21.4,20.4,36.3,24.5c4.8,1.4,9.8,2,14.8,2c60.8,0,121.6,0,182.4-0.1 c19.7-0.1,34.6-9.2,45-25.8c5.2-8.3,8-17.5,8.9-27.2c0.3-2.6,0.4-5.1,0.4-7.7V58.4C299.9,47.3,297.6,36.8,292,27.1z M271.5,76.6 c-6.7,10-14.9,18.7-24.7,25.6h0c3.6,74.1-53.2,146.7-140.2,146.7c-27.9,0-53.8-8.1-75.7-22.1c3.9,0.5,7.8,0.7,11.8,0.7 c23.1,0,44.4-7.9,61.2-21c-21.6-0.5-39.7-14.8-46.1-34.4c3,0.7,6.2,0.8,9.3,0.8c4.5,0,8.9-0.5,12.9-1.6 c-22.4-4.6-39.5-24.5-39.5-48.5v-0.5c6.6,3.6,14.4,5.9,22.3,6.1c-13.1-8.8-21.9-23.9-21.9-41c0-9.1,2.5-17.5,6.8-24.9 c24.4,29.9,60.7,49.6,101.7,51.6c-0.8-3.6-1.1-7.3-1.1-11.2c0-27.2,22-49.3,49.3-49.3c14.1,0,27,6,36,15.6 c11.2-2.2,21.7-6.3,31.3-11.9c-3.7,11.6-11.5,21.2-21.7,27.3C253,83.2,262.5,80.6,271.5,76.6L271.5,76.6z"/>
-      </g>
-      <g id="img-viber">
-        <path xmlns="http://www.w3.org/2000/svg"  d="M222.7,69.5c-22.8-21.4-112.2-28.1-143.9,1.7c-13.7,14-18.4,34.9-18.9,60.4s-3.2,74.1,42,87 c0,0-0.2,36.1-0.2,39.3c0,4.8,2.5,5,4.9,2.6c7.2-7.5,30.2-36.2,30.2-36.2c30.9,2.1,55.5-4.3,58.2-5.1c6.2-2.1,39.9-5.1,45.7-52.8 C240.6,164,250.5,94.2,222.7,69.5z M203.9,185.7L203.9,185.7c-4.8,8.8-13.7,18.4-23,15.3l-0.1-0.1c-9.4-2.7-31.4-14.5-45.3-25.9 c-29.6-24.2-38.9-56.3-44-66.4c-3-9.5,6.3-18.8,14.8-23.8h0.1c4.1-2.2,8-1.5,10.6,1.8c2.5,3.5,7.3,8,14.6,21.1 c2.7,5,1,10.1-1.6,12.2l-5.3,4.4c-2.7,2.2-2.3,6.4-2.3,6.4s7.9,30.9,37.4,38.7c0,0,4,0.4,6.2-2.4l4.3-5.5c2-2.7,7-4.5,11.8-1.7l0,0 c6.5,3.8,14.8,9.7,20.3,15.1C205.3,177.4,206,181.4,203.9,185.7z M154.4,98.1c-3.8-0.3-3.4-6.2,0.4-5.9 c25.7,1.9,39.4,20.2,38.9,42.4c0,3.9-5.8,3.8-5.7-0.1l0,0C188.5,115,176.7,99.8,154.4,98.1z M179,129.3c0.2,3.9-5.5,4.2-5.7,0.3 c-0.5-10.1-5-15-14.5-15.5c-3.8-0.2-3.5-6.1,0.3-5.9C171.5,108.8,178.4,116.2,179,129.3z M203.2,140.7c-0.3-37.4-24.3-57.7-53.6-58 c-3.8,0-3.8-5.9,0-5.9l0,0l0,0l0,0c32.7,0.2,59,23.6,59.3,63.8l0,0C208.9,144.6,203.2,144.6,203.2,140.7z"/><path xmlns="http://www.w3.org/2000/svg"  d="M292,27.1c-8.4-14.5-20.9-23.2-37.5-25.9c-1.9-0.3-3.8-0.5-5.7-0.7H60c-1.5,0.1-3.1,0.3-4.6,0.5 c-12,1.5-22.8,6.1-32.3,13.5c-9.4,7.2-16.2,16.3-20,27.6C1.8,46,1,50,0.7,54.1c-0.1,0.3-0.1,0.5-0.2,0.8v188.2 c0.3,1.8,0.4,3.5,0.7,5.4c1.5,9.2,5.3,17.5,10.9,24.9c9.3,12.3,21.4,20.4,36.3,24.5c4.8,1.4,9.8,2,14.8,2c60.8,0,121.6,0,182.4-0.1 c19.7-0.1,34.6-9.2,45-25.8c5.2-8.3,8-17.5,8.9-27.2c0.3-2.6,0.4-5.1,0.4-7.7V58.4C299.9,47.3,297.6,36.8,292,27.1z M256.6,170.7 c-6.7,57.1-48.4,62.6-55.7,65.1c-3.2,1.1-31.2,8.3-67.6,5.1c-21.8,26-25,30.5-32,28.2c-6.1-1.9-5.8-11.5-5.8-11.5v-23.7l0,0 C42.3,218.5,43,161.3,43.6,130.8s6.3-55.1,22.6-71.9c36.1-34.3,138.1-30,168.3-1.3l0,0C253.2,74.5,263.6,111.7,256.6,170.7z"/>
-      </g>
-      <g id="img-what">
-        <path xmlns="http://www.w3.org/2000/svg"  d="M152.4,58.3c-70.8,0-113.7,77.8-76.4,137.2l2.2,3.4l-9.1,33l34-8.8l3.3,1.9c60.1,35.3,136-7.9,136-77.1 c0-23.9-9.4-46.5-26.4-63.3C199,67.7,176.5,58.3,152.4,58.3z M205.2,186.2c-2.3,6.4-13.1,12.1-18.3,12.9c-4.7,0.7-10.6,1-17-1.1 c-24-8.2-37.1-14.2-61.7-46.3c-12.5-17.6-16.2-34.2-1.6-50.3c3.4-3.5,7.2-3.6,12.4-3.1c1.7,0,3.9-0.7,6.1,4.6 c2.3,5.3,7.7,18.6,8.4,20s1.1,2.8,0.2,4.7c-5.1,9.6-10.6,10.2-8,14.8c1.6,2.7,7,11.6,15,18.8c10.3,9.2,19.1,12.1,21.8,13.5 c2.7,1.2,4.3,1.1,5.9-0.7c1.6-1.8,6.8-7.9,8.6-10.5c2.6-3.9,4.7-2.5,24.6,7.4l0.1-0.7l0,0c2.7,1.2,4.5,1.9,5.2,3.1 C207.5,174.5,207.5,179.8,205.2,186.2z"/><path xmlns="http://www.w3.org/2000/svg"  d="M292,27.1c-8.4-14.5-20.9-23.2-37.5-25.9c-1.9-0.3-3.8-0.5-5.7-0.7H60c-1.5,0.1-3.1,0.3-4.6,0.5 c-12,1.5-22.8,6.1-32.3,13.5c-9.4,7.2-16.2,16.3-20,27.6C1.8,46,1,50,0.7,54.1c-0.1,0.3-0.1,0.5-0.2,0.8v188.2 c0.3,1.8,0.4,3.5,0.7,5.4c1.5,9.2,5.3,17.5,10.9,24.9c9.3,12.3,21.4,20.4,36.3,24.5c4.8,1.4,9.8,2,14.8,2c60.8,0,121.6,0,182.4-0.1 c19.7-0.1,34.6-9.2,45-25.8c5.2-8.3,8-17.5,8.9-27.2c0.3-2.6,0.4-5.1,0.4-7.7V58.4C299.9,47.3,297.6,36.8,292,27.1z M100.4,243 L43,258l15.4-55.8c-9.5-16.4-14.5-34.9-14.5-53.9c0-95,115.4-143.9,185-76.5l-0.1,0.4c20.4,20.4,31.7,47.4,31.7,76.2 C260.5,230.3,172.1,281.7,100.4,243z"/>
-      </g>
-      <g id="img-insta">
-        <path xmlns="http://www.w3.org/2000/svg"  d="M149.8,114.2c-19.4,0-35.1,15.7-35.1,35.1s15.7,35.1,35.1,35.1s35.1-15.7,35.1-35.1 C184.8,129.9,169.2,114.2,149.8,114.2z"/><path xmlns="http://www.w3.org/2000/svg"  d="M235.4,106.7C233.2,58.1,196.5,63,149.8,63l-0.4-0.3c-28.1,0-31.4,0.1-42.6,0.5c-48.6,2.5-43.7,37.4-43.7,85.8 c0,35.8-2.7,59.4,12.1,74.1c12.8,12.9,30.4,12.2,74.3,12.2c42.6,0,61,1.2,74.3-12.1c13-13.1,12.2-30.8,12.2-74.1 C236,121.1,235.9,117.8,235.4,106.7z M149.8,203.2c-29.8,0-54-24.2-54-54c0-29.8,24.2-54,54-54c29.8,0,54,24.2,54,54 C203.8,179.1,179.6,203.2,149.8,203.2z M205.9,105.7c-7,0-12.6-5.7-12.6-12.6c0-7,5.7-12.6,12.6-12.6s12.6,5.7,12.6,12.6 C218.6,100.1,212.9,105.7,205.9,105.7z"/><path xmlns="http://www.w3.org/2000/svg"  d="M292,27.1c-8.4-14.5-20.9-23.2-37.5-25.9c-1.9-0.3-3.8-0.5-5.7-0.7H60c-1.5,0.1-3.1,0.3-4.6,0.5 c-12,1.5-22.8,6.1-32.3,13.5c-9.4,7.2-16.2,16.3-20,27.6C1.8,46,1,50,0.7,54.1c-0.1,0.3-0.1,0.5-0.2,0.8v188.2 c0.3,1.8,0.4,3.5,0.7,5.4c1.5,9.2,5.3,17.5,10.9,24.9c9.3,12.3,21.4,20.4,36.3,24.5c4.8,1.4,9.8,2,14.8,2c60.8,0,121.6,0,182.4-0.1 c19.7-0.1,34.6-9.2,45-25.8c5.2-8.3,8-17.5,8.9-27.2c0.3-2.6,0.4-5.1,0.4-7.7V58.4C299.9,47.3,297.6,36.8,292,27.1z M254.3,192.6 c-1.4,31.3-16.2,48.7-35.7,56.3c-14.3,5.6-28.3,5.5-68.9,5.5c-39.5,0-67.2,2.7-87.5-17.7c-19.9-19.9-17.7-46.6-17.7-87.5 c0-40-2.6-67.3,17.7-87.5c12.1-12.1,27.1-16.2,44.2-17c19.4-0.9,67.4-0.9,86.7,0c39.6,1.8,59.4,24.2,61.2,61.2 C255.2,125.3,255.2,173.2,254.3,192.6z"/>
-      </g>
-      <g id="img-odno">
-        <path xmlns="http://www.w3.org/2000/svg"  d="M137.5,194.5L137.5,194.5C137.5,194.5,137.5,194.5,137.5,194.5z"/><path xmlns="http://www.w3.org/2000/svg"  d="M149,118.6c16.5,0,30-13,30-28.9c0-16-13.5-29-30-29c-16.5,0-30,13-30,29C119,105.7,132.5,118.6,149,118.6z"/><path xmlns="http://www.w3.org/2000/svg"  d="M137.5,194.5C137.5,194.5,137.5,194.5,137.5,194.5C137.5,194.5,137.4,194.5,137.5,194.5 C137.2,194.7,135.9,196,137.5,194.5z"/><path xmlns="http://www.w3.org/2000/svg"  d="M292,27.1c-8.4-14.5-20.9-23.2-37.5-25.9c-1.9-0.3-3.8-0.5-5.7-0.7H60c-1.5,0.1-3.1,0.3-4.6,0.5 c-12,1.5-22.8,6.1-32.3,13.5c-9.4,7.2-16.2,16.3-20,27.6C1.8,46,1,50,0.7,54.1c-0.1,0.3-0.1,0.5-0.2,0.8v188.2 c0.3,1.8,0.4,3.5,0.7,5.4c1.5,9.2,5.3,17.5,10.9,24.9c9.3,12.3,21.4,20.4,36.3,24.5c4.8,1.4,9.8,2,14.8,2c60.8,0,121.6,0,182.4-0.1 c19.7-0.1,34.6-9.2,45-25.8c5.2-8.3,8-17.5,8.9-27.2c0.3-2.6,0.4-5.1,0.4-7.7V58.4C299.9,47.3,297.6,36.8,292,27.1z M149,31 c33.6,0,61.1,26.3,61.1,58.8c0,32.3-27.5,58.6-61.1,58.6c-33.6,0-61.1-26.3-61.1-58.6C87.9,57.3,115.4,31,149,31z M203.2,182.3 L203.2,182.3c-12.9,7.9-30.6,11-42.4,12.2c2.6,2.5,44.9,43,45.8,43.9c13.1,13-8.2,33.2-21.5,20.7c-9-8.8-22.2-21.5-35.9-34.7 l-35.9,34.7c-13.3,12.5-34.7-8-21.4-20.7c38.5-37,45.1-43.4,45.6-43.9c0,0,0,0,0,0c-11.6-1.2-29.6-4.1-42.7-12.2 c-15.4-9.5-22.1-15.1-16.2-26.7c3.5-6.6,13-12.2,25.7-2.6c0,0,17.1,13.1,44.7,13.1c27.6,0,44.7-13.1,44.7-13.1 c12.7-9.6,22.2-4,25.7,2.6C225.3,167.2,218.5,172.7,203.2,182.3z"/>
-      </g>
-      <g id="img-skype">
-        <path xmlns="http://www.w3.org/2000/svg"  d="M131.7,130c-16.2-8-7.2-24.4,15.9-24.4c31.8,0,21.5,25.8,41.2,25.8c16.4,0,21.9-20.9,1.6-36.6 c-22-16.9-73.1-15.6-90.6,6.9c-10,12.8-8.5,30.5-0.3,40.6c18.7,23.1,59.7,17.9,74,31.1c5.4,5,6.3,15.5-3.6,22.1 c-10.1,6.8-27.4,6.4-35.4,2.7c-17.5-8.3-12-28.5-29.4-28.5c-23.1,0-18.3,32.1,8.4,46.3c18.7,9.8,49.7,9.8,68.5,2 c17-6.9,27.9-20.2,27.9-38C209.9,137.2,153.8,140.9,131.7,130z"/><path xmlns="http://www.w3.org/2000/svg"  d="M292,27.1c-8.4-14.5-20.9-23.2-37.5-25.9c-1.9-0.3-3.8-0.5-5.7-0.7H60c-1.5,0.1-3.1,0.3-4.6,0.5 c-12,1.5-22.8,6.1-32.3,13.5c-9.4,7.2-16.2,16.3-20,27.6C1.8,46,1,50,0.7,54.1c-0.1,0.3-0.1,0.5-0.2,0.8v188.2 c0.3,1.8,0.4,3.5,0.7,5.4c1.5,9.2,5.3,17.5,10.9,24.9c9.3,12.3,21.4,20.4,36.3,24.5c4.8,1.4,9.8,2,14.8,2c60.8,0,121.6,0,182.4-0.1 c19.7-0.1,34.6-9.2,45-25.8c5.2-8.3,8-17.5,8.9-27.2c0.3-2.6,0.4-5.1,0.4-7.7V58.4C299.9,47.3,297.6,36.8,292,27.1z M169,253.4 C97.3,266.4,35.7,203.9,50.2,134c-5.2-8.7-8.1-18.8-8.1-29.6c0-46.3,51.9-73.7,90.8-49.5c71.7-12.2,132.8,51.2,117.3,120.9 C275.7,226.7,219.7,280.2,169,253.4z"/>
-      </g>
-      <g id="img-teleg">
-        <path xmlns="http://www.w3.org/2000/svg"  d="M292,27.1c-8.4-14.5-20.9-23.2-37.5-25.9c-1.9-0.3-3.8-0.5-5.7-0.7H60c-1.5,0.1-3.1,0.3-4.6,0.5 c-12,1.5-22.8,6.1-32.3,13.5c-9.4,7.2-16.2,16.3-20,27.6C1.8,46,1,50,0.7,54.1c-0.1,0.3-0.1,0.5-0.2,0.8v188.2 c0.3,1.8,0.4,3.5,0.7,5.4c1.5,9.2,5.3,17.5,10.9,24.9c9.3,12.3,21.4,20.4,36.3,24.5c4.8,1.4,9.8,2,14.8,2c60.8,0,121.6,0,182.4-0.1 c19.7-0.1,34.6-9.2,45-25.8c5.2-8.3,8-17.5,8.9-27.2c0.3-2.6,0.4-5.1,0.4-7.7V58.4C299.9,47.3,297.6,36.8,292,27.1z M266.8,72.7 L266.8,72.7l-35.7,167.2c-2.7,11.8-9.7,14.7-19.7,9.2L157,209.3l-26.2,25.1c-2.9,2.9-5.3,5.3-10.9,5.3l3.9-55l100.8-90.5 c4.4-3.9-0.9-6-6.8-2.1L93.2,170l-53.6-16.7c-11.7-3.6-11.9-11.6,2.4-17.2l209.8-80.3C261.5,52.2,270,57.9,266.8,72.7z"/>
-      </g>
-    </defs>
-  </svg> -->
   <svg display="none">
     <defs>
       <g id="img-time">
@@ -2342,6 +2305,20 @@
     </defs>
   </svg>
   
+<svg display="none">
+	<defs>
+		<g id="img-menu">
+			<path xmlns="http://www.w3.org/2000/svg" d="M492,236H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h472c11.046,0,20-8.954,20-20S503.046,236,492,236z"/><path xmlns="http://www.w3.org/2000/svg" d="M492,76H20C8.954,76,0,84.954,0,96s8.954,20,20,20h472c11.046,0,20-8.954,20-20S503.046,76,492,76z"/><path xmlns="http://www.w3.org/2000/svg" d="M492,396H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h472c11.046,0,20-8.954,20-20 C512,404.954,503.046,396,492,396z"/>
+		</g>
+		<g id="img-user">
+			<path xmlns="http://www.w3.org/2000/svg" d="m210.351562 246.632812c33.882813 0 63.21875-12.152343 87.195313-36.128906 23.96875-23.972656 36.125-53.304687 36.125-87.191406 0-33.875-12.152344-63.210938-36.128906-87.191406-23.976563-23.96875-53.3125-36.121094-87.191407-36.121094-33.886718 0-63.21875 12.152344-87.191406 36.125s-36.128906 53.308594-36.128906 87.1875c0 33.886719 12.15625 63.222656 36.128906 87.195312 23.980469 23.96875 53.316406 36.125 87.191406 36.125zm-65.972656-189.292968c18.394532-18.394532 39.972656-27.335938 65.972656-27.335938 25.996094 0 47.578126 8.941406 65.976563 27.335938 18.394531 18.398437 27.339844 39.980468 27.339844 65.972656 0 26-8.945313 47.578125-27.339844 65.976562-18.398437 18.398438-39.980469 27.339844-65.976563 27.339844-25.992187 0-47.570312-8.945312-65.972656-27.339844-18.398437-18.394531-27.34375-39.976562-27.34375-65.976562 0-25.992188 8.945313-47.574219 27.34375-65.972656zm0 0"/><path xmlns="http://www.w3.org/2000/svg" d="m426.128906 393.703125c-.691406-9.976563-2.089844-20.859375-4.148437-32.351563-2.078125-11.578124-4.753907-22.523437-7.957031-32.527343-3.3125-10.339844-7.808594-20.550781-13.375-30.335938-5.769532-10.15625-12.550782-19-20.160157-26.277343-7.957031-7.613282-17.699219-13.734376-28.964843-18.199219-11.226563-4.441407-23.667969-6.691407-36.976563-6.691407-5.226563 0-10.28125 2.144532-20.042969 8.5-6.007812 3.917969-13.035156 8.449219-20.878906 13.460938-6.707031 4.273438-15.792969 8.277344-27.015625 11.902344-10.949219 3.542968-22.066406 5.339844-33.042969 5.339844-10.96875 0-22.085937-1.796876-33.042968-5.339844-11.210938-3.621094-20.300782-7.625-26.996094-11.898438-7.769532-4.964844-14.800782-9.496094-20.898438-13.46875-9.753906-6.355468-14.808594-8.5-20.035156-8.5-13.3125 0-25.75 2.253906-36.972656 6.699219-11.257813 4.457031-21.003906 10.578125-28.96875 18.199219-7.609375 7.28125-14.390625 16.121094-20.15625 26.273437-5.558594 9.785157-10.058594 19.992188-13.371094 30.339844-3.199219 10.003906-5.875 20.945313-7.953125 32.523437-2.0625 11.476563-3.457031 22.363282-4.148437 32.363282-.679688 9.777344-1.023438 19.953125-1.023438 30.234375 0 26.726562 8.496094 48.363281 25.25 64.320312 16.546875 15.746094 38.4375 23.730469 65.066406 23.730469h246.53125c26.621094 0 48.511719-7.984375 65.0625-23.730469 16.757813-15.945312 25.253906-37.589843 25.253906-64.324219-.003906-10.316406-.351562-20.492187-1.035156-30.242187zm-44.90625 72.828125c-10.933594 10.40625-25.449218 15.464844-44.378906 15.464844h-246.527344c-18.933594 0-33.449218-5.058594-44.378906-15.460938-10.722656-10.207031-15.933594-24.140625-15.933594-42.585937 0-9.59375.316406-19.066407.949219-28.160157.617187-8.921874 1.878906-18.722656 3.75-29.136718 1.847656-10.285156 4.199219-19.9375 6.996094-28.675782 2.683593-8.378906 6.34375-16.675781 10.882812-24.667968 4.332031-7.617188 9.316407-14.152344 14.816407-19.417969 5.144531-4.925781 11.628906-8.957031 19.269531-11.980469 7.066406-2.796875 15.007812-4.328125 23.628906-4.558594 1.050781.558594 2.921875 1.625 5.953125 3.601563 6.167969 4.019531 13.277344 8.605469 21.136719 13.625 8.859375 5.648437 20.273437 10.75 33.910156 15.152344 13.941406 4.507812 28.160156 6.796875 42.273437 6.796875 14.113282 0 28.335938-2.289063 42.269532-6.792969 13.648437-4.410156 25.058594-9.507813 33.929687-15.164063 8.042969-5.140624 14.953125-9.59375 21.121094-13.617187 3.03125-1.972656 4.902344-3.042969 5.953125-3.601563 8.625.230469 16.566406 1.761719 23.636719 4.558594 7.636719 3.023438 14.121093 7.058594 19.265625 11.980469 5.5 5.261719 10.484375 11.796875 14.816406 19.421875 4.542969 7.988281 8.207031 16.289062 10.886719 24.660156 2.800781 8.75 5.15625 18.398438 7 28.675782 1.867187 10.433593 3.132812 20.238281 3.75 29.144531v.007812c.636719 9.058594.957031 18.527344.960937 28.148438-.003906 18.449219-5.214844 32.378906-15.9375 42.582031zm0 0"/>
+		</g>
+		<g id="img-loupe">
+			<path xmlns="http://www.w3.org/2000/svg" d="M225.474,0C101.151,0,0,101.151,0,225.474c0,124.33,101.151,225.474,225.474,225.474 c124.33,0,225.474-101.144,225.474-225.474C450.948,101.151,349.804,0,225.474,0z M225.474,409.323 c-101.373,0-183.848-82.475-183.848-183.848S124.101,41.626,225.474,41.626s183.848,82.475,183.848,183.848 S326.847,409.323,225.474,409.323z"/><path xmlns="http://www.w3.org/2000/svg" d="M505.902,476.472L386.574,357.144c-8.131-8.131-21.299-8.131-29.43,0c-8.131,8.124-8.131,21.306,0,29.43l119.328,119.328 c4.065,4.065,9.387,6.098,14.715,6.098c5.321,0,10.649-2.033,14.715-6.098C514.033,497.778,514.033,484.596,505.902,476.472z"/>
+		</g>
+	</defs>
+</svg>
+
   <!-- Скрипты магазина -->
   <script  src="{ASSETS_JS_PATH}forall.js"></script>
   <script  src="{ASSETS_JS_PATH}main.js?design=flowers"></script>

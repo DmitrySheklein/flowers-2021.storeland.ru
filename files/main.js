@@ -322,14 +322,23 @@ $(function(){
 // Основные функции
 function MainFunctions() {
   $(function(){
+
+  (function () {
+    $title = $('#page-title .block-title h1.title');
+    var titleContent = '<span class="title-text">'+ $title.html() +'</span>';
+    $title.html(titleContent)
+  })() 
+
   // Валидация формы на странице оформления заказа, а так же формы на страницы связи с администрацией
-  $("#myform, .feedbackForm, .clientForm, #quickform, .goodsDataOpinionAddForm, .callback-info .callbackForm").validate({
-    rules: {
-      reg_name: "required",
-      politics: {
-        required: true
-      }      
-    }
+  $("#myform, .feedbackForm, .clientForm, #quickform, .goodsDataOpinionAddForm, .callback-info .callbackForm, .callback-form, #fancybox-callback .callbackForm").each(function () {
+    $(this).validate({
+      rules: {
+        reg_name: "required",
+        politics: {
+          required: true
+        }      
+      }
+    })    
   })
 
 
@@ -790,10 +799,6 @@ $(function(){
     startOrder();
     return false;
   });
-  // Вызов функции редиректа при обратном звонке
-  $('#footer .callbackForm').submit(validCallBack);
-  $('#fancybox-callback .callbackForm').submit(validCallBackC);
-  $('#fancybox-feedback .feedbackForm-header').submit(validCallBackF);
   // Возврашаем пользователя на страницу с которой был сделан обратный звонок
   $('.callbackredirect').val(document.location.href);
 
@@ -2492,159 +2497,6 @@ function tabSwitch(nb, noScroll) {
     // Записываем в хэш информацию о том какой таб сейчас открыт, для возможности скопировать и передать ссылку с открытым нужным табом
     document.location.hash = "#show_tab_" + nb;  
   }
-}
-
-// Валидаторы для Имени и телефона
-function validName(){
-  var $input = $('#footer #callback_person');
-  var name = $input.val();
-  
-  if(name != ''){
-    $input.next('.name-error').remove();
-    $input.removeClass('input--error');
-    
-    return true;
-  }else{
-    $input.next('.name-error').remove();
-    $input.addClass('input--error');
-    $input.after('<div class="name-error">Вы не указали ваше Имя</div>');
-    
-    return false;
-  } 
-}
-function validPhone(){
-  var $input = $('#footer #callback_phone')
-  var tel = $input.val();
-  var check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel);
-  
-  if(check == true && check != ''){
-    $input.next('.phone-error').remove();
-    $input.removeClass('input--error');
-    
-    return true;
-  }
-  else{
-    $input.next('.phone-error').remove();
-    $input.addClass('input--error');
-    $input.after('<div class="phone-error">Вы ввели неверный номер телефона</div>');
-    
-    return false;
-  }
-}
-//Проверка телефона в обратном звонке.
-function validCallBack(){
-  var name = validName();
-  var phone = validPhone();
-  
-  return name && phone;
-}
-
-// Валидаторы для Имени и телефона
-function validNameC(){
-  var $input = $('#fancybox-callback #callback_person_header');
-  var name = $input.val();
-  
-  if(name != ''){
-    $input.next('.name-error').remove();
-    $input.removeClass('input--error');
-    
-    return true;
-  }else{
-    $input.next('.name-error').remove();
-    $input.addClass('input--error');
-    $input.after('<div class="name-error">Вы не указали ваше Имя</div>');
-    
-    return false;
-  } 
-}
-function validPhoneC(){
-  var $input = $('#fancybox-callback #callback_phone_header')
-  var tel = $input.val();
-  var check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel);
-  
-  if(check == true && check != ''){
-    $input.next('.phone-error').remove();
-    $input.removeClass('input--error');
-    
-    return true;
-  }
-  else{
-    $input.next('.phone-error').remove();
-    $input.addClass('input--error');
-    $input.after('<div class="phone-error">Вы ввели неверный номер телефона</div>');
-    
-    return false;
-  }
-}
-//Проверка телефона в обратном звонке.
-function validCallBackC(){
-  var name = validNameC();
-  var phone = validPhoneC();
-  
-  return name && phone;
-}
-
-// Валидаторы для Имени, Почты, Комментария
-function validNameF(){
-  var $input = $('#fancybox-feedback #feedback_name');
-  var name = $input.val();
-  
-  if(name != ''){
-    $input.next('.name-error').remove();
-    $input.removeClass('input--error');
-    
-    return true;
-  }else{
-    $input.next('.name-error').remove();
-    $input.addClass('input--error');
-    $input.after('<div class="name-error">Вы не указали ваше Имя</div>');
-    
-    return false;
-  } 
-}
-function validEmailF(){
-  var $input = $('#fancybox-feedback #feedback_email')
-  var email = $input.val();
-  var check = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i.test(email);
-  
-  if(check == true && check != ''){
-    $input.next('.phone-error').remove();
-    $input.removeClass('input--error');
-    
-    return true;
-  }
-  else{
-    $input.next('.phone-error').remove();
-    $input.addClass('input--error');
-    $input.after('<div class="phone-error">Вы ввели неверную почту</div>');
-    
-    return false;
-  }
-}
-function validCommentF(){
-  var $input = $('#fancybox-feedback #feedback_message');
-  var name = $input.val();
-  
-  if(name != ''){
-    $input.next('.name-error').remove();
-    $input.removeClass('input--error');
-    
-    return true;
-  }else{
-    $input.next('.name-error').remove();
-    $input.addClass('input--error');
-    $input.after('<div class="name-error">Вы не указали комментарий</div>');
-    
-    return false;
-  } 
-}
-//Проверка телефона в обратном звонке.
-function validCallBackF(){
-  var name = validNameF();
-  var email = validEmailF();
-  var comment = validCommentF();
-  
-  return name && email && comment;
 }
 
 
