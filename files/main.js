@@ -322,12 +322,10 @@ $(function(){
 // Основные функции
 function MainFunctions() {
   $(function(){
-
-  (function () {
-    $title = $('#page-title .block-title h1.title');
-    var titleContent = '<span class="title-text">'+ $title.html() +'</span>';
-    $title.html(titleContent)
-  })() 
+  // Стилизация заголовков
+  var $title = $('#page-title .block-title h1.title');
+  var titleContent = '<span class="title-text">'+ $title.html() +'</span>';
+  $title.html(titleContent)
 
   // Валидация формы на странице оформления заказа, а так же формы на страницы связи с администрацией
   $("#myform, .feedbackForm, .clientForm, #quickform, .goodsDataOpinionAddForm, .callback-info .callbackForm, .callback-form, #fancybox-callback .callbackForm").each(function () {
@@ -2543,7 +2541,7 @@ function address(){
 // Функции для главной страницы
 function indexPage() {
 
-  if(getClientWidth() < 1200){
+  if(getClientWidth() <= 768){
     // Баннеры на главной
     $(".banner-list").owlCarousel({
       loop: false,
@@ -2663,7 +2661,7 @@ function indexPage() {
       0:{items:1},
       481:{items:1},
       768:{items:2},
-      992:{items:3},
+      992:{items: 4},
       1199:{items:4}
     }
   });
@@ -2767,8 +2765,13 @@ function indexPage() {
         $this.addClass('tab-nav-actived');
         var itemActive = '.' + $this.data('href');
         itemContent.hide();
+        preloadShow($(itemActive).find('.preloader'))
+
+        setTimeout(function(){
+          preloadHide($(itemActive).find('.preloader'))
+        }, 300);
         $(itemActive, $element).fadeIn();
-        $arrows.removeClass('_show').filter('[data-id="'+ id +'"]').addClass('_show')
+        $arrows.removeClass('_show').filter('[data-id="'+ id +'"]').addClass('_show');
       });
   })('#producttabs');
 
@@ -2799,7 +2802,7 @@ function indexPage() {
         480:{items:2, margin: 15},
         540:{items:2, margin: 15},
         768:{items:3,margin: 30},
-        992:{items:3,margin: 30},
+        992:{items:4,margin: 30},
         1200:{items:4,margin: 30}
       },          
       onInitialized: changeNavBtn
@@ -2835,7 +2838,7 @@ function indexPage() {
         480:{items:2, margin: 15},
         540:{items:2, margin: 15},
         768:{items:3,margin: 30},
-        992:{items:3,margin: 30},
+        992:{items:4,margin: 30},
         1200:{items:4,margin: 30}
       },          
       onInitialized: changeNavBtn
@@ -2884,25 +2887,13 @@ function mainnav(){
       for(a;a < menuCount;a++){
         $('.header-sections .header-sectionsList  li:nth-child('+ a +')').addClass('mainnav__replaced');
       }
+      $('.header-sections .header-sectionsList').append('<li class="header-sectionsItem mainnav__more"><a class="header-catalogLink">Еще...</a></li>');
+      $('.header-sections .header-sectionsList').find('.header-sectionsItem.mainnav__more').append('<ul class="overflowMenu header-subcatalog"></ul>')
       $('.header-sections .mainnav__replaced').each(function(){
         $('.overflowMenu').append($(this));
       });
-      $('.header-sections .header-sectionsList ').append('<li class="header-sectionsItem mainnav__more"><a class="header-catalogLink">Еще...</a></li>');
       menuMorePosition = parseInt($('.mainnav__more').position().left);
-      $('.header-sections .mainnav__more').on('click',function(){
-        $('.overflowMenu').toggleClass('active')
-        $('.header-sections .header-sectionsList ').toggleClass('active')
-      });
-      $(function($){
-        $(document).mouseup(function (e){ 
-          var div = $(".overflowMenu.active"); 
-          var btn = $(".header-sections .mainnav__more");
-          if (!div.is(e.target) && div.has(e.target).length === 0 && !btn.is(e.target)) {
-            div.removeClass('active');
-            $('.header-sections .header-sectionsList ').removeClass('active');
-          }
-        });
-      });
+
       return false;
     }
   }
@@ -2961,11 +2952,11 @@ function OpenMenu() {
         $catalogBtn = $(".header-catalogBtn"),
         $catalogMenu = $(".header-catalog .header-catalogMenu"),
         $headerSubcatalog = $(".header-subcatalog"),
-        $headerOverlay = $(".header-overlay");                          
+        $headerOverlay = $(".header-overlay"),                          
         $headerCloseBtn = $('.header-closeBtn');
         
         
-        $catalogItem = $(".header-sectionsItem.parent");
+        var $catalogItem = $(".header-sectionsItem.parent");
         $catalogItem.hover(
           function() {
            if (getClientWidth() > 992) {
@@ -3014,7 +3005,7 @@ function OpenMenu() {
         }                              
       });
   }
-  headerCatalog();
+  // headerCatalog();
   
   function removeActiveLinks(){
     if (getClientWidth() > 992) {
@@ -3024,7 +3015,7 @@ function OpenMenu() {
       $headerCatalog.find('.header-subcatalog-third, .sub').show();
     }
   }
-  $(window).on('resize', $.debounce(300, removeActiveLinks))
+  // $(window).on('resize', $.debounce(300, removeActiveLinks))
 
 }
 

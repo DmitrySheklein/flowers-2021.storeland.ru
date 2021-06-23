@@ -110,7 +110,7 @@
                 <div class="header-contacts-list">
                   <!-- Режим работы -->
                   {% IF SETTINGS_STORE_WORK_TIME %}
-                  <div class="header-phoneSub">
+                  <div class="header-phoneSub _work-time">
                     <svg width="300.5" height="300.5" viewBox="0 0 300.5 300.5" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
                       <use xlink:href="#img-time"></use>
                     </svg>                 
@@ -119,7 +119,7 @@
                   {% ENDIF %} 
                   <!-- Адрес -->
                   {% IF SETTINGS_STORE_REGION %}
-                  <div class="header-phoneSub">
+                  <div class="header-phoneSub _region">
                     <svg width="300.5" height="300.5" viewBox="0 0 300.5 300.5" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
                       <use xlink:href="#img-locat"></use>
                     </svg>
@@ -344,7 +344,7 @@
                     {% ENDFOR %}
                   {% ENDIF %}                    
                 </ul>
-                <ul class="overflowMenu"></ul>
+
                 <div class="header-action">
                   <!-- Поиск -->
                   <div class="header-search _header-mobile" id="headerSearch">
@@ -1454,10 +1454,10 @@
       <div class="container">
         <div class="index-callback__wrap">  
           <div class="row">
-            <div class="index-callback__img-wrap col-lg-5">
+            <div class="index-callback__img-wrap col-lg-5 col-sm-6">
               <img class="index-callback__img" src="{ASSETS_IMAGES_PATH}callback-index.png" alt="">
             </div>
-            <div class="callback-block col-lg-7">
+            <div class="callback-block col-lg-7 col-sm-6">
               <h3 class="callback-block__title">Не нашли подходящий букет?</h3>
               <p class="callback-block__subtext">
                 Оставьте заявку, и мы свяжемся с Вами в ближайшее время для уточнения деталей и соберем для Вас уникальный букет с учетом Ваших пожеланий!
