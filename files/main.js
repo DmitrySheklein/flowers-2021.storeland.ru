@@ -2541,33 +2541,40 @@ function address(){
 // Функции для главной страницы
 function indexPage() {
 
-  if(getClientWidth() <= 768){
-    // Баннеры на главной
-    $(".banner-list").owlCarousel({
-      loop: false,
-      rewind: true,
-      lazyLoad: false,
-      nav: false,
-      dots: false,
-      autoplay: false,
-      smartSpeed: 500,
-      touchDrag: true,
-      pullDrag: true,
-      responsiveClass: true,
-      responsiveRefreshRate: 100,
-      responsive: {
-        0:{items:1},
-        320:{items:2,margin: 15,autoWidth:true},
-        480:{items:2,margin: 15,autoWidth:false},
-        768:{items:3,margin: 15},
-        991:{items:3,margin: 80},
-        1200:{items:4,margin: 50}
-      }
-    });
+  function initIndexBannerList() {
+    var $bannerList = $(".banner-list");
+
+    if(getClientWidth() <= 991){
+      // Баннеры на главной
+      $bannerList.owlCarousel({
+        loop: false,
+        rewind: true,
+        lazyLoad: false,
+        nav: false,
+        dots: false,
+        autoplay: false,
+        smartSpeed: 500,
+        touchDrag: true,
+        pullDrag: true,
+        autoWidth:true,
+        responsiveClass: true,
+        responsiveRefreshRate: 100,      
+        responsive: {
+          0:{items:1},
+          320:{items:2,margin: 15},
+          480:{items:2,margin: 15},
+          768:{items:3,margin: 15},
+          992:{items:3,margin: 80}
+        }
+      });
+    } else {
+      $bannerList.trigger('destroy.owl.carousel');
+    }    
   }
+  initIndexBannerList();
+  $(window).on('resize', $.debounce(100, initIndexBannerList))
   // Преимущества
   $("#features .features-list").owlCarousel({
-    items: 4,
     loop: false,
     rewind: true,
     lazyLoad: false,
@@ -2579,13 +2586,14 @@ function indexPage() {
     pullDrag: true,
     responsiveClass: true,
     responsiveRefreshRate: 100,
+    // autoWidth:true,
     responsive: {
       0:{items:1},
       320:{items:2,margin: 15,autoWidth:true},
-      480:{items:2,margin: 15,autoWidth:false},
-      768:{items:3,margin: 15},
-      991:{items:3,margin: 80},
-      1200:{items:4,margin: 50}
+      480:{items:2,margin: 15,autoWidth:true},
+      768:{items:3,margin: 15,autoWidth:true},
+      992:{items:3,margin: 80,autoWidth:true},
+      1200:{items:4,margin: 50,autoWidth:false}
     }
   });
     // Отсчет даты до окончания акции
@@ -2660,40 +2668,12 @@ function indexPage() {
     responsive:{
       0:{items:1},
       481:{items:1},
-      768:{items:2},
+      768:{items:3},
       992:{items: 4},
       1199:{items:4}
     }
   });
-  // Слайдер новостей (группы)
-  $("#news .owl-carousel").owlCarousel({
-    margin: 30,
-    loop: false,
-    rewind: true,
-    lazyLoad: true,
-    nav: false,
-    dots: false,
-    autoplay: true,
-    autoplayTimeout: 5000,
-    autoplayHoverPause: true,
-    autoHeight: false,
-    smartSpeed: 500,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    onRefresh: function (event){
-      var $preloader = $(event.target).closest('.tabs-body').find('.preloader');
-      
-      preloadHide($preloader)
-    },
-    responsiveClass:true,
-    responsive:{
-      0:{items:1},
-      768:{items:1},
-      992:{items:3},
-      1199:{items:4}
-    }
-  });
+
   // Количество товара для показа 
   var GOODS_INDEX = 8;
   

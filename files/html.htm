@@ -1454,10 +1454,10 @@
       <div class="container">
         <div class="index-callback__wrap">  
           <div class="row">
-            <div class="index-callback__img-wrap col-lg-5 col-sm-6">
+            <div class="index-callback__img-wrap col-lg-5 col-md-6 col-xs-12">
               <img class="index-callback__img" src="{ASSETS_IMAGES_PATH}callback-index.png" alt="">
             </div>
-            <div class="callback-block col-lg-7 col-sm-6">
+            <div class="callback-block col-lg-7 col-md-6 col-xs-12">
               <h3 class="callback-block__title">Не нашли подходящий букет?</h3>
               <p class="callback-block__subtext">
                 Оставьте заявку, и мы свяжемся с Вами в ближайшее время для уточнения деталей и соберем для Вас уникальный букет с учетом Ваших пожеланий!
@@ -1981,7 +1981,8 @@
       <div class="container">
         <div class="row">
           {% IFNOT MOD_LNAME = cart %}
-          <div class="footer-col col-lg-4 col-md-2 col-sm-12 col-xs-12">
+          <div class="footer-col col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="footer-top">
               <div class="footer-logo">
     						<a href="{INDEX_PAGE_URL}" title="{SETTINGS_STORE_NAME}">
     						  <img class="footer-logoImg" src="{ASSETS_IMAGES_PATH}logo.png" alt="{SETTINGS_STORE_NAME}">
@@ -1996,8 +1997,9 @@
                 {SETTINGS_STORE_HTML_CODE}
                 </div>
               </div>
-          </div>
-          <div class="footer-col col-lg-8 col-md-2 col-sm-12 col-xs-12">
+              </div>
+            </div>
+          <div class="footer-col col-lg-8 col-md-8 col-sm-12 col-xs-12">
             {% IFNOT menu_footer_links_empty %}
             <div class="block">
               <div class="block-content">
