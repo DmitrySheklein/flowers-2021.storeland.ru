@@ -67,30 +67,6 @@
 
     <!-- Шапка -->
     <header class="header">
-      <div class="header-top" style="display: none;">
-        <!-- Мобильные иконки -->
-        <div class="header-icons clearfix">
-          <span class="header-iconsItem" type="button" data-target="#headerNav" role="button">
-            <i class="material-icons">drag_indicator</i>
-          </span>
-          <span class="header-iconsItem" type="button" data-target="#headerSearch" role="button">
-            <i class="material-icons">search</i>
-          </span>
-          <span class="header-iconsItem" type="button" data-target="#headerPhone" role="button">
-            <i class="material-icons">phone</i>
-          </span>
-          <span class="header-iconsItem" type="button" data-target="#headerLogin" role="button">
-            <i class="material-icons">account_circle</i>
-          </span>
-        </div>
-        <!-- /Мобильные иконки -->
-
-        <div class="container">
-            <div class="header-top-wrapper">
-
-            </div>
-        </div>
-      </div>
       
       <div class="header-main">
         <div class="container">
@@ -105,7 +81,7 @@
 							<!-- /Лого -->
               
               <!-- Контакты  -->
-              <div class="header-contacts _header-mobile" id="headerPhone">
+              <div class="header-contacts " id="headerPhone">
 
                 <div class="header-contacts-list">
                   <!-- Режим работы -->
@@ -234,7 +210,7 @@
                   <div class="cart {% IF MOD_LNAME = cart %}page{% ENDIF %}">
                     <a href="{CART_URL}" title="Перейти в Корзину" class="header-toolsLink _cart title">
                       <span class="header-toolsIcon _cart">                        
-                        <span class="header-toolsCounter" data-count="{CART_COUNT_TOTAL}">
+                        <span class="header-toolsCounter {% IF CART_COUNT_TOTAL %}_active{% ENDIF %}" data-count="{CART_COUNT_TOTAL}">
                           <svg class="icon">
                             <use xlink:href="#shopping-bag"></use>
                           </svg>
@@ -347,7 +323,7 @@
 
                 <div class="header-action">
                   <!-- Поиск -->
-                  <div class="header-search _header-mobile" id="headerSearch">
+                  <div class="header-search " id="headerSearch">
                       <div class="search">
                         <a class="header-searchLink" href="{SEARCH_URL}" title="Поиск по магазину" rel="nofollow">                
                           <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
@@ -392,7 +368,7 @@
                   <!-- /Навигация -->                  
                   
                   <!-- Логин -->
-                  <div class="_header-mobile header-login {% IF CLIENT_IS_LOGIN %}isLogin{% ENDIF %}" id="headerLogin">
+                  <div class="header-login {% IF CLIENT_IS_LOGIN %}isLogin{% ENDIF %}" id="headerLogin">
                     {% IFNOT CLIENT_IS_LOGIN %}
                     <div class="header-loginMenu">
                       <div class="header-loginList">
@@ -415,7 +391,15 @@
                     </div>                    
                     {% ENDIF %}              
                   </div>
-                  <!-- /Логин -->                  
+                  <!-- /Логин -->      
+                  <span class="mobile-cart">  
+                    <a href="{CART_URL}" title="Перейти в Корзину" class="mobile-cart__link">
+                      <svg class="mobile-cart__icon icon">
+                        <use xlink:href="#shopping-bag"></use>
+                      </svg>
+                      <span class="mobile-cart__counter" data-count="{CART_COUNT_TOTAL}">{CART_COUNT_TOTAL}</span>
+                    </a>                      
+                  </span>                              
                 </div>
             </div>            
           </div>
@@ -812,7 +796,7 @@
                       <!-- Счетчик обратного отсчета. end дата окончания акции в формате Месяц:День:Год Часы:Минуты:Секунды -->
                       <div class="sale-counter" end="{index_page_sale_goods.MAX_DISCOUNT_EXPIRED_AT | date('m/d/Y H:i:s')}" now="{CURRENT_TIME | date('m/d/Y H:i:s')}">        
                         <div class="sale-counter-title">
-                          До конца акции осталось
+                          До конца акции <span>осталось</span> 
                         </div>
                         <div class="sale-counter-container">
                           <div class="sale-counter-item _clock">
@@ -821,13 +805,13 @@
                             </svg>                            
                           </div>
                           <div class="sale-counter-item days">
-                            <span>00</span> д : 
+                            <span class="sale-counter-num">00</span> д : 
                           </div>
                           <div class="sale-counter-item hours">
-                            <span>00</span> ч : 
+                            <span class="sale-counter-num">00</span> ч : 
                           </div>
                           <div class="sale-counter-item minutes">
-                            <span>00</span> м
+                            <span class="sale-counter-num">00</span> м
                           </div>                      
                         </div>                  
                       </div>                          

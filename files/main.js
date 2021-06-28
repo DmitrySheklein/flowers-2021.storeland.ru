@@ -2666,8 +2666,8 @@ function indexPage() {
     pullDrag: true,
     responsiveClass:true,
     responsive:{
-      0:{items:1},
-      481:{items:1},
+      0:{items:2},
+      481:{items:2},
       768:{items:3},
       992:{items: 4},
       1199:{items:4}
