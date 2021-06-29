@@ -288,7 +288,7 @@
           <div class="row no-gutters">            
             <!-- Меню -->
             <div class="header-sections col-xs-12" {% IF MOD_LNAME = cart %}style="visibility: hidden;"{% ENDIF%}>
-                <ul class="header-sectionsList header-catalogMenu">
+                <ul class="header-sectionsList header-catalogMenu _visible">
                   
                   {% IFNOT catalog_full_empty %}
                     {% FOR catalog_full %}
@@ -356,15 +356,24 @@
                       <use xlink:href="#img-menu"></use>
                     </svg>
                   </button>
-                  <ul class="header-nav unstyled" id="headerNav">
-                    {% FOR menu %}
-                      {% FOR header %}
-                        {% FOR links %}
-                          <li class="header-navItem  {% IF menu.header.links.SELECTED %}active{%ENDIF%}"><a class="header-navLink" href="{menu.header.links.URL}"  {% IF menu.header.links.TITLE %}title="{menu.header.links.TITLE}"{% ENDIF %} itemprop="url"><span>{menu.header.links.NAME}</span></a></li>
+                  <div class="header-nav _visible">
+                    <div class="header-nav__head">
+                      Меню
+                    </div>
+                    <ul class="header-nav__list unstyled " id="headerNav">
+                      {% FOR menu %}
+                        {% FOR header %}
+                          {% FOR links %}
+                            <li class="header-nav__item {% IF menu.header.links.SELECTED %}header-nav__item--active{%ENDIF%}">
+                              <a class="header-nav__link" href="{menu.header.links.URL}"  {% IF menu.header.links.TITLE %}title="{menu.header.links.TITLE}"{% ENDIF %} itemprop="url">
+                                <span>{menu.header.links.NAME}</span>
+                              </a>
+                            </li>
+                          {% ENDFOR %}
                         {% ENDFOR %}
-                      {% ENDFOR %}
-                    {% ENDFOR %} 
-                  </ul>
+                      {% ENDFOR %} 
+                    </ul>
+                  </div>
                   <!-- /Навигация -->                  
                   
                   <!-- Логин -->
@@ -407,8 +416,8 @@
       </div>
       {% ENDIF %}
       
-      <div class="header-overlay"></div>
     </header>
+    <div class="overlay"></div>
 
     {% IFNOT index_page %}
     <!-- Хлебные крошки -->
@@ -1954,7 +1963,7 @@
             {% ENDIF %}         
           </div>
           <div class="index-contacts-map">
-            <iframe src="https://api-maps.yandex.ru/frame/v1/-/CZRYYCOw" width="100%" height="430" frameborder="0"></iframe>
+            <iframe src="https://api-maps.yandex.ru/frame/v1/-/CZRYYCOw" width="100%" height="100%" frameborder="0"></iframe>
           </div>
         </div>    
       </div>
