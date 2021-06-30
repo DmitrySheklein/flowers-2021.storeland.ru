@@ -288,7 +288,7 @@
           <div class="row no-gutters">            
             <!-- Меню -->
             <div class="header-sections col-xs-12" {% IF MOD_LNAME = cart %}style="visibility: hidden;"{% ENDIF%}>
-                <ul class="header-sectionsList header-catalogMenu _visible">
+                <ul class="header-sectionsList header-catalogMenu">
                   
                   {% IFNOT catalog_full_empty %}
                     {% FOR catalog_full %}
@@ -356,11 +356,19 @@
                       <use xlink:href="#img-menu"></use>
                     </svg>
                   </button>
-                  <div class="header-nav _visible">
+                  <div class="header-nav">
                     <div class="header-nav__head">
-                      Меню
+                      <button class="header-nav__tab _menu _active">
+                        Меню
+                      </button>
+                      <button class="header-nav__tab _catalog">
+                        Каталог
+                      </button>
+                      <button class="header-nav__close-btn material-icons">
+                          close
+                      </button>
                     </div>
-                    <ul class="header-nav__list unstyled " id="headerNav">
+                    <ul class="header-nav__list unstyled">
                       {% FOR menu %}
                         {% FOR header %}
                           {% FOR links %}
@@ -416,8 +424,8 @@
       </div>
       {% ENDIF %}
       
+      <div class="header-overlay"></div>
     </header>
-    <div class="overlay"></div>
 
     {% IFNOT index_page %}
     <!-- Хлебные крошки -->
