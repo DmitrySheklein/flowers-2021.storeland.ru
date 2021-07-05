@@ -55,9 +55,9 @@
               {% IF NEIGHBOR_PREVIOUS_GOODS_URL || NEIGHBOR_LAST_GOODS_URL %}
               <div class="prev">
                 <a title="Предыдущий товар" href="{% IF NEIGHBOR_PREVIOUS_GOODS_URL %}{NEIGHBOR_PREVIOUS_GOODS_URL}{% ELSE %}{NEIGHBOR_LAST_GOODS_URL}{% ENDIF %}">
-                  <svg class="icon">
-                    <use xlink:href="#arrow-left"></use>
-                  </svg>                  
+                  <span class="material-icons">
+                    trending_flat
+                  </span>                 
                 </a>
                 <div class="content">
                   <a href="{% IF NEIGHBOR_PREVIOUS_GOODS_URL %}{NEIGHBOR_PREVIOUS_GOODS_URL}{% ELSE %}{NEIGHBOR_LAST_GOODS_URL}{% ENDIF %}" title="Перейти к &laquo;{% IF NEIGHBOR_PREVIOUS_GOODS_URL %}{NEIGHBOR_PREVIOUS_GOODS_NAME}{% ELSE %}{NEIGHBOR_LAST_GOODS_NAME}{% ENDIF %}&raquo;">
@@ -70,9 +70,9 @@
               {% IF NEIGHBOR_NEXT_GOODS_URL || NEIGHBOR_FIRST_GOODS_URL %}
               <div class="next">
                 <a title="Cледующий товар" href="{% IF NEIGHBOR_NEXT_GOODS_URL %}{NEIGHBOR_NEXT_GOODS_URL}{% ELSE %}{NEIGHBOR_FIRST_GOODS_URL}{% ENDIF %}">
-                  <svg class="icon">
-                    <use xlink:href="#arrow-right"></use>
-                  </svg>                  
+                  <span class="material-icons">
+                    trending_flat
+                  </span>                
                 </a>
                 <div class="content">
                   <a href="{% IF NEIGHBOR_NEXT_GOODS_URL %}{NEIGHBOR_NEXT_GOODS_URL}{% ELSE %}{NEIGHBOR_FIRST_GOODS_URL}{% ENDIF %}" title="Перейти к &laquo;{% IF NEIGHBOR_NEXT_GOODS_URL %}{NEIGHBOR_NEXT_GOODS_NAME}{% ELSE %}{NEIGHBOR_FIRST_GOODS_NAME}{% ENDIF %}&raquo;">

@@ -2331,8 +2331,26 @@ color: #ff9daf;
 /*** Хлебные крошки ***/
 #breadcrumbs {position: relative;font-size: 13px;color: #888888;padding: 20px 0;white-space: nowrap;overflow: hidden;overflow-x: auto;}
 #breadcrumbs .breadcrumbs-list {margin: 0;padding: 0;list-style: none;list-style-position: inside;display: flex;align-items: center;}
-#breadcrumbs ul li {display: inline-block;vertical-align: middle}
-#breadcrumbs ul li + li {margin-left: 7px;}
+#breadcrumbs ul li {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;  
+}
+#breadcrumbs ul li::after {
+  content: '\e941';
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 22px;  
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+  color: #373737;
+}
+#breadcrumbs ul li:last-child:after {
+  display: none;
+}
+#breadcrumbs ul li + li {margin-left: 0px;}
 #breadcrumbs ul li:first-child:before {display: none;}
 #breadcrumbs ul li a {font-weight: 400;display: flex;justify-content: center;align-items: center;height: 20px;border-radius: 10px;color: #373737;}
 #breadcrumbs ul li:last-child a {padding: 0;}
@@ -2569,8 +2587,17 @@ background: #fff;}
 .product-view .product-toolbar .product-toolbar-header {width: 100%;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;}
 .product-view .product-toolbar .product-neighbor {margin-left: auto;flex-shrink: 0;}
 .product-view .product-toolbar .product-neighbor > div {display: inline-block;position: relative;vertical-align: middle;}
-.product-view .product-toolbar .product-neighbor > div > a {display: inline-block;color: #93a6b3;font-size: 24px;width: 30px;text-align: center;}
-.product-view .product-toolbar .product-neighbor > div > a:hover {opacity: 1}
+.product-view .product-toolbar .product-neighbor > div.prev > a {
+  transform: rotate(    180deg    ) translateY(6px);
+}
+.product-view .product-toolbar .product-neighbor > div > a {
+  display: inline-block;
+  color: #808080;
+  font-size: 24px;
+  width: 30px;
+  text-align: center;  
+}
+.product-view .product-toolbar .product-neighbor > div > a:hover {opacity: 1;color: #ff9daf;}
 .product-view .product-toolbar .product-neighbor > div > a .icon {
   width: 26px;
   height: 26px;
