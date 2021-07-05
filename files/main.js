@@ -619,7 +619,7 @@ function viewed(){
     rewind: true,
     lazyLoad: true,
     nav: true,
-    navText: ['<svg class="icon"><use xlink:href="#arrow-left"></use></svg>', '<svg class="icon"><use xlink:href="#arrow-right"></use></svg>'],    
+    navText: ['<span class="material-icons">chevron_left</span>','<span class="material-icons">chevron_right</span>'],    
     dots: false,
     autoplay: false,
     autoplayHoverPause: true
@@ -1916,7 +1916,6 @@ function goodspage() {
 
   // Сопутствующие 
   $('.related-box .related-goods-list').owlCarousel({
-    items: 4,
     margin: 15,
     loop: false,
     rewind: true,
@@ -1925,8 +1924,9 @@ function goodspage() {
     dots: false,
     autoplay: true,
     autoplayHoverPause: true,
+    navContainer: '.related-box .navigation',
     navText: [ , ],      
-    navText: ['<span class="icon-wrap"><svg class="icon"><use xlink:href="#arrow-left"></use></svg></span>', '<span class="icon-wrap"><svg class="icon"><use xlink:href="#arrow-right"></use></svg></span>'],    
+    navText: ['<span class="material-icons">chevron_left</span>','<span class="material-icons">chevron_right</span>'],    
     smartSpeed: 500,
     mouseDrag: true,
     touchDrag: true,
@@ -1948,7 +1948,6 @@ function goodspage() {
   
   // С этим товаром смотрят
   $(".related-views .products-grid").owlCarousel({
-    items: 4,
     margin: 15,
     loop: false,
     rewind: true,
@@ -1960,7 +1959,7 @@ function goodspage() {
     autoplayHoverPause: true,
     navContainer: '.related-views .navigation',
     navText: [ , ],      
-    navText: ['<svg class="icon"><use xlink:href="#arrow-left"></use></svg>', '<svg class="icon"><use xlink:href="#arrow-right"></use></svg>'],    
+    navText: ['<span class="material-icons">chevron_left</span>','<span class="material-icons">chevron_right</span>'],    
     smartSpeed: 500,
     mouseDrag: true,
     touchDrag: true,
@@ -1974,7 +1973,7 @@ function goodspage() {
       540:{items:2},
       768:{items:3},
       992:{items:3},
-      1200:{items:5}
+      1200:{items:4}
     },
     onInitialized: changeNavBtn
   });
@@ -2000,8 +1999,7 @@ $(function(){
   var owl = $(".thumblist-box .owl-carousel");
 
   owl.owlCarousel({
-    items: 3,
-    margin: 20,
+    margin: 13,
     autoWidth: true,
     loop: false,
     rewind: true,
@@ -2009,7 +2007,7 @@ $(function(){
     nav: true,
     navContainer: '.thumblist-box .navigation',    
     navText: [ , ],      
-    navText: ['<svg class="icon"><use xlink:href="#arrow-left"></use></svg>', '<svg class="icon"><use xlink:href="#arrow-right"></use></svg>'],     
+    navText: ['<span class="material-icons">chevron_left</span>','<span class="material-icons">chevron_right</span>'],     
     dots: false,
     autoplay: false,
     autoplayHoverPause: true,
@@ -2025,8 +2023,8 @@ $(function(){
       480:{items:3},
       640:{items:4},
       768:{items:5},
-      992:{items:2},
-      1200:{items:3}
+      992:{items:3},
+      1200:{items:4}
     }
   });
   // Увеличение изображения при нажатии изображение
@@ -2900,7 +2898,7 @@ function OpenMenu() {
     $('.header-nav, .header-overlay').toggleClass('_visible');
 
     if(getClientWidth() <= 991 ){
-      $('.header-nav').append($('.header-sectionsList'))
+      $('.header-nav').find('.header-nav__search').before($('.header-sectionsList'))
     }
   })
   $('.header-overlay, .header-nav__close-btn').on('click', function () {
@@ -2928,7 +2926,7 @@ function OpenMenu() {
     var e,
         $headerCatalog = $(".header-catalog"),
         $catalogBtn = $(".header-catalogBtn"),
-        $catalogMenu = $(".header-catalog .header-catalogMenu"),
+        $catalogMenu = $(".header-catalogMenu"),
         $headerSubcatalog = $(".header-subcatalog"),
         $headerOverlay = $(".header-overlay"),                          
         $headerCloseBtn = $('.header-closeBtn');
@@ -2993,11 +2991,23 @@ $(function(){
   var $searchForm = $('#search_mini_form');
   
   $('.header-searchLink').click(function(e){
-    e.preventDefault()
-    $(this).hide()
-    $searchForm.fadeIn().addClass('_active')
+    e.preventDefault();
+    if( getClientWidth() > 991 ){
+      $(this).hide()
+      $searchForm.fadeIn().addClass('_active')
+    } else {
+      $('.header-nav, .header-overlay').toggleClass('_visible');
+      $('.header-nav').find('.header-nav__search').before($('.header-sectionsList'))
+    }
   })
-  $('.search .search-close').click(hideSearch)
+  // Запуск функций при изменении экрана
+  function moveHeaderSectionList() {
+    if(getClientWidth() > 991){
+      $('.header-action').before($('.header-sectionsList'))
+    }
+  }
+  $(window).resize($.debounce(300, moveHeaderSectionList));  
+  $('.search .search-close').click(hideSearch);
   
   $(document).on('click', function(e){
     if($searchForm.hasClass('_active')) {

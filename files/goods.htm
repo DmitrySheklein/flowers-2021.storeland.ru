@@ -189,6 +189,10 @@
           <!-- Сопутствующие товары -->
           {% IFNOT related_goods_empty %}
               <div class="related-box" id="related-box">
+                <div class="related-box__title">
+                  Добавьте к заказу
+                  <div class="navigation"></div>
+                </div>
                 <div class="related-goods-list owl-carousel">
                   {% FOR related_goods %}
                   <div class="related-goods">
@@ -242,56 +246,7 @@
               </div>
               <button type="submit" class="add-cart button" title="Оплатить &laquo;{GOODS_NAME}&raquo;">Оплатить</button>
               <button type="submit" class="add-cart quick button button2" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину">Быстрый заказ</button>
-              <a href="{GOODS_URL}" class="button button2 more" title="Подробнее">Подробнее</a>
-              <!-- Если есть возможность добавить товар в избранное -->
-              {% IF GOODS_MOD_IS_HAS_IN_FAVORITES_LIST %}
-                <a class="add-wishlist added"
-                  data-action-is-add="0"
-                  data-action-add-url="{FAVORITES_ADD_URL}"
-                  data-action-delete-url="{FAVORITES_DELETE_URL}"
-                  data-action-add-title="Добавить в избранное"
-                  data-action-delete-title="Убрать из избранного"
-                  title="Убрать из избранного"
-                  data-msgtype="2"
-                  data-gname="{GOODS_NAME}"
-                  data-prodname="{GOODS_NAME}"
-                  data-prodimage="{GOODS_IMAGE_MEDIUM}"
-                  data-produrl="{GOODS_URL}"
-                  data-id="{GOODS_ID}"
-                  data-mod-id="{GOODS_MOD_ID}"
-                  data-mod-id-price="{GOODS_MOD_PRICE_NOW}"                
-                  data-action-text-add="Добавить в избранное"
-                  data-action-text-delete="Удалить из избранного"
-                  data-add-tooltip="В Избранное"
-                  data-del-tooltip="Убрать из избранного"
-                  data-tooltip="Убрать из избранного"
-                  href="{FAVORITES_DELETE_URL}?id={GOODS_MOD_ID}&amp;return_to={CURRENT_URL | urlencode}"
-                  rel="nofollow"
-                ><i class="material-icons"> favorite_border </i></a>
-              {% ELSE %}
-                <a class="add-wishlist"
-                  data-action-is-add="1"
-                  data-action-add-url="{FAVORITES_ADD_URL}"
-                  data-action-delete-url="{FAVORITES_DELETE_URL}"
-                  data-action-add-title="Добавить в избранное"
-                  data-action-delete-title="Убрать из избранного"
-                  data-msgtype="2"
-                  data-gname="{GOODS_NAME}"
-                  data-prodname="{GOODS_NAME}"
-                  data-prodimage="{GOODS_IMAGE_MEDIUM}"
-                  data-produrl="{GOODS_URL}"
-                  data-id="{GOODS_ID}"
-                  data-mod-id="{GOODS_MOD_ID}"
-                  data-mod-id-price="{GOODS_MOD_PRICE_NOW}"                
-                  data-action-text-add="Добавить в избранное"
-                  data-action-text-delete="Удалить из избранного"
-                  data-add-tooltip="В Избранное"
-                  data-del-tooltip="Убрать из избранного"
-                  data-tooltip="В Избранное"
-                  title="Добавить в избранное" href="{FAVORITES_ADD_URL}?id={GOODS_MOD_ID}&amp;return_to={CURRENT_URL | urlencode}"
-                  rel="nofollow"
-                ><i class="material-icons"> favorite_border </i></a>
-              {% ENDIF %}            
+              <a href="{GOODS_URL}" class="button button2 more" title="Подробнее">Подробнее</a>         
             </div>
             <!-- /END Добавление товара в корзину -->
           </div>
@@ -323,38 +278,6 @@
           </div>
           </form>          
         </div>
-        
-        <!-- Преимущества -->
-        <div id="features">
-            <div class="features__wrapper">
-              <div class="features-list _goods">
-                  <a class="main-featuresItem" href="#" >
-                    <div class="main-featuresInner">
-                      <div class="main-featuresIcon">
-                        <img src="/design/features-1.svg">
-                      </div>
-                      <div>
-                        <div class="main-featuresTitle">Бесплатная доставка</div>
-                        <div class="main-featuresText">от 2500 рублей, за 2 часа</div>
-                      </div>
-                    </div>
-                  </a>
-    
-                  <a class="main-featuresItem " href="#" >
-                    <div class="main-featuresInner">
-                      <div class="main-featuresIcon">
-                        <img src="/design/features-4.svg">
-                      </div>
-                      <div>
-                        <div class="main-featuresTitle ">Пришлем фото букета</div>
-                        <div class="main-featuresText">перед отправкой</div>
-                      </div>
-                    </div>
-                  </a>          
-              </div>
-            </div>
-        </div>
-        <!-- /Преимущества --> 
     
         <!-- Блок информации по акции действующей на товар, если таковая есть -->
         {% IF GOODS_MOD_MAX_DISCOUNT_ID %}
@@ -375,7 +298,7 @@
 <div class="product-tabs">
   <div class="container">
     <div class="row">
-      <div class="tabs-content col-md-9 col-xs-12">
+      <div class="tabs-content col-md-12 col-xs-12">
         <div class="tabs-wrap">
           <ul class="tabs">
             {% IF GOODS_DESCRIPTION_LARGE || GOODS_SEO_DESCRIPTION_SHORT || GOODS_SEO_DESCRIPTION_LARGE %}<li><a href="javascript:tabSwitch(1);" id="tab_1" class="active">Описание</a></li>{% ENDIF %}
@@ -616,41 +539,6 @@
           <!-- /END Если в тарифном плане подключен модуль отзывов о товаре -->
         </div>
       </div>
-      <!-- Вы смотрели -->
-      {% IFNOT recently_viewed_goods_empty %}
-      <div class="viewed product col-md-3 col-xs-12">
-        <div class="viewed-wrap ">
-        <h2 class="title">Вы смотрели</h2>
-        <div class="content">
-          <div class="viewed-items owl-carousel owl-theme">
-            <div class="item">
-              {% FOR recently_viewed_goods %}
-                <div class="item-inner clearfix"  itemscope itemtype="https://schema.org/Product">
-                  <meta itemprop="name" content="{recently_viewed_goods.NAME}">
-                  <meta itemprop="description" content="{% IF recently_viewed_goods.DESCRIPTION_SHORT %}{recently_viewed_goods.DESCRIPTION_SHORT}{% ELSE %}Описание отсутствует{% ENDIF %}">
-                  <div class="product-image">
-                    <a href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url">
-                      <img src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon owl-lazy" alt="{recently_viewed_goods.NAME}" title="{recently_viewed_goods.NAME}"  itemprop="image">
-                    </a>
-                  </div>
-                  <div class="product-info">
-                    <h2 class="product-name"><a href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url">{recently_viewed_goods.NAME}</a></h2>
-
-                    <div class="price-box" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                      <meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}"/>
-                      <span class="price {CURRENCY_CHAR_CODE}" itemprop="price" content="{recently_viewed_goods.MIN_PRICE_NOW}">от {recently_viewed_goods.MIN_PRICE_NOW | money_format}</span>
-                    </div>
-                  </div>
-                </div>
-              {% IFNOT recently_viewed_goods.last %}{recently_viewed_goods.index | is_divided("3","</div><div>","")}{% ENDIF %}
-              {% ENDFOR %}
-            </div>
-          </div>
-        </div>
-        </div>
-      </div>
-      {% ENDIF %}
-      <!-- /END Вы смотрели -->
     </div>
   </div>
 </div>
@@ -663,10 +551,7 @@
     {% IFNOT related_views_goods_empty %}
       <div class="related-views">
         <div class="box-up-sell products-container">
-          <div class="block-title _iconed">
-            <svg class="icon block-icon">
-              <use xlink:href="#flower"></use>
-            </svg>            
+          <div class="block-title">         
             <h2 class="title">С этим товаром смотрят</h2>
             <div class="navigation owl-nav"></div>
           </div>
