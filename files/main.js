@@ -613,17 +613,40 @@ function accordion() {
 // Запуск блока Вы смотрели
 function viewed(){
   $(".viewed .owl-carousel").owlCarousel({
-    items: 1,
-    margin: 3,
+    margin: 15,
     loop: false,
     rewind: true,
     lazyLoad: true,
     nav: true,
+    navContainer: '.viewed .navigation',
     navText: ['<span class="material-icons">chevron_left</span>','<span class="material-icons">chevron_right</span>'],    
     dots: false,
     autoplay: false,
-    autoplayHoverPause: true
-  });
+    autoplayHoverPause: true,
+    onInitialized: changeNavBtn,
+    responsive: {
+      0:{items:1},
+      320:{items:1},
+      375:{items:2},
+      480:{items:2},
+      540:{items:2},
+      768:{items:4},
+      992:{items:5},
+      1200:{items:7}
+    },    
+  });  
+
+  function changeNavBtn(event){
+    var items = event.item.count;
+    var size = event.page.size;
+    var $nav = $(event.target).siblings('.block-title').find('.navigation');
+
+    if (items >= size){
+      $nav.show();
+    } else {
+      $nav.hide();
+    }
+  }  
 }
 // Функции для каталога 
 function catalogFunctions(){

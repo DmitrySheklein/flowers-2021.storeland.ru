@@ -522,7 +522,7 @@
                           <!-- Кнопка отправки формы -->
                           <div class="clear">
                             <!--<button type="button" title="Отменить" class="goodsDataOpinionFormReset">Отменить</button>-->
-                            <button type="button" title="Добавить отзыв о &laquo;{GOODS_NAME}&raquo;" class="button" onclick="$('.goodsDataOpinionAddForm').submit()">Добавить отзыв</button>
+                            <button type="button" title="Добавить отзыв о &laquo;{GOODS_NAME}&raquo;" class="button  _reverse" onclick="$('.goodsDataOpinionAddForm').submit()">Добавить отзыв</button>
                           </div>
                         </div>
                       </div>
@@ -551,8 +551,8 @@
     {% IFNOT related_views_goods_empty %}
       <div class="related-views">
         <div class="box-up-sell products-container">
-          <div class="block-title">         
-            <h2 class="title">С этим товаром смотрят</h2>
+          <div class="block-title _no-line">         
+            <h2 class="title _text-left">С этим товаром смотрят</h2>
             <div class="navigation owl-nav"></div>
           </div>
           <div class="products-grid owl-carousel">

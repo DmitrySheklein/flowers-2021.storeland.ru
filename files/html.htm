@@ -1683,42 +1683,6 @@
               </div>
               {% ENDIF %}
               <!-- /END Если в тарифном плане подключен модуль фильтров по товарам -->                
-              <!-- Вы смотрели -->
-              {% IFNOT recently_viewed_goods_empty %}
-              <div class="block viewed">
-                <h3 class="title _main"><span class="text">Вы смотрели</span></h3>
-                <div class="content">
-                  <div class="content-title">Вы смотрели</div>
-                  <div class="viewed-items owl-carousel owl-theme">
-                    <div class="item">
-                      {% FOR recently_viewed_goods %}
-                        {% IFNOT recently_viewed_goods.HIDE %}
-                        <div class="item-inner"  itemscope itemtype="https://schema.org/Product">
-                          <meta itemprop="name" content="{recently_viewed_goods.NAME}">
-                          <meta itemprop="description" content="{% IF recently_viewed_goods.DESCRIPTION_SHORT %}{recently_viewed_goods.DESCRIPTION_SHORT}{% ELSE %}Описание отсутствует{% ENDIF %}">
-                          <div class="product-image">
-                            <a href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url">
-                              <img src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon owl-lazy" alt="{recently_viewed_goods.NAME}" title="{recently_viewed_goods.NAME}"  itemprop="image">
-                            </a>
-                          </div>
-                          <div class="product-info">
-                            <h2 class="product-name"><a href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url">{recently_viewed_goods.NAME}</a></h2>
-                            <div class="price-box" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                              <meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}"/>
-                              <span class="price {CURRENCY_CHAR_CODE}" itemprop="price" content="{recently_viewed_goods.MIN_PRICE_NOW}">{recently_viewed_goods.MIN_PRICE_NOW | money_format}</span>
-                            </div>
-                          </div>
-                          <div class="clearfix"></div>
-                        </div>
-                        {% IFNOT recently_viewed_goods.last %}{recently_viewed_goods.index | is_divided("3","</div><div>","")}{% ENDIF %}
-                        {% ENDIF %}
-                      {% ENDFOR %}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {% ENDIF %}
-              <!-- /END Вы смотрели -->
               </div>
             </div>
             {% ENDIF %}
@@ -1995,6 +1959,52 @@
       </div>
     </div>
     {% ENDIF %}
+    <!-- Вы смотрели -->
+    {% IFNOT index_page %}    
+    {% IFNOT recently_viewed_goods_empty %}
+    <div class="viewed">
+      <div class="container">
+        <div class="block-title _no-line">         
+          <h2 class="title _text-left">Недавно просмотренные</h2>
+          <div class="navigation owl-nav"></div>
+        </div>        
+        <div class="viewed-items owl-carousel owl-theme">
+          {% FOR recently_viewed_goods %}
+            {% IFNOT recently_viewed_goods.HIDE %}
+            <div class="item">
+              <div class="item-inner"  itemscope itemtype="https://schema.org/Product">
+                <meta itemprop="name" content="{recently_viewed_goods.NAME}">
+                <meta itemprop="description" content="{% IF recently_viewed_goods.DESCRIPTION_SHORT %}{recently_viewed_goods.DESCRIPTION_SHORT}{% ELSE %}Описание отсутствует{% ENDIF %}">
+                <div class="product-image">
+                  <a href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url">
+                    <img src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon owl-lazy" alt="{recently_viewed_goods.NAME}" title="{recently_viewed_goods.NAME}"  itemprop="image">
+                  </a>
+                </div>
+                <div class="product-info">
+                  <h2 class="product-name"><a href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url">{recently_viewed_goods.NAME}</a></h2>
+                  <div class="price-box" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                    <meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}"/>
+                    <span class="price {CURRENCY_CHAR_CODE}" itemprop="price" content="{recently_viewed_goods.MIN_PRICE_NOW}">
+                      {% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}
+                      <i class="price__prefix">
+                        от 
+                      </i>
+                      {% ENDIF %}
+                      {recently_viewed_goods.MIN_PRICE_NOW | money_format}
+                    </span>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            {% ENDIF %}
+          {% ENDFOR %}
+        </div>
+      </div>
+    </div>
+    {% ENDIF %}
+    {% ENDIF %}
+    <!-- /END Вы смотрели -->    
     <!-- Подвал -->
     <div id="footer">
       <div class="container">
