@@ -1752,7 +1752,7 @@
                       </h1>
                     </div>
                   {% ELSEIF MOD_LNAME=catalog %}
-                    <div class="block-title"><h1 class="title">{% IF IS_FULL_CATALOG %}Каталог{% ELSE %} {% IF GOODS_PAGES_RESULTS = 0 %} {CATEGORY_NAME} {% ELSE %} {CATEGORY_NAME} {% ENDIF %} {% ENDIF %}</h1>{% IF GOODS_PAGES_RESULTS > 0 %}<h5 class="result">{GOODS_PAGES_RESULTS} товар{GOODS_PAGES_RESULTS | gen_word_end("","а","ов")}</h5>{% ENDIF %}</div>
+                    <div class="block-title _no-line"><h1 class="title">{% IF IS_FULL_CATALOG %}Каталог{% ELSE %} {% IF GOODS_PAGES_RESULTS = 0 %} {CATEGORY_NAME} {% ELSE %} {CATEGORY_NAME} {% ENDIF %} {% ENDIF %}</h1>{% IF GOODS_PAGES_RESULTS > 0 %}<h5 class="result">{GOODS_PAGES_RESULTS} товар{GOODS_PAGES_RESULTS | gen_word_end("","а","ов")}</h5>{% ENDIF %}</div>
                   {% ENDIF %}            
               </div>
               <!-- /END Заголовок страницы -->                

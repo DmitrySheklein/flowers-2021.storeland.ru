@@ -555,7 +555,7 @@
             <h2 class="title _text-left">С этим товаром смотрят</h2>
             <div class="navigation owl-nav"></div>
           </div>
-          <div class="products-grid owl-carousel">
+          <div class="related-items products-grid owl-carousel">
             {% FOR related_views_goods %}
               <div class="item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && related_views_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %}">
                 <div class="item-inner" itemscope itemtype="https://schema.org/Product">
