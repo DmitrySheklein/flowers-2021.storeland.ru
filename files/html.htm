@@ -1570,7 +1570,7 @@
               <!-- Каталог -->
               {% IFNOT catalog_full_empty %}
               <div class="block catalog">
-                <h3 class="title"><a href="{CATALOG_URL}"><span class="text">Каталог</span></a></h3>
+                <h3 class="title"><a href="{CATALOG_URL}"><span class="text">Каталог товаров</span></a></h3>
                 <div class="content">
                   <ul>
                     {% FOR catalog_full %}
@@ -1752,7 +1752,7 @@
                       </h1>
                     </div>
                   {% ELSEIF MOD_LNAME=catalog %}
-                    <div class="block-title _no-line"><h1 class="title">{% IF IS_FULL_CATALOG %}Каталог{% ELSE %} {% IF GOODS_PAGES_RESULTS = 0 %} {CATEGORY_NAME} {% ELSE %} {CATEGORY_NAME} {% ENDIF %} {% ENDIF %}</h1>{% IF GOODS_PAGES_RESULTS > 0 %}<h5 class="result">{GOODS_PAGES_RESULTS} товар{GOODS_PAGES_RESULTS | gen_word_end("","а","ов")}</h5>{% ENDIF %}</div>
+                    <div class="block-title _no-line"><h1 class="title">{% IF IS_FULL_CATALOG %}Каталог товаров{% ELSE %} {% IF GOODS_PAGES_RESULTS = 0 %} {CATEGORY_NAME} {% ELSE %} {CATEGORY_NAME} {% ENDIF %} {% ENDIF %}</h1>{% IF GOODS_PAGES_RESULTS > 0 %}<h5 class="result">{GOODS_PAGES_RESULTS} товар{GOODS_PAGES_RESULTS | gen_word_end("","а","ов")}</h5>{% ENDIF %}</div>
                   {% ENDIF %}            
               </div>
               <!-- /END Заголовок страницы -->                
@@ -1961,6 +1961,7 @@
     {% ENDIF %}
     <!-- Вы смотрели -->
     {% IFNOT index_page %}    
+    {% IFNOT MOD_LNAME = cart %}    
     {% IFNOT recently_viewed_goods_empty %}
     <div class="viewed">
       <div class="container">
@@ -2004,9 +2005,10 @@
     </div>
     {% ENDIF %}
     {% ENDIF %}
+    {% ENDIF %}
     <!-- /END Вы смотрели -->    
     <!-- Подвал -->
-    <div id="footer">
+    <div id="footer" {% IF MOD_LNAME = cart %}style="display:none"{% ENDIF %}>
       <div class="container">
         <div class="row">
           {% IFNOT MOD_LNAME = cart %}
@@ -2373,7 +2375,6 @@
     // Запуск основных скриптов для страниц Каталога
     $(function () { catalogFunctions(); });
     $(function () { accordion(); });
-    $(function () { viewed(); });
   </script>
   {% ENDIF %}
   <!-- Скрипты для страницы Сравнение -->

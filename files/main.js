@@ -3049,6 +3049,7 @@ $(function(){
 })
 // Загрузка основных функций шаблона
 $(function(){
+  viewed();
   MainFunctions();
   outFunctions();
   ajaxnewqty();
