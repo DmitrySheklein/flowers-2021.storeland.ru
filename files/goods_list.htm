@@ -72,7 +72,7 @@
           {% ENDFOR %}
           <!-- Сортировать по: (Поле сортировки товаров по умолчанию) -->
           <div class="sort-by">
-            <label>Сортировать по:</label>
+            <label>Сортировать:</label>
             <select name="goods_search_field_id" class="selectBox" title="Название сортировки" onchange="this.form.submit();">
               {% FOR goods_order_fields %}
                 <option value="{goods_order_fields.ID}" {% IF goods_order_fields.SELECTED %}selected="selected"{% ENDIF %}>{goods_order_fields.NAME}</option>
@@ -95,17 +95,17 @@
           <div class="view-mode">
             {% IF GOODS_VIEW_TYPE=1 %}
               <span title="Таблица" class="view-mode-btn active">
-                <svg class="icon block-icon"><use xlink:href="#view-grid"></use></svg>
+                <span class="material-icons">apps</span>
               </span>
               <a data-href="?goods_view_type=2" title="Список" class="view-mode-btn">
-                <svg class="icon block-icon"><use xlink:href="#view-list"></use></svg>
+                <span class="material-icons">storage</span>
               </a>
             {% ELSE %}
               <a data-href="?goods_view_type=1" title="Таблица" class="view-mode-btn">
-                <svg class="icon block-icon"><use xlink:href="#view-grid"></use></svg>
+                <span class="material-icons">apps</span>
               </a>
               <span title="Список" class="view-mode-btn active">
-                <svg class="icon block-icon"><use xlink:href="#view-list"></use></svg>
+                <span class="material-icons">storage</span>
               </span>
             {% ENDIF %}
           </div>
@@ -534,7 +534,7 @@
           <!-- /END Показывать по: -->
           <!-- Сортировать по: (Поле сортировки товаров по умолчанию) -->
           <div class="sort-by">
-            <label>Сортировать по:</label>
+            <label>Сортировать:</label>
             <select name="goods_search_field_id" class="selectBox" title="Название сортировки" onchange="this.form.submit();">
               {% FOR goods_order_fields %}
                 <option value="{goods_order_fields.ID}" {% IF goods_order_fields.SELECTED %}selected="selected"{% ENDIF %}>{goods_order_fields.NAME}</option>
@@ -547,17 +547,17 @@
           <div class="view-mode">
             {% IF GOODS_VIEW_TYPE=1 %}
               <span title="Таблица" class="view-mode-btn active">
-                <svg class="icon block-icon"><use xlink:href="#view-grid"></use></svg>
+                <span class="material-icons">apps</span>
               </span>
               <a data-href="?goods_view_type=2" title="Список" class="view-mode-btn">
-                <svg class="icon block-icon"><use xlink:href="#view-list"></use></svg>
+                <span class="material-icons">storage</span>
               </a>
             {% ELSE %}
               <a data-href="?goods_view_type=1" title="Таблица" class="view-mode-btn">
-                <svg class="icon block-icon"><use xlink:href="#view-grid"></use></svg>
+                <span class="material-icons">apps</span>
               </a>
               <span title="Список" class="view-mode-btn active">
-                <svg class="icon block-icon"><use xlink:href="#view-list"></use></svg>
+                <span class="material-icons">storage</span>
               </span>
             {% ENDIF %}
           </div>

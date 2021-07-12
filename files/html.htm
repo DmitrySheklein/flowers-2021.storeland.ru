@@ -1604,6 +1604,7 @@
                       <div class="filters-price">
                         <div class="title">Цена <span class="filter-arrow fal fa-angle-up"></span></div>
                         <div class="layout-slider">
+                          <div id="goods-filter-price-slider"></div>
                           <div class="filter-range-col">
                             <!--<label class="filter-range-label" for="goods-filter-min-price">от</label>-->
                             <input id="goods-filter-min-price" class="input" type="text" name="form[filter][price][min]" value="{% IF GOODS_FILTER_MIN_PRICE %}{GOODS_FILTER_MIN_PRICE}{% ELSE %}{GOODS_FILTER_MIN_AVAILABLE_PRICE}{% ENDIF %}" min="1" onkeypress="return keyPress(this, event);" onpaste="return false;" />                            
@@ -1620,9 +1621,9 @@
                             <span class="min" style="display:none;">{GOODS_FILTER_MIN_AVAILABLE_PRICE}</span>
                             <span class="max" style="display:none;">{GOODS_FILTER_MAX_AVAILABLE_PRICE}</span>
                           </div>
-                          <div id="goods-filter-price-slider"></div>
+                          
                           <div class="goodsFilterPriceSubmit">
-                            <button class="button button2 small" type="submit" title="Показать">Показать</button>
+                            <button class="button small _reverse" type="submit" title="Показать">Показать</button>
                           </div>
                         </div>
                       </div>
@@ -1643,6 +1644,12 @@
                             </li>
                           {% ENDFOR %}
                           </ul>
+                          {% FOR values %}
+                            {% IF filter_attr_list.values.index > 10 %}
+                            <button class="filter-more" type="button"><span class="filter-moreText ">Показать все</span> <span class="filter-moreArrow fal fa-angle-down"></span></button>
+                            {break}
+                            {% ENDIF %}
+                          {% ENDFOR %}                          
                         </div>
                       {% ENDFOR %}
                       <!-- Фильтры по свойствам товарных модификаций (Например: Цвет, размер, модификация) -->
@@ -1660,7 +1667,7 @@
                           </ul>
                           {% FOR values %}
                             {% IF filter_prop_list.values.index > 10 %}
-                            <button class="filter-more" type="button"><span class="filter-moreText pseudo-link">Показать все</span> <span class="filter-moreArrow fal fa-angle-down"></span></button>
+                            <button class="filter-more" type="button"><span class="filter-moreText ">Показать все</span> <span class="filter-moreArrow fal fa-angle-down"></span></button>
                             {break}
                             {% ENDIF %}
                           {% ENDFOR %}
@@ -1669,17 +1676,17 @@
                     </div>
                     <!-- /END Осноные Фильтры -->
                     
-                    <!-- Активные Фильтры -->
-                    <div class="filters-goods-active" {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}style="display: block;"{% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}style="display: block;"{% ENDIF %}{% ENDFOR %}{% ENDFOR %}>
-                      <!-- Фильтры по характеристикам товаров (Например: Производитель, разрешение экрана, заряд аккомулятора) -->
-                      <div class="filter">
-                        <button id="filters-reset" type="button" class="button button2 small" onclick="javascript:document.location = document.location.pathname;">Сбросить все фильтры</button>
-                      </div>
-                      <!-- Фильтры по свойствам товарных модификаций (Например: Цвет, размер, модификация) -->
-                    </div>
-                    <!-- /END Осноные Фильтры -->                    
                   </form>
                 </div>
+                <!-- Активные Фильтры -->
+                <div class="filters-goods-active" {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}style="display: block;"{% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}style="display: block;"{% ENDIF %}{% ENDFOR %}{% ENDFOR %}>
+                  <!-- Фильтры по характеристикам товаров (Например: Производитель, разрешение экрана, заряд аккомулятора) -->
+                  <div class="filter">
+                    <button id="filters-reset" type="button" class="button button2 small" onclick="javascript:document.location = document.location.pathname;">Сбросить все фильтры</button>
+                  </div>
+                  <!-- Фильтры по свойствам товарных модификаций (Например: Цвет, размер, модификация) -->
+                </div>
+                <!-- /END Осноные Фильтры -->                    
               </div>
               {% ENDIF %}
               <!-- /END Если в тарифном плане подключен модуль фильтров по товарам -->                
@@ -1965,41 +1972,45 @@
     {% IFNOT recently_viewed_goods_empty %}
     <div class="viewed">
       <div class="container">
-        <div class="block-title _no-line">         
-          <h2 class="title _text-left">Недавно просмотренные</h2>
-          <div class="navigation owl-nav"></div>
-        </div>        
-        <div class="viewed-items owl-carousel owl-theme">
-          {% FOR recently_viewed_goods %}
-            {% IFNOT recently_viewed_goods.HIDE %}
-            <div class="item">
-              <div class="item-inner"  itemscope itemtype="https://schema.org/Product">
-                <meta itemprop="name" content="{recently_viewed_goods.NAME}">
-                <meta itemprop="description" content="{% IF recently_viewed_goods.DESCRIPTION_SHORT %}{recently_viewed_goods.DESCRIPTION_SHORT}{% ELSE %}Описание отсутствует{% ENDIF %}">
-                <div class="product-image">
-                  <a href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url">
-                    <img src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon owl-lazy" alt="{recently_viewed_goods.NAME}" title="{recently_viewed_goods.NAME}"  itemprop="image">
-                  </a>
-                </div>
-                <div class="product-info">
-                  <h2 class="product-name"><a href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url">{recently_viewed_goods.NAME}</a></h2>
-                  <div class="price-box" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                    <meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}"/>
-                    <span class="price {CURRENCY_CHAR_CODE}" itemprop="price" content="{recently_viewed_goods.MIN_PRICE_NOW}">
-                      {% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}
-                      <i class="price__prefix">
-                        от 
-                      </i>
-                      {% ENDIF %}
-                      {recently_viewed_goods.MIN_PRICE_NOW | money_format}
-                    </span>
+        <div class="row">
+          <div class="{% IF MOD_LNAME = catalog %}col-md-9 col-xs-12{% ELSE %}col-xs-12{% ENDIF %}">
+            <div class="block-title _no-line">         
+              <h2 class="title _text-left">Недавно просмотренные</h2>
+              <div class="navigation owl-nav"></div>
+            </div>        
+            <div class="viewed-items owl-carousel owl-theme">
+              {% FOR recently_viewed_goods %}
+                {% IFNOT recently_viewed_goods.HIDE %}
+                <div class="item">
+                  <div class="item-inner"  itemscope itemtype="https://schema.org/Product">
+                    <meta itemprop="name" content="{recently_viewed_goods.NAME}">
+                    <meta itemprop="description" content="{% IF recently_viewed_goods.DESCRIPTION_SHORT %}{recently_viewed_goods.DESCRIPTION_SHORT}{% ELSE %}Описание отсутствует{% ENDIF %}">
+                    <div class="product-image">
+                      <a href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url">
+                        <img src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon owl-lazy" alt="{recently_viewed_goods.NAME}" title="{recently_viewed_goods.NAME}"  itemprop="image">
+                      </a>
+                    </div>
+                    <div class="product-info">
+                      <h2 class="product-name"><a href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url">{recently_viewed_goods.NAME}</a></h2>
+                      <div class="price-box" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                        <meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}"/>
+                        <span class="price {CURRENCY_CHAR_CODE}" itemprop="price" content="{recently_viewed_goods.MIN_PRICE_NOW}">
+                          {% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}
+                          <i class="price__prefix">
+                            от 
+                          </i>
+                          {% ENDIF %}
+                          {recently_viewed_goods.MIN_PRICE_NOW | money_format}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
                   </div>
                 </div>
-                <div class="clearfix"></div>
-              </div>
+                {% ENDIF %}
+              {% ENDFOR %}
             </div>
-            {% ENDIF %}
-          {% ENDFOR %}
+          </div>
         </div>
       </div>
     </div>
