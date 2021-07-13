@@ -303,6 +303,9 @@
 
                     </div>
                   </div>
+                  <div class="product-delivery">
+                    Бесплатная доставка
+                  </div>                  
                 </form>
               </div>
             </div>
@@ -327,7 +330,7 @@
                 <span class="ico-sale">Акция</span>
               {% ENDIF %}
             </div>
-            <div class="product-shop">
+            <div class="product-content">
               <meta itemprop="name" content="{goods.NAME}">
               <div class="product-name"><a href="{goods.URL | url_amp}" title="{goods.NAME}" itemprop="url">{goods.NAME}</a></div>
               <div class="ratings">
@@ -349,7 +352,9 @@
               <div class="desc">
                 <p itemprop="description">{goods.DESCRIPTION_SHORT}</p>
               </div>
-              {% ENDIF %}
+              {% ENDIF %}              
+            </div>
+            <div class="product-shop">
               <div class="price-box" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
                 <!-- информация для поисковика о валюте товара -->
                 <meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}"/>

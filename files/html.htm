@@ -1973,12 +1973,12 @@
     <div class="viewed">
       <div class="container">
         <div class="row">
-          <div class="{% IF MOD_LNAME = catalog %}col-md-9 col-xs-12{% ELSE %}col-xs-12{% ENDIF %}">
+          <div class="viewed-col {% IF MOD_LNAME = catalog %}_catalog col-md-9 col-xs-12{% ELSE %}col-xs-12{% ENDIF %}">
             <div class="block-title _no-line">         
               <h2 class="title _text-left">Недавно просмотренные</h2>
               <div class="navigation owl-nav"></div>
             </div>        
-            <div class="viewed-items owl-carousel owl-theme">
+            <div class="viewed-items owl-carousel owl-theme {% IF MOD_LNAME = catalog %}_catalog{% ENDIF %}">
               {% FOR recently_viewed_goods %}
                 {% IFNOT recently_viewed_goods.HIDE %}
                 <div class="item">

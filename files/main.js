@@ -612,7 +612,10 @@ function accordion() {
 }
 // Запуск блока Вы смотрели
 function viewed(){
-  $(".viewed .owl-carousel").owlCarousel({
+  var $carousel = $(".viewed .viewed-items");
+  var deskItems = $carousel.hasClass('_catalog') ? 5 : 7;
+
+  $carousel.owlCarousel({
     margin: 15,
     loop: false,
     rewind: true,
@@ -632,7 +635,7 @@ function viewed(){
       540:{items:2},
       768:{items:4},
       992:{items:5},
-      1200:{items:7}
+      1200:{items: deskItems}
     },    
   });  
 
