@@ -178,7 +178,7 @@ function uploadFile(event, cb){
 	new Promise(resolve => {
 		fs.readFile(`${file}`, {encoding: 'utf8'}, (err, data) =>{
 			if (err) throw err;
-			resolve(base64encode(data));
+			resolve(Buffer.from(data).toString('base64'))
 		});
 
 		if(imageswatch.includes(fileExt.replace('.',''))){				
