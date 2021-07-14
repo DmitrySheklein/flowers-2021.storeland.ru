@@ -774,6 +774,20 @@
                         <img class="goods-image-small lozad" data-src="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_sale_goods.NAME}" title="{index_page_sale_goods.NAME}"  itemprop="image">
                       </a>
                     </div>
+                    <!-- Выводим характеристику времени доставки -->
+                    <div class="product-deltime">
+                      {% IFNOT index_page_sale_goods.goods_attr_list_empty %}
+                          {% FOR goods_attr_list %}
+                          {% IF index_page_sale_goods.goods_attr_list.NAME= Время доставки %}                         
+                            Этот букет доставят за
+                            <span class="product-deltime-value">
+                              {index_page_sale_goods.goods_attr_list.VALUE}
+                            </span>                                
+                          {% ENDIF %}                   
+                          {% ENDFOR %}
+                      {% ENDIF %}
+                    </div>
+                    <!-- END Выводим характеристику времени доставки -->
                     <div class="product-shop">
                       <meta itemprop="name" content="{index_page_sale_goods.NAME}">
                       <meta itemprop="description" content="{% IF index_page_sale_goods.DESCRIPTION_SHORT %}{index_page_sale_goods.DESCRIPTION_SHORT}{% ELSE %}Описание отсутствует{% ENDIF %}">
@@ -1003,6 +1017,20 @@
                           <img class="goods-image-small lozad" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_goods.NAME}" title="{index_page_goods.NAME}"  itemprop="image">
                         </a>
                       </div>
+                      <!-- Выводим характеристику времени доставки -->
+                      <div class="product-deltime">
+                        {% IFNOT index_page_goods.goods_attr_list_empty %}
+                            {% FOR goods_attr_list %}
+                            {% IF index_page_goods.goods_attr_list.NAME= Время доставки %}                         
+                              Этот букет доставят за
+                              <span class="product-deltime-value">
+                                {index_page_goods.goods_attr_list.VALUE}
+                              </span>                                
+                            {% ENDIF %}                   
+                            {% ENDFOR %}
+                        {% ENDIF %}
+                      </div>
+                      <!-- END Выводим характеристику времени доставки -->                      
                       <div class="product-shop">
                         <meta itemprop="name" content="{index_page_goods.NAME}">
                         <meta itemprop="description" content="{% IF index_page_goods.DESCRIPTION_SHORT %}{index_page_goods.DESCRIPTION_SHORT}{% ELSE %}Описание отсутствует{% ENDIF %}">
@@ -1192,6 +1220,20 @@
                           <img class="goods-image-small lozad" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_new_goods.NAME}" title="{index_page_new_goods.NAME}"  itemprop="image">
                         </a>
                       </div>
+                    <!-- Выводим характеристику времени доставки -->
+                    <div class="product-deltime">
+                      {% IFNOT index_page_new_goods.goods_attr_list_empty %}
+                          {% FOR goods_attr_list %}
+                          {% IF index_page_new_goods.goods_attr_list.NAME= Время доставки %}                         
+                            Этот букет доставят за
+                            <span class="product-deltime-value">
+                              {index_page_new_goods.goods_attr_list.VALUE}
+                            </span>                                
+                          {% ENDIF %}                   
+                          {% ENDFOR %}
+                      {% ENDIF %}
+                    </div>
+                    <!-- END Выводим характеристику времени доставки -->                      
                       <div class="product-shop">
                         <meta itemprop="name" content="{index_page_new_goods.NAME}">
                         <meta itemprop="description" content="{% IF index_page_new_goods.DESCRIPTION_SHORT %}{index_page_new_goods.DESCRIPTION_SHORT}{% ELSE %}Описание отсутствует{% ENDIF %}">
@@ -1381,6 +1423,20 @@
                           <img class="goods-image-small lozad" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_favorites_goods.NAME}" title="{index_page_favorites_goods.NAME}"  itemprop="image">
                         </a>
                       </div>
+                      <!-- Выводим характеристику времени доставки -->
+                      <div class="product-deltime">
+                        {% IFNOT index_page_favorites_goods.goods_attr_list_empty %}
+                            {% FOR goods_attr_list %}
+                            {% IF index_page_favorites_goods.goods_attr_list.NAME= Время доставки %}                         
+                              Этот букет доставят за
+                              <span class="product-deltime-value">
+                                {index_page_favorites_goods.goods_attr_list.VALUE}
+                              </span>                                
+                            {% ENDIF %}                   
+                            {% ENDFOR %}
+                        {% ENDIF %}
+                      </div>
+                      <!-- END Выводим характеристику времени доставки -->                      
                       <div class="product-shop">
                         <meta itemprop="name" content="{index_page_favorites_goods.NAME}">
                         <meta itemprop="description" content="{% IF index_page_favorites_goods.DESCRIPTION_SHORT %}{index_page_favorites_goods.DESCRIPTION_SHORT}{% ELSE %}Описание отсутствует{% ENDIF %}">
@@ -2018,6 +2074,28 @@
     {% ENDIF %}
     {% ENDIF %}
     <!-- /END Вы смотрели -->    
+
+    <!-- Пользовательские категории -->
+    {% IF MOD_LNAME = catalog %}  
+    <div class="catalog-tags-block">
+      <div class="container">
+        <div class="row">
+          <div class="catalog-tags-block__col col-md-9 col-xs-12">
+            <div class="catalog-tags-list">
+              {% FOR catalog_full %}
+              {% IF catalog_full.LEVEL = 0 && catalog_full.GOODS_COUNT > 0 && catalog_full.HIDE=0 %}
+                <a href="{catalog_full.URL}" class="catalog-tags-list__item">
+                  {catalog_full.NAME}
+                </a>
+              {% ENDIF %}
+              {% ENDFOR %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+    {% ENDIF %}
+
     <!-- Подвал -->
     <div id="footer" {% IF MOD_LNAME = cart %}style="display:none"{% ENDIF %}>
       <div class="container">
