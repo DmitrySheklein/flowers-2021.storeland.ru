@@ -752,7 +752,7 @@ function catalogFunctions(){
     $title.toggleClass('active').next('.layout-slider, .filter-inner').slideToggle();
   });
   
-  $('.block.filters, .block.viewed').on('click', '.title', function(){
+  $('.block.filters').on('click', '.title', function(){
     if( getClientWidth() <= 991) {
       var $title = $(this);
       
