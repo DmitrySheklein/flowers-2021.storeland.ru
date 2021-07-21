@@ -335,7 +335,7 @@
 
                     </div>
                   </div>
-                  <div class="product-delivery">
+                  <div class="product-delivery" data-price="{goods.MIN_PRICE_NOW}" {% IF goods.COUNT_MODIFICATION > 1 %}data-with-mods="true"{% ENDIF %}>
                     Бесплатная доставка
                   </div>                  
                 </form>
@@ -406,7 +406,7 @@
                   <p itemprop="description">{goods.DESCRIPTION_SHORT}</p>
                 </div>
                 {% ENDIF %} 
-                <div class="product-delivery _list">
+                <div class="product-delivery _list" data-price="{goods.MIN_PRICE_NOW}" {% IF goods.COUNT_MODIFICATION > 1 %}data-with-mods="true"{% ENDIF %}>
                   Бесплатная доставка
                 </div> 
               </div>
@@ -837,7 +837,7 @@
                             <!-- /END Добавление товара в корзину -->
                     </div>
                     </div>
-                    <div class="product-delivery">
+                    <div class="product-delivery" data-price="{goods.MIN_PRICE_NOW}">
                       Бесплатная доставка
                     </div>                     
             </form>

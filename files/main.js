@@ -481,7 +481,12 @@ function MainFunctions() {
        
       // Изменяем данные товара для выбранных параметров. Если нашлась выбранная модификация
       if(modificationBlock.length) {
-        // Цена товара
+        // Установим стоимость доставки
+        if(typeof window.calcDeliveryItemsPrice === 'function'){
+          $('.product-delivery._good').data('price', modificationPriceNow);
+          window.calcDeliveryItemsPrice()
+        }
+        // Цена товара        
         goodsPriceNow.html(modificationPriceNowFormated);
         goodsPriceNow.data('price-now', modificationPriceNow);
         $('.related-box .related-box-checkbox').each(function(i, checkbox){

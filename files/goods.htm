@@ -230,6 +230,12 @@
                 <span class="price old-price goodsDataMainModificationPriceOld {CURRENCY_CHAR_CODE}" data-price-old="{GOODS_MOD_PRICE_OLD}">{GOODS_MOD_PRICE_OLD | money_format}</span>
             {% ENDIF %}
           </div>
+          <div class="product-delivery _good" data-price="{GOODS_MOD_PRICE_NOW}" {% IF goods.COUNT_MODIFICATION > 1 %}data-with-mods="true"{% ENDIF %}>
+            <span class="material-icons">
+              local_shipping
+            </span>            
+            Бесплатная доставка
+          </div>
           <!-- Добавление товара в Корзину -->
           <div class="add-to-box actions {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}add-to-form{% ENDIF %}" >
             <input type="hidden" name="form[goods_mod_id][{GOODS_MOD_ID}]" value="1" class="goodsDataMainModificationId" />
