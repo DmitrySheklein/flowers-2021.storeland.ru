@@ -114,15 +114,18 @@
           <!-- Если в тарифном плане подключен модуль фильтров по товарам -->
           {% IF TARIFF_FEATURE_GOODS_FILTERS && SHOW_GOODS_FILTERS %}
           <!-- Фильтры мобильный-->      
-          <button class="filter-btn">
-            <svg class="icon">
-              <use xlink:href="#filter-btn"></use>
-            </svg>
-          </button>
+          <div class="toolbar-filter">
+            <button class="filter-btn">
+              <svg class="icon">
+                <use xlink:href="#filter-btn"></use>
+              </svg>
+            </button>
+          </div>
           {% ENDIF %}
         </form>
         </noindex>
       </div>
+      <div class="toolbar-filter-container"></div>
       <!-- END Верхний блок, изменяющий отображение данных выдачи товаров -->
     {% ENDIF %}
     

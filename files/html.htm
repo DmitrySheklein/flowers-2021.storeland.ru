@@ -1710,7 +1710,7 @@
                       {% FOR filter_attr_list %}
                         <div class="filter">
                           <div class="title {% IF filter_attr_list.index > 3 %}active{% ENDIF %}">{filter_attr_list.NAME}<span class="filter-arrow fal fa-angle-up"></span></div>
-                          <ul class="filter-inner {% FOR values %}{% IF filter_attr_list.values.index > 10 %}crop{break}{% ENDIF %}{% ENDFOR %}" {% IF filter_attr_list.index > 3 %}style="display:none"{% ENDIF %}>
+                          <ul class="filter-inner unstyled {% FOR values %}{% IF filter_attr_list.values.index > 10 %}crop{break}{% ENDIF %}{% ENDFOR %}" {% IF filter_attr_list.index > 3 %}style="display:none"{% ENDIF %}>
                           {% FOR values %}
                             <li class="filter-item">
                               <input class="checkbox-hidden" type="checkbox" name="form[filter][attr][{filter_attr_list.ID}][{filter_attr_list.values.ID}]" value="1" id="filterAttrVal{filter_attr_list.values.ID}" {% IF filter_attr_list.values.CHECKED %}checked="checked"{% ELSEIF filter_attr_list.values.NB_GOODS_FILTERED=0 %}disabled="disabled"{% ENDIF %} />
@@ -1731,7 +1731,7 @@
                       {% FOR filter_prop_list %}
                         <div class="filter">
                           <div class="title {% IF filter_prop_list.index > 3 %}active{% ENDIF %}">{filter_prop_list.NAME}<span class="filter-arrow fal fa-angle-up"></span></div>
-                          <ul class="filter-inner {% FOR values %}{% IF filter_prop_list.values.index > 10 %}crop{break}{% ENDIF %}{% ENDFOR %}" {% IF filter_prop_list.index > 3 %}style="display:none"{% ENDIF %}>
+                          <ul class="filter-inner unstyled {% FOR values %}{% IF filter_prop_list.values.index > 10 %}crop{break}{% ENDIF %}{% ENDFOR %}" {% IF filter_prop_list.index > 3 %}style="display:none"{% ENDIF %}>
                           {% FOR values %}
                             <li class="filter-item">
                               <input class="checkbox-hidden" type="checkbox" name="form[filter][prop][{filter_prop_list.ID}][{filter_prop_list.values.ID}]" value="1" id="filterPropVal{filter_prop_list.values.ID}" {% IF filter_prop_list.values.CHECKED %}checked="checked"{% ELSEIF filter_prop_list.values.NB_GOODS_FILTERED=0 %}disabled="disabled"{% ENDIF %} >
@@ -1752,16 +1752,17 @@
                     <!-- /END Осноные Фильтры -->
                     
                   </form>
-                </div>
-                <!-- Активные Фильтры -->
-                <div class="filters-goods-active" {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}style="display: block;"{% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}style="display: block;"{% ENDIF %}{% ENDFOR %}{% ENDFOR %}>
-                  <!-- Фильтры по характеристикам товаров (Например: Производитель, разрешение экрана, заряд аккомулятора) -->
-                  <div class="filter">
-                    <button id="filters-reset" type="button" class="button button2 small" onclick="javascript:document.location = document.location.pathname;">Сбросить все фильтры</button>
+                  <!-- Активные Фильтры -->
+                  <div class="filters-goods-active" {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}style="display: block;"{% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}style="display: block;"{% ENDIF %}{% ENDFOR %}{% ENDFOR %}>
+                    <!-- Фильтры по характеристикам товаров (Например: Производитель, разрешение экрана, заряд аккомулятора) -->
+                    <div class="filter">
+                      <button id="filters-reset" type="button" class="button button2 small" onclick="javascript:document.location = document.location.pathname;">Сбросить все фильтры</button>
+                      <button id="filters-close" type="button" class="">Свернуть фильтр</button>
+                    </div>
+                    <!-- Фильтры по свойствам товарных модификаций (Например: Цвет, размер, модификация) -->
                   </div>
-                  <!-- Фильтры по свойствам товарных модификаций (Например: Цвет, размер, модификация) -->
+                  <!-- /END Осноные Фильтры -->                    
                 </div>
-                <!-- /END Осноные Фильтры -->                    
               </div>
               {% ENDIF %}
               <!-- /END Если в тарифном плане подключен модуль фильтров по товарам -->                

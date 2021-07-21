@@ -651,23 +651,21 @@ function viewed(){
     }
   }  
 }
-// Функции для каталога 
-function catalogFunctions(){
-  
-  // Фильтр по ценам
-  var
+function initFilterSlider($container) {
+    // Фильтр по ценам
+    var
     // Минимальное значение цены для фильтра
-    priceFilterMinAvailable = parseInt($('.goodsFilterPriceRangePointers .min').text())
+    priceFilterMinAvailable = parseInt($container.find('.goodsFilterPriceRangePointers .min').text())
     // Максимальное значение цены для фильтра
-    ,priceFilterMaxAvailable = parseInt($('.goodsFilterPriceRangePointers .max').text())
+    ,priceFilterMaxAvailable = parseInt($container.find('.goodsFilterPriceRangePointers .max').text())
     // Максимальное значение цены для фильтра
-    ,priceSliderBlock = $('#goods-filter-price-slider')[0]
+    ,priceSliderBlock = $container.find('#goods-filter-price-slider')[0]
     // Поле ввода текущего значения цены "От"
-    ,priceInputMin = $( "#goods-filter-min-price" )
+    ,priceInputMin = $container.find( "#goods-filter-min-price" )
     // Поле ввода текущего значения цены "До"
-    ,priceInputMax = $( "#goods-filter-max-price" )
+    ,priceInputMax = $container.find( "#goods-filter-max-price" )
     // Блок с кнопкой, которую есть смысл нажимать только тогда, когда изменялся диапазон цен.
-    ,priceSubmitButtonBlock = $( ".goodsFilterPriceSubmit" );
+    ,priceSubmitButtonBlock = $container.find( ".goodsFilterPriceSubmit" );
     
   // Изменяет размер ячеек с ценой, т.к. у них нет рамок, есть смысл менять размеры полей ввода, чтобы они выглядили как текст
   function priceInputsChangeWidthByChars() {
@@ -727,7 +725,12 @@ function catalogFunctions(){
       priceInputsChangeWidthByChars();
     });  
   }
-  
+}
+// Функции для каталога 
+function catalogFunctions(){
+  // Стилизация селектов
+  $('.selectBox').addClass('_catalog').styler()
+  initFilterSlider($('.col-left .filters-price'))
   // Фильтры по товарам. При нажании на какую либо характеристику или свойство товара происходит фильтрация товаров
   $('.filters-goods input').click(function(){
     $(this)[0].form.submit();
@@ -739,8 +742,26 @@ function catalogFunctions(){
   $('.filters-goods-active input').click(function(){
     $(this)[0].form.submit();
   });
-  
-  
+  $('.filter-btn').on('click', function (evt) {
+    evt.preventDefault();
+    
+    var $containerFilter = $('.toolbar-filter-container');
+    var $filters = $containerFilter.find('.block.filters');
+    var hasFiltersBlock = $filters.length;
+
+    if(!hasFiltersBlock) {
+      $('.block.filters').clone(true).hide().slideToggle().appendTo($containerFilter);
+      $containerFilter.find('#goods-filter-price-slider').html('')
+      initFilterSlider($containerFilter)
+    }
+    $filters.slideToggle()
+    $(this).toggleClass('_active');
+  })
+  $('#filters-close').on('click', function () {
+    var $containerFilter = $('.toolbar-filter-container');
+    var $filters = $containerFilter.find('.block.filters');
+    $filters.slideToggle()
+  })
   // Показать/скрыть категорию фильтра
   $('.block.filters').on('click', '.title', function(){
     var $title = $(this);
