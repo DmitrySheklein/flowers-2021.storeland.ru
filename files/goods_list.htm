@@ -326,7 +326,7 @@
                       </div>
                       <!-- Добавление товара в корзину -->
                       {% IF goods.MIN_REST_VALUE=0 %}
-                        <div class="empty" title="Нет в наличии" data-tooltip="Нет в наличии"><span>Нет в наличии</span></div>
+                        <a class="empty" href="javascript:;"><span>Уведомить</span></a>
                       {% ELSE %}
                         <a class="add-cart" title="В корзину" data-tooltip="В корзину" rel="nofollow" href="{goods.URL_MIN_PRICE_NOW | url_amp}"><span>Заказать</span></a>
                         <a class="add-cart quick" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>Купить в 1 клик</span></a>
@@ -438,7 +438,7 @@
                     </div>
                     <!-- Добавление товара в корзину -->
                     {% IF goods.MIN_REST_VALUE=0 %}
-                      <div class="empty" title="Нет в наличии" data-tooltip="Нет в наличии"><span>Нет в наличии</span></div>
+                      <a class="empty" href="javascript:;"><span>Уведомить</span></a>
                     {% ELSE %}
                       <a class="add-cart" title="В корзину" data-tooltip="В корзину" rel="nofollow" href="{goods.URL | url_amp}"><span>Заказать</span></a>
                       <a class="add-cart quick" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>Купить в 1 клик</span></a>                    
@@ -829,7 +829,7 @@
                             </div>
                             <!-- Добавление товара в корзину -->
                             {% IF goods.MIN_REST_VALUE=0 %}
-                            <div class="empty" title="Нет в наличии" data-tooltip="Нет в наличии"><span>Нет в наличии</span></div>
+                            <a class="empty" href="javascript:;"><span>Уведомить</span></a>
                             {% ELSE %}
                             <a class="add-cart" title="В корзину" data-tooltip="В корзину" rel="nofollow" href="{goods.URL_MIN_PRICE_NOW | url_amp}"><span>Заказать</span></a>
                             <a class="add-cart quick" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}"><span>Купить в 1 клик</span></a>
@@ -837,7 +837,7 @@
                             <!-- /END Добавление товара в корзину -->
                     </div>
                     </div>
-                    <div class="product-delivery" data-price="{goods.MIN_PRICE_NOW}">
+                    <div class="product-delivery" data-price="{goods.MIN_PRICE_NOW}" {% IF goods.COUNT_MODIFICATION > 1 %}data-with-mods="true"{% ENDIF %}>
                       Бесплатная доставка
                     </div>                     
             </form>

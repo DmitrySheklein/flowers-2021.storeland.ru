@@ -151,7 +151,7 @@ dt, dd {line-height: 1.4;}
 .success, .warning {display: none;}
 .quickformfast .success,.quickformfast .warning,
 .no-js .success,.no-js .warning {display:block;}
-.attention,.information,.success,.warning {position: relative;color: #fff;min-height: 40px;margin-bottom: 20px;overflow: hidden;padding: 10px 20px;text-shadow: 1px 1px 1px rgba(0,0,0,.1);font-size: 18px;}
+.attention,.information,.success,.warning {position: relative;color: #fff;min-height: 40px;margin-bottom: 20px;overflow: hidden;padding: 10px 20px;text-shadow: 1px 1px 1px rgba(0,0,0,.1);font-size: 18px;border-radius: 4px;}
 .success {background-color: #3baf1d;color: #fff;}
 .warning {background-color: #EF476F;color: #fff;}
 .attention {background-color: #ff9daf;color: #fff;}
@@ -2578,6 +2578,7 @@ background: #fff;}
   width: 100%;
   border-left: 1px solid #dadada;
   transition: all .3s ease;
+  flex-shrink: 0;  
 }
 .products-list .item .product-content {
   display: flex;
@@ -2784,6 +2785,7 @@ background: #fff;}
   font-size: inherit;
   color: inherit;
   margin-left: 4px;  
+  line-height: inherit;  
 }
 .product-delivery .price.RUB > span:after {
   margin-left: 4px;
@@ -4104,7 +4106,7 @@ background: #fff;}
 }
 
 /** Меню **/
-.col-left .block.user-menu .content ul li a.active {font-weight: bold;}
+.col-left .block.user-menu .content ul li a.active {font-weight: normal;}
 /* Быстрый просмотр */
 .fancybox-inner .container {max-width: 950px;padding:0;}
 .quickView .fancybox-inner .container {max-width: 700px;}

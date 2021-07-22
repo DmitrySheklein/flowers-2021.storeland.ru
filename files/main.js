@@ -319,6 +319,25 @@ $(function(){
   });
 });
 
+// Уведомить о поступлении товара
+$(document).on('click', '.empty, .goodsDataMainModificationEmpty', function(evt){
+  evt.preventDefault();
+  evt.stopPropagation()
+  var $formBlock = $(this).closest('.goodsListForm, .goodsDataForm');
+  var goodsMod = $formBlock.find('[name="form[goods_mod_id]"]').val();
+  console.log(goodsMod);
+  $('#fancy-notify-goods-mod').val(goodsMod)
+  $.fancybox({
+    padding: 0,
+    autoSize: true,
+    width: '100%',
+    maxWidth: 1100,
+    content: $('#fancybox-notify').html(),
+    afterShow: function() {
+
+    }
+  });
+})
 // Основные функции
 function MainFunctions() {
   $(function(){
@@ -326,7 +345,6 @@ function MainFunctions() {
   var $title = $('#page-title .block-title h1.title');
   var titleContent = '<span class="title-text">'+ $title.html() +'</span>';
   $title.html(titleContent)
-
   // Валидация формы на странице оформления заказа, а так же формы на страницы связи с администрацией
   $("#myform, .feedbackForm, .clientForm, #quickform, .goodsDataOpinionAddForm, .callback-info .callbackForm, .callback-form, #fancybox-callback .callbackForm").each(function () {
     $(this).validate({
@@ -2789,7 +2807,7 @@ function indexPage() {
       itemNav.on('click', function(){
         var $this = $(this);
         var id = $this.data('href');
-        console.log(id);
+
         if($this.hasClass('tab-nav-actived')) return false;
         itemNav.removeClass('tab-nav-actived');
         $this.addClass('tab-nav-actived');

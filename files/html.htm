@@ -773,7 +773,7 @@
                         <span class="ico-sale">Скидка</span>
                       {% ENDIF %}                      
                       <a href="{index_page_sale_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_sale_goods.NAME}" class="product-img">
-                        <img class="goods-image-small lozad" data-src="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_sale_goods.NAME}" title="{index_page_sale_goods.NAME}">
+                        <img class="goods-image-small lozad"  src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_sale_goods.NAME}" title="{index_page_sale_goods.NAME}">
                       </a>
                     </div>
                     <!-- Выводим характеристику времени доставки -->
@@ -835,7 +835,7 @@
                         </div>
                         <!-- Добавление товара в корзину -->
                         {% IF index_page_sale_goods.MIN_REST_VALUE=0 %}
-                          <div class="empty" title="Нет в наличии" data-tooltip="Нет в наличии"><span>Нет в наличии</span></div>
+                          <a class="empty" href="javascript:;"><span>Уведомить</span></a>
                         {% ELSE %}
                           <a class="add-cart" title="В корзину" data-tooltip="В корзину" rel="nofollow" href="{index_page_sale_goods.URL_MIN_PRICE_NOW | url_amp}"><span>Заказать</span></a>
                           <a class="add-cart quick" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_sale_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_sale_goods.MIN_PRICE_NOW_ID}"><span>Купить в 1 клик</span></a>
@@ -1021,7 +1021,7 @@
                           <span class="ico-sale">Скидка</span>
                         {% ENDIF %}                        
                         <a href="{index_page_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_goods.NAME}" class="product-img">
-                          <img class="goods-image-small lozad" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_goods.NAME}" title="{index_page_goods.NAME}">
+                          <img class="goods-image-small lozad"  src="{ASSETS_IMAGES_PATH}loader.gif" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_goods.NAME}" title="{index_page_goods.NAME}">
                         </a>
                       </div>
                       <!-- Выводим характеристику времени доставки -->
@@ -1083,7 +1083,7 @@
                           </div>
                           <!-- Добавление товара в корзину -->
                           {% IF index_page_goods.MIN_REST_VALUE=0 %}
-                            <div class="empty" title="Нет в наличии" data-tooltip="Нет в наличии">Нет в наличии</div>
+                          <a class="empty" href="javascript:;"><span>Уведомить</span></a>
                           {% ELSE %}
                             <a class="add-cart" title="В корзину" data-tooltip="В корзину" rel="nofollow" href="{index_page_goods.URL_MIN_PRICE_NOW | url_amp}"><span>Заказать</span></a>
                             <a class="add-cart quick" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_goods.MIN_PRICE_NOW_ID}"><span>Купить в 1 клик</span></a>
@@ -1228,7 +1228,7 @@
                           <span class="ico-sale">Скидка</span>
                         {% ENDIF %}                      
                         <a href="{index_page_new_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_new_goods.NAME}" class="product-img">
-                          <img class="goods-image-small lozad" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_new_goods.NAME}" title="{index_page_new_goods.NAME}">
+                          <img class="goods-image-small lozad"  src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_new_goods.NAME}" title="{index_page_new_goods.NAME}">
                         </a>
                       </div>
                     <!-- Выводим характеристику времени доставки -->
@@ -1290,7 +1290,7 @@
                           </div>
                           <!-- Добавление товара в корзину -->
                           {% IF index_page_new_goods.MIN_REST_VALUE=0 %}
-                            <div class="empty" title="Нет в наличии" data-tooltip="Нет в наличии"><span>Нет в наличии</span></div>
+                            <a class="empty" href="javascript:;"><span>Уведомить</span></a>
                           {% ELSE %}
                             <a class="add-cart" title="В корзину" data-tooltip="В корзину" rel="nofollow" href="{index_page_new_goods.URL_MIN_PRICE_NOW | url_amp}"><span>Заказать</span></a>
                             <a class="add-cart quick" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_new_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_new_goods.MIN_PRICE_NOW_ID}"><span>Купить в 1 клик</span></a>
@@ -1498,7 +1498,7 @@
                           </div>
                           <!-- Добавление товара в корзину -->
                           {% IF index_page_favorites_goods.MIN_REST_VALUE=0 %}
-                            <div class="empty" title="Нет в наличии" data-tooltip="Нет в наличии"><span>Нет в наличии</span></div>
+                            <a class="empty" href="javascript:;"><span>Уведомить</span></a>
                           {% ELSE %}
                             <a class="add-cart" title="В корзину" data-tooltip="В корзину" rel="nofollow" href="{index_page_favorites_goods.URL_MIN_PRICE_NOW | url_amp}"><span>Заказать</span></a>
                             <a class="add-cart quick" title="Быстро оформить заказ" rel="nofollow" href="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_favorites_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_favorites_goods.MIN_PRICE_NOW_ID}"><span>Купить в 1 клик</span></a>
@@ -2291,6 +2291,41 @@
       </div>
     </div>
     <!-- /END Модальное окно -->
+
+  <!-- Уведомить о поступлении в модальном окне -->
+  <div id="fancybox-notify" class="fancybox-callback" style="display:none">
+    <div class="fancybox-header">
+      <strong class="title">Уведомить о поступлении</strong>                   
+    </div>
+    <div class="fancybox-body">
+      <form method="post" action="{CALLBACK_URL}" class="callbackForm" enctype="multipart/form-data">
+        <input type="hidden" name="hash" value="{HASH}"/>
+        <input type="hidden" name="return_to" value="{CALLBACK_URL}" class="callbackredirect"/>
+        <input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="Уведомить о поступлении товара"/>        
+        <input type="hidden" name="form[goods_mod_id]" value="" id="fancy-notify-goods-mod"/>
+        <!-- <input type="hidden" name="form[Артикул]" value="{GOODS_MOD_ART_NUMBER}" id="fancy-notify-goods-art"/>--> 
+        <!-- Для использования почты для уведомлений необходимо убрать комментарии для строки ниже -->         
+        <!-- <input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="Уведомить по Email" /> -->
+        <!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
+        {ANTISPAM_CODE}
+        <div class="callback-input">     
+          <input id="callback_phone_notify" class="input input-material callback_phone required" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}"  maxlength="50" placeholder="Ваш телефон" autocomplete="off" required>          
+        </div>
+        <div class="pp">
+          <input type="checkbox" id="pp-check-callback-notify" class="pp-checkbox checkbox-hidden required" name="pp-check" required="" aria-required="true" checked>
+          <label for="pp-check-callback-notify"  class="pp-label checkbox-name required">
+          Я согласен на <a class="blue-link" href="#" data-fancybox="" data-src="#fancybox-pp">обработку персональных данных</a>
+          </label>
+        </div>     
+        <button type="submit" title="Уведомить" class="callback-btn button button3">
+          <span>
+            Уведомить
+          </span>
+        </button>
+
+      </form>
+    </div>
+  </div>    
     
   </div>
   
@@ -2610,6 +2645,9 @@
       if (typeof(lozad) === "function") {
         lozad().observe();
       }
+      if (typeof(window.calcDeliveryItemsPrice) === "function") {
+        window.calcDeliveryItemsPrice()
+      }
       Addto();
     });
   </script>
@@ -2620,6 +2658,7 @@
   <!-- Включить учёт доставки Курьером (заменить 1 на 0) -->
   {% IF USE_DELIVERY = 0 %}
   <script>
+    var DELIVERY_NAME = 'Курьером' // Название доставки из раздела Настройки - Доставка
     // Получаем данные формы, которые будем отправлять на сервер
     var formData = $('<form>').serializeArray();
     // Сообщаем серверу, что мы пришли через ajax запрос
@@ -2641,33 +2680,33 @@
     })  
     window.calcDeliveryItemsPrice = function () {
       var currentDelivery = $.grep(ORDER_DELIVERY, function(el,n){
-              return el.name === 'Курьером'
+              return el.name === DELIVERY_NAME
           })[0]
-          if(currentDelivery && currentDelivery.rulesList){
-            $('.product-delivery').each(function () {
-              var goodsPrice = Number($(this).data('price'));
-              var withMods = $(this).data('with-mods');
-              if(!goodsPrice){
-                return
-              }
-              var currentDelRules = $.grep(currentDelivery.rulesList, function (el, n) {
-                return goodsPrice >= Number(el.sumMorePrice)
-              })[0];
-              var price = Number(currentDelRules ? currentDelRules.price : currentDelivery.price);
-              var withModText = (withMods) ? 'от ':'';
-              var $priceBlock = $('<span>').addClass('price RUB').html(withModText +'<span>' + price + '</span>');
-              var priceBlockTemplate = $priceBlock.get()[0].outerHTML;
-              if(price){
-                $(this).html('<span class="material-icons">local_shipping</span> Cтоимость доставки:' + priceBlockTemplate);
-              } else {
-                $(this).html('<span class="material-icons">local_shipping</span> Бесплатная доставка');
-              }
-
-              $(this).show()
-              // console.log(goodsPrice, price)
-            })
-
+      if(currentDelivery){
+        $('.product-delivery').each(function () {
+          var goodsPrice = Number($(this).data('price'));
+          var withMods = $(this).data('with-mods');
+          if(!goodsPrice){
+            return
           }
+          var currentDelRules = $.grep(currentDelivery.rulesList || [], function (el, n) {
+            return goodsPrice >= Number(el.sumMorePrice)
+          })[0];
+          var price = Number(currentDelRules ? currentDelRules.price : currentDelivery.price);
+          var withModText = (withMods) ? 'от ':'';
+          var $priceBlock = $('<span>').addClass('price RUB').html(withModText +'<span>' + price + '</span>');
+          var priceBlockTemplate = $priceBlock.get()[0].outerHTML;
+
+          if(price){
+            $(this).html('<span class="material-icons">local_shipping</span> Cтоимость доставки:' + priceBlockTemplate);
+          } else {
+            $(this).html('<span class="material-icons">local_shipping</span> Бесплатная доставка');
+          }
+          $(this).show()
+          // console.log(goodsPrice, price)
+        })
+
+      }
     }
   </script>  
   {% ENDIF %}
