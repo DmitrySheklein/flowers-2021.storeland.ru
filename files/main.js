@@ -320,7 +320,7 @@ $(function(){
 });
 
 // Уведомить о поступлении товара
-$(document).on('click', '.empty, .goodsDataMainModificationEmpty', function(evt){
+$(document).on('click', 'a.empty, .goodsDataMainModificationEmpty', function(evt){
   evt.preventDefault();
   evt.stopPropagation()
   var $formBlock = $(this).closest('.goodsListForm, .goodsDataForm');
@@ -338,6 +338,7 @@ $(document).on('click', '.empty, .goodsDataMainModificationEmpty', function(evt)
     }
   });
 })
+
 // Основные функции
 function MainFunctions() {
   $(function(){

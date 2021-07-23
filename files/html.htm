@@ -781,7 +781,12 @@
                       {% IFNOT index_page_sale_goods.goods_attr_list_empty %}
                           {% FOR goods_attr_list %}
                           {% IF index_page_sale_goods.goods_attr_list.NAME= Время доставки %}                         
+                          <span class="product-deltime-name">
                             Этот букет доставят за
+                          </span>                 
+                          <span class="product-deltime-name-mobile">
+                            Доставка за
+                          </span> 
                             <span class="product-deltime-value">
                               {index_page_sale_goods.goods_attr_list.VALUE}
                             </span>                                
@@ -1029,7 +1034,12 @@
                         {% IFNOT index_page_goods.goods_attr_list_empty %}
                             {% FOR goods_attr_list %}
                             {% IF index_page_goods.goods_attr_list.NAME= Время доставки %}                         
+                            <span class="product-deltime-name">
                               Этот букет доставят за
+                            </span>                 
+                            <span class="product-deltime-name-mobile">
+                              Доставка за
+                            </span> 
                               <span class="product-deltime-value">
                                 {index_page_goods.goods_attr_list.VALUE}
                               </span>                                
@@ -1236,7 +1246,12 @@
                       {% IFNOT index_page_new_goods.goods_attr_list_empty %}
                           {% FOR goods_attr_list %}
                           {% IF index_page_new_goods.goods_attr_list.NAME= Время доставки %}                         
+                          <span class="product-deltime-name">
                             Этот букет доставят за
+                          </span>                 
+                          <span class="product-deltime-name-mobile">
+                            Доставка за
+                          </span> 
                             <span class="product-deltime-value">
                               {index_page_new_goods.goods_attr_list.VALUE}
                             </span>                                
@@ -1444,7 +1459,12 @@
                         {% IFNOT index_page_favorites_goods.goods_attr_list_empty %}
                             {% FOR goods_attr_list %}
                             {% IF index_page_favorites_goods.goods_attr_list.NAME= Время доставки %}                         
+                            <span class="product-deltime-name">
                               Этот букет доставят за
+                            </span>                 
+                            <span class="product-deltime-name-mobile">
+                              Доставка за
+                            </span> 
                               <span class="product-deltime-value">
                                 {index_page_favorites_goods.goods_attr_list.VALUE}
                               </span>                                
@@ -2696,9 +2716,9 @@
           var withModText = (withMods) ? 'от ':'';
           var $priceBlock = $('<span>').addClass('price RUB').html(withModText +'<span>' + price + '</span>');
           var priceBlockTemplate = $priceBlock.get()[0].outerHTML;
-
+          var $deliveryBlock = $('<div>').html('<span class="d">Cтоимость доставки:</span><span class="m">Доставка:</span>')
           if(price){
-            $(this).html('<span class="material-icons">local_shipping</span> Cтоимость доставки:' + priceBlockTemplate);
+            $(this).html('<span class="material-icons">local_shipping</span>' + $deliveryBlock.html() + priceBlockTemplate);
           } else {
             $(this).html('<span class="material-icons">local_shipping</span> Бесплатная доставка');
           }

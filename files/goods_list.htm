@@ -272,7 +272,12 @@
                     {% IFNOT goods.goods_attr_list_empty %}
                         {% FOR goods_attr_list %}
                         {% IF goods.goods_attr_list.NAME= Время доставки %}                         
+                        <span class="product-deltime-name">
                           Этот букет доставят за
+                        </span>                 
+                        <span class="product-deltime-name-mobile">
+                          Доставка за
+                        </span> 
                           <span class="product-deltime-value">
                             {goods.goods_attr_list.VALUE}
                           </span>                                
@@ -375,7 +380,7 @@
                             Этот букет доставят за
                           </span>                 
                           <span class="product-deltime-name-mobile">
-                            Доставят за
+                            Доставка за
                           </span>      
                           <span class="product-deltime-value">
                             {goods.goods_attr_list.VALUE}
@@ -787,6 +792,24 @@
                             <span class="ico-sale">Акция</span>
                     {% ENDIF %}
                     </div>
+                    <!-- Выводим характеристику времени доставки -->
+                    <div class="product-deltime">
+                      {% IFNOT goods.goods_attr_list_empty %}
+                          {% FOR goods_attr_list %}
+                          {% IF goods.goods_attr_list.NAME= Время доставки %}                         
+                          <span class="product-deltime-name">
+                            Этот букет доставят за
+                          </span>                 
+                          <span class="product-deltime-name-mobile">
+                            Доставка за
+                          </span> 
+                            <span class="product-deltime-value">
+                              {goods.goods_attr_list.VALUE}
+                            </span>                                
+                          {% ENDIF %}                   
+                          {% ENDFOR %}
+                      {% ENDIF %}
+                    </div>                    
                     <div class="product-shop">
                     <meta itemprop="name" content="{goods.NAME}">
                     <meta itemprop="description" content="{% IF goods.DESCRIPTION_SHORT %}{goods.DESCRIPTION_SHORT}{% ELSE %}Описание отсутствует{% ENDIF %}">
