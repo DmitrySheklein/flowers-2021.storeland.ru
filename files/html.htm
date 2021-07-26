@@ -535,7 +535,7 @@
       <div class="container">
         <div class="index-banner-container">
           <div class="slideshow">
-            <div class="slideshow-item lozad" data-background-image="{ASSETS_IMAGES_PATH}banner-main.jpg">
+            <div class="slideshow-item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide-1.jpg">
               <div class="slideshow-inner">
                 <div class="slideshow-title">
                   Цветы <br> по поводу и без!
@@ -609,7 +609,7 @@
                 <div class="main-featuresInner">
                   <div class="main-featuresIcon">
                     <!-- <img src="/design/features-1.svg"> -->
-                    <img src="{ASSETS_IMAGES_PATH}preim1.png">
+                    <img class="lozad" data-src="{ASSETS_IMAGES_PATH}preim1.png">
                   </div>
                   <div class="main-featuresTitle">Гарантия качества <br> 100% свежий букет</div>
                 </div>
@@ -618,7 +618,7 @@
                 <div class="main-featuresInner">
                   <div class="main-featuresIcon">
                     <!-- <img src="/design/features-2.svg"> -->
-                    <img src="{ASSETS_IMAGES_PATH}preim2.png">
+                    <img class="lozad" data-src="{ASSETS_IMAGES_PATH}preim2.png">
                   </div>
                   <div class="main-featuresTitle">Розы от 80 рублей! <br> У нас низкие цены!</div>
                 </div>
@@ -627,7 +627,7 @@
                 <div class="main-featuresInner">
                   <div class="main-featuresIcon">
                     <!-- <img src="/design/features-3.svg"> -->
-                    <img src="{ASSETS_IMAGES_PATH}preim3.png">
+                    <img class="lozad" data-src="{ASSETS_IMAGES_PATH}preim3.png">
                   </div>
                   <div class="main-featuresTitle">Бесплатная доставка <br> от 2500 рублей</div>
                 </div>
@@ -636,7 +636,7 @@
                 <div class="main-featuresInner">
                   <div class="main-featuresIcon">
                     <!-- <img src="/design/features-4.svg"> -->
-                    <img src="{ASSETS_IMAGES_PATH}preim4.png">
+                    <img class="lozad" data-src="{ASSETS_IMAGES_PATH}preim4.png">
                   </div>
                   <div class="main-featuresTitle ">Пришлем фото букета перед отправкой</div>
                 </div>
@@ -1569,7 +1569,7 @@
         <div class="index-callback__wrap">  
           <div class="row">
             <div class="index-callback__img-wrap col-lg-5 col-md-6 col-xs-12">
-              <img class="index-callback__img" src="{ASSETS_IMAGES_PATH}callback-index.png" alt="">
+              <img class="index-callback__img lozad" data-src="{ASSETS_IMAGES_PATH}callback-index.png" alt="">
             </div>
             <div class="callback-block col-lg-7 col-md-6 col-xs-12">
               <h3 class="callback-block__title">Не нашли подходящий букет?</h3>
@@ -1914,7 +1914,7 @@
                       <div class="post-content">
                         <div class="post-content-header">
                           {% IF news_list_shop.SHOW_TIME %}<div class="date">{news_list_shop.TIME | date("d")}.{news_list_shop.TIME | date("m")}.{news_list_shop.TIME | date("y")}</div>{% ENDIF %}
-                          <img class="news-image owl-lazy" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}">
+                          <img class="news-image lozad" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}">
                         </div>
                         <div class="post-content-body">
                           <a class="title" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">{news_list_shop.TITLE}</a>
@@ -1935,7 +1935,7 @@
                       <div class="post-content">
                         <div class="post-content-header">
                           {% IF news_list_articles.SHOW_TIME %}<div class="date">{news_list_articles.TIME | date("d")}.{news_list_articles.TIME | date("m")}.{news_list_articles.TIME | date("y")}</div>{% ENDIF %}
-                          <img class="news-image owl-lazy" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}">
+                          <img class="news-image lozad" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}">
                         </div>
                         <div class="post-content-body">
                           <a class="title" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;">{news_list_articles.TITLE}</a>
@@ -1957,7 +1957,7 @@
                       <div class="post-content">
                         <div class="post-content-header">
                           {% IF news_list_mass_media.SHOW_TIME %}<div class="date">{news_list_mass_media.TIME | date("d")}.{news_list_mass_media.TIME | date("m")}.{news_list_mass_media.TIME | date("y")}</div>{% ENDIF %}
-                          <img class="news-image owl-lazy" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}">
+                          <img class="news-image lozad" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}">
                         </div>
                         <div class="post-content-body">
                           <a class="title" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;">{news_list_mass_media.TITLE}</a>
@@ -1980,7 +1980,7 @@
                       <div class="post-content">
                         <div class="post-content-header">
                           {% IF news_list_all.SHOW_TIME %}<div class="date">{news_list_all.TIME | date("d")}.{news_list_all.TIME | date("m")}.{news_list_all.TIME | date("y")}</div>{% ENDIF %}
-                          <img class="news-image owl-lazy" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}">
+                          <img class="news-image lozad" src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo-other.png{% ENDIF %}">
                         </div>
                         <div class="post-content-body">
                           <a class="title" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;">{news_list_all.TITLE}</a>
@@ -2056,7 +2056,7 @@
             {% ENDIF %}         
           </div>
           <div class="index-contacts-map">
-            <iframe src="https://api-maps.yandex.ru/frame/v1/-/CZRYYCOw" width="100%" height="100%" frameborder="0"></iframe>
+            <iframe class="lozad" data-src="https://api-maps.yandex.ru/frame/v1/-/CZRYYCOw" width="100%" height="100%" frameborder="0"></iframe>
           </div>
         </div>    
       </div>

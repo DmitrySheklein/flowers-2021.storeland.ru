@@ -1085,7 +1085,7 @@ color: #ff9daf;
   body.modal-open {overflow:hidden;}
   .header-catalogBtn {padding:0;}
   .header-catalogMenuTitle {display: block}
-  .header-catalogMenuTitle a {display: block;padding: 10px 15px;font-size: 22px;font-family: 'Opel Sans',Arial,sans-serif;border-bottom: 1px solid #edf1f4}
+  .header-catalogMenuTitle a {display: block;padding: 10px 15px;font-size: 22px;font-family: 'Arimo',Arial,sans-serif;border-bottom: 1px solid #edf1f4}
   .header-closeBtn {position: absolute;top: 0px;right: 5px;font-size: 25px;line-height: 47px;height: 47px;width: 45px;text-align: center}
   .header-catalogMenu .sub {display: none}
   .header-catalogMenu li.active > ul.sub {display: block}
@@ -1666,7 +1666,21 @@ color: #ff9daf;
 }
 #news .post-content-header {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;margin-bottom: 10px;padding: 0;}
 #news .block-news .news-image {display: block;width: auto;margin-bottom: 10px;overflow: hidden;margin: 0 auto;background: #fff;}
-#news .block-news .date {display: block;text-align: left;margin-bottom: 0;color: #fff;font-size: 16px;font-weight: 400;line-height: 20px;position: absolute;z-index: 1;background-color: #ff6277;padding: 0 5px;top: 9px;}
+#news .block-news .date {
+  display: block;
+  text-align: left;
+  margin-bottom: 0;
+  color: #fff;
+  font-weight: 400;
+  line-height: 20px;
+  position: absolute;
+  z-index: 1;
+  background-color: #ff6277;
+  padding: 0 5px;
+  top: 9px;
+  font-family: Rubik;
+  font-size: 13px;  
+}
 #news .post-content-body {
   padding: 0 12px 15px;
   text-align: left;
@@ -1674,7 +1688,7 @@ color: #ff9daf;
   display: flex;
   flex-direction: column;
 }
-#news .block-news .title {display: block;overflow: hidden;line-height: 20px;margin-bottom: 15px;font-family: "Arimo";font-size: 18px;font-size: 15px;line-height: 18px;font-weight: 400;color: #ff5d72;text-align: left;}
+#news .block-news .title {display: block;overflow: hidden;line-height: 20px;margin-bottom: 15px;font-family: "Arimo";font-size: 15px;line-height: 18px;font-weight: 400;color: #ff5d72;text-align: left;}
 #news .block-news .title:hover {
   color: #1ca481;  
 }
@@ -2957,11 +2971,11 @@ min-height: 164px;
 
 .product-view .product-shop {margin-bottom: 30px;}
 .product-view .product-header {padding-bottom: 15px;}
-.product-view  .product-name h1 {display: block;margin: 0;font-size: 24px;font-weight: 700;font-family: 'Opel Sans',Arial,sans-serif;text-transform: none;overflow: hidden;}
-/*@media all and (max-width:1199px) {.product-view  .product-name h1 {font-size: 21px}}*/
-/*@media all and (max-width:991px) {.product-view  .product-name h1 {font-size: 18px}}*/
-/*@media all and (max-width:481px) {.product-view  .product-name h1 {font-size: 16px}}*/
-.product-view .product-name {padding-right: 20px;margin-bottom: 0px;}
+.product-view  .product-name h1 {display: block;margin: 0;font-size: 24px;font-weight: 700;font-family: 'Arimo',Arial,sans-serif;text-transform: none;overflow: hidden;}
+@media all and (max-width:1199px) {.product-view  .product-name h1 {font-size: 21px}}
+@media all and (max-width:991px) {.product-view  .product-name h1 {font-size: 18px}}
+@media all and (max-width:481px) {.product-view  .product-name h1 {font-size: 16px}}
+.product-view .product-name {padding-right: 0px;margin-bottom: 0px;}
 .product-view .product-header .product-name.quick-view h1 {font-size: 20px;}
 .product-view .product-header .product-action {text-align: right;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: end;-ms-flex-pack: end;justify-content: flex-end}
 .product-view .product-header .product-action a {color: #93a6b3;opacity: 0.7;width: 30px;height: 30px;text-align: center;line-height: 30px;font-size: 16px;}
@@ -3143,7 +3157,7 @@ min-height: 164px;
       border-color: #fff;
 }
 .product-view .product-order .add-to-box .add-to-cart .more {display: none;margin-top: 10px;}
-@media all and (max-width: 410px){
+@media all and (max-width: 480px){
   .product-view .product-order .add-to-box .add-to-cart .button.quick {margin-left:0;}
   .product-view .product-order .add-to-box .add-to-cart .button {width: 100%;}
   .product-view .product-order .add-to-box .add-to-cart .button:not(:last-of-type) {margin-bottom: 15px;}
@@ -3301,7 +3315,7 @@ min-height: 164px;
 /* Вкладки табы */
 .product-tabs {padding: 30px 0 30px;clear: both;    background-color: #f2f5f7;}
 @media all and (max-width: 481px){
-  .product-tabs {padding-top: 0;}
+  .product-tabs {padding-top: 30px;}
 }
 .product-tabs .tabs-wrap {background-color: transparent;}
 .product-tabs + .related {margin-top: 0px;}
@@ -3568,7 +3582,7 @@ min-height: 164px;
   }
 }
 @media all and (max-width: 991px) {
-  .col-left .block .content .content-title {display: none;padding-bottom: 10px;font-size: 22px;font-family: 'Opel Sans',Arial,sans-serif;margin-bottom: 15px;font-weight: 700;}
+  .col-left .block .content .content-title {display: none;padding-bottom: 10px;font-size: 22px;font-family: 'Arimo',Arial,sans-serif;margin-bottom: 15px;font-weight: 700;}
 }
 /* С этим товаром смотрят*/
 .related {padding-top: 30px;}
@@ -4084,7 +4098,6 @@ min-height: 164px;
 /*** Правая часть ***/
 .page-content {padding: 0px;}
 .page-content.no-padding {padding: 0;}
-/*.page-content.no-padding #page-title {padding: 15px 15px 0;}*/
 
 /** Каталог **/
 .col-left .block .content {
