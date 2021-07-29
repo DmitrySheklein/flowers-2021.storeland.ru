@@ -3206,6 +3206,9 @@ min-height: 164px;
   margin-bottom: 20px;  
 }
 .related-box__title .navigation {margin-left: auto;}
+.related-box__title .navigation.disabled {
+  display: none;
+}
 .related-goods {
   background: #fff;
   border: 1px solid #dadada;
