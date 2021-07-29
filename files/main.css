@@ -4054,7 +4054,9 @@ min-height: 164px;
   display: block;
   overflow: hidden;
   font-size: 16px;
-  font-family: 'Arial',Arial,sans-serif;  
+  font-family: 'Arial',Arial,sans-serif;
+  width: 100%;
+  text-align: left; 
 }
 
 @media all and (max-width: 641px){

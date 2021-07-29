@@ -550,7 +550,54 @@
             </div>
           </div>
           <div class="banner-list owl-carousel">
-  
+            <!-- Для полностью ручной установки категорий заменить 0 на 1 -->
+            {% IF BANNER_LIST_FROM_CATEGORY = 0 %}
+              {% FOR catalog_full %}
+              <!-- Для вывода по названию категории -->
+              {% IF catalog_full.NAME = Розы || catalog_full.NAME = Сборные букеты || catalog_full.NAME = Дополнения к букету || catalog_full.NAME = Свадебные композиции %}
+              <!-- Для вывода первых 4х категорий раскомментировать нижнюю строку и (закомментировать предыдущую строку) -->
+              <!-- {% IF catalog_full.LEVEL = 0 && catalog_full.HIDE = 0 && catalog_full.index < 5 %} -->
+              <div class="banner-list-item lozad"
+               {% IF catalog_full.NAME = Розы %}
+               data-background-image="{ASSETS_IMAGES_PATH}banner2.jpg"
+               {% ELSEIF catalog_full.NAME= Сборные букеты %}
+               data-background-image="{ASSETS_IMAGES_PATH}banner1.jpg"
+               {% ELSEIF catalog_full.NAME= Дополнения к букету %}
+               data-background-image="{ASSETS_IMAGES_PATH}banner3.jpg"
+               {% ELSEIF catalog_full.NAME= Свадебные композиции %}
+               data-background-image="{ASSETS_IMAGES_PATH}banner4.jpg"
+               {% ELSE %}
+               data-background-image="{catalog_full.IMAGE_MEDIUM}"
+               {% ENDIF %}
+               >
+                <a href="{catalog_full.URL}">
+                  <div class="banner-list-inner">
+                    <div class="banner-list-content">
+                      <div class="banner-list-title">{catalog_full.NAME}</div>
+                      {% IF catalog_full.NAME= Розы %}
+                      <p class="banner-list-text">
+                        Букеты из роз от 700 рублей
+                      </p>
+                      {% ELSEIF catalog_full.NAME= Сборные букеты %}
+                      <p class="banner-list-text">
+                        Самые оригинальные композиции в городе!
+                      </p>                      
+                      {% ELSEIF catalog_full.NAME= Дополнения к букету %}
+                      <p class="banner-list-text">
+                        Игрушки, топеры, шары, конфеты и др.
+                      </p>                      
+                      {% ELSEIF catalog_full.NAME= Свадебные композиции %}
+                      <p class="banner-list-text">
+                        Букет невесты от 1000 рублей
+                      </p>                      
+                      {% ENDIF %}
+                    </div>
+                  </div>
+                </a>
+              </div> 
+              {% ENDIF %}           
+              {% ENDFOR %}
+            {% ELSE %}
             <div class="banner-list-item lozad" data-background-image="{ASSETS_IMAGES_PATH}banner1.jpg">
               <a href="#">
                 <div class="banner-list-inner">
@@ -595,7 +642,7 @@
                 </div>
               </a>
             </div>
-  
+            {% ENDIF %} 
           </div>
         </div>
       </div>
