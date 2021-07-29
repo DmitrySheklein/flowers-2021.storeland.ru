@@ -10,8 +10,7 @@ $(function(){
 $.extend($.fancybox.defaults, {
   closeBtn: true,
   helpers:  {
-    overlay: {
-      css: { 'background': '#333', 'opacity': 0.5 },
+    overlay: {      
       locked: false
      }
   }
