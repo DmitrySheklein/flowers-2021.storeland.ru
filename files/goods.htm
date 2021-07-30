@@ -239,8 +239,12 @@
           <!-- Добавление товара в Корзину -->
           <div class="add-to-box actions {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}add-to-form{% ENDIF %}" >
             <input type="hidden" name="form[goods_mod_id][{GOODS_MOD_ID}]" value="1" class="goodsDataMainModificationId" />
-            <!--Нет в наличии-->
-            {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}<div class="goodsDataMainModificationEmpty" title="Нет в наличии"{% IF GOODS_MOD_REST_VALUE!=0 %}style="display:none;"{% ENDIF %}><span>Нет в наличии</span></div>{% ENDIF %}
+            <!-- Уведомить -->
+            {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}
+            <div class="goodsDataMainModificationEmpty" {% IF GOODS_MOD_REST_VALUE!=0 %}style="display:none;"{% ENDIF %}>
+              <span>Уведомить</span>
+            </div>
+            {% ENDIF %}
             <!-- Добавление товара в корзину -->
             <div class="add-to-cart" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && GOODS_MOD_REST_VALUE=0 %}style="display:none;"{% ENDIF %}>
               <div class="qty-wrap">

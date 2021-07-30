@@ -323,15 +323,15 @@ $(document).on('click', 'a.empty, .goodsDataMainModificationEmpty', function(evt
   evt.preventDefault();
   evt.stopPropagation()
   var $formBlock = $(this).closest('.goodsListForm, .goodsDataForm');
-  var goodsMod = $formBlock.find('[name="form[goods_mod_id]"]').val();
-  console.log(goodsMod);
+  var goodsMod = $formBlock.find('[name="form[goods_mod_id]"]').val() || $('.goodsDataMainModificationId').attr('name').replace(/[^\d.]/ig, '');
+  // console.log(goodsMod);
   $('#fancy-notify-goods-mod').val(goodsMod)
-  $.fancybox({
+  $.fancybox.open($('#fancybox-notify'), {
     padding: 0,
     autoSize: true,
     width: '100%',
     maxWidth: 1100,
-    content: $('#fancybox-notify').html(),
+    // content: $('#fancybox-notify').html(),
     afterShow: function() {
 
     }
@@ -346,7 +346,7 @@ function MainFunctions() {
   var titleContent = '<span class="title-text">'+ $title.html() +'</span>';
   $title.html(titleContent)
   // Валидация формы на странице оформления заказа, а так же формы на страницы связи с администрацией
-  $("#myform, .feedbackForm, .clientForm, #quickform, .goodsDataOpinionAddForm, .callback-info .callbackForm, .callback-form, #fancybox-callback .callbackForm").each(function () {
+  $("#myform, .feedbackForm, .clientForm, .notifyForm,.searchForm, #quickform, .goodsDataOpinionAddForm, .callback-info .callbackForm, .callback-form, #fancybox-callback .callbackForm").each(function () {
     $(this).validate({
       rules: {
         reg_name: "required",
@@ -3125,12 +3125,11 @@ $(function(){
 function ppModal() {
   $(".pp a").click(function(event){
     event.preventDefault();
-    var data = $("#fancybox-pp").html();
-    $.fancybox({
+
+    $.fancybox($("#fancybox-pp"), {
       autoSize: true,
       maxWidth: 700,
       padding: 15,
-      content: data
     });
   });
 }
@@ -3140,13 +3139,12 @@ $(function(){
     if(!$.cookie('modal')){
       // Если cookie не установлено появится окно с задержкой 3 секунды
       var delay = 3000;
-      var data = $("#fancybox-popup").html();
+
       setTimeout(function(){
-        $.fancybox({
+        $.fancybox($("#fancybox-popup"), {
           autoSize: true,
           maxWidth: 700,
           padding: 15,
-          content: data
         });       
       }, delay)
       

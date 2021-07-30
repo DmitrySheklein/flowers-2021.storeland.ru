@@ -224,7 +224,7 @@
                               {CART_COUNT_TOTAL}
                             </span>
                             <span class="title-name">
-                              товар 
+                              товар{CART_COUNT_TOTAL| gen_word_end("","а","ов")}
                             </span>
                           {% ELSE %}
                             Корзина 
@@ -323,14 +323,14 @@
 
                 <div class="header-action">
                   <!-- Поиск -->
-                  <div class="header-search " id="headerSearch">
+                  <div class="header-action__item header-search" id="headerSearch">
                       <div class="search">
                         <a class="header-searchLink" href="{SEARCH_URL}" title="Поиск по магазину" rel="nofollow">                
                           <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
                             <use xlink:href="#img-loupe"></use>
                           </svg>
                         </a>                  
-                        <form id="search_mini_form" action="{SEARCH_URL}" method="get" title="Поиск по магазину">
+                        <form class="searchForm" id="search_mini_form" action="{SEARCH_URL}" method="get" title="Поиск по магазину">
                           <input type="hidden" name="goods_search_field_id" value="0">
                           <input required type="text" name="q" value="{SEARCH_QUERY}" class="input search-string" placeholder="Поиск по магазину" autocomplete="off">
                           <button type="reset" title="Закрыть" class="search-close">
@@ -351,7 +351,7 @@
                   <!-- /Поиск -->
 
                   <!-- Навигация -->
-                  <button class="header-nav-btn" title="Меню">
+                  <button class="header-action__item header-nav-btn" title="Меню">
                     <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
                       <use xlink:href="#img-menu"></use>
                     </svg>
@@ -382,20 +382,23 @@
                       {% ENDFOR %} 
                     </ul>
                     <div class="header-nav__search">
-                      <form action="{SEARCH_URL}" method="get">
+                      <form action="{SEARCH_URL}" method="get" class="searchForm">
                         <input type="hidden" name="goods_search_field_id" value="0">
-                        <input required type="text" name="q" value="{SEARCH_QUERY}" class="input search-string" placeholder="Поиск по магазину" autocomplete="off">
-                        <button type="reset" title="Закрыть" class="search-close">
+                        <input required type="text" name="q" value="{SEARCH_QUERY}" class="input header-nav__search-string search-string" placeholder="Поиск по магазину" autocomplete="off">
+                        <button type="reset" title="Закрыть" class="header-nav__search-close">
                           <span class="header-searchIcon">
                             <i class="material-icons">
                               close
                             </i>                          
                           </span>
                         </button>
-                        <button type="submit" title="Искать" class="search-submit">
-                          <svg class="header-search-icon" width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
+                        <button type="submit" title="Искать" class="header-nav__search-submit">
+                          <svg class="header-nav__search-icon" width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
                             <use xlink:href="#img-loupe"></use>
                           </svg>   
+                          <span class="header-nav__search-btn-text">
+                            Искать                           
+                          </span>                          
                         </button>
                       </form>                      
                     </div>
@@ -403,7 +406,7 @@
                   <!-- /Навигация -->                  
                   
                   <!-- Логин -->
-                  <div class="header-login {% IF CLIENT_IS_LOGIN %}isLogin{% ENDIF %}" id="headerLogin">
+                  <div class="header-action__item header-login {% IF CLIENT_IS_LOGIN %}isLogin{% ENDIF %}" id="headerLogin">
                     {% IFNOT CLIENT_IS_LOGIN %}
                     <div class="header-loginMenu">
                       <div class="header-loginList">
@@ -427,7 +430,7 @@
                     {% ENDIF %}              
                   </div>
                   <!-- /Логин -->      
-                  <span class="mobile-cart">  
+                  <span class="header-action__item mobile-cart">  
                     <a href="{CART_URL}" title="Перейти в Корзину" class="mobile-cart__link">
                       <svg class="mobile-cart__icon icon">
                         <use xlink:href="#shopping-bag"></use>
@@ -701,7 +704,8 @@
           <div class="content">
             <div class="block-title">              
               <h2 class="title">
-                <span class="title-text">Распродажа</span>
+                <!-- <span class="title-text">Распродажа</span> -->
+                <span class="title-text">Доставка за 30 минут</span>
               </h2>
               <div class="navigation owl-nav"></div>
             </div>
@@ -2365,7 +2369,7 @@
       <strong class="title">Уведомить о поступлении</strong>                   
     </div>
     <div class="fancybox-body">
-      <form method="post" action="{CALLBACK_URL}" class="callbackForm" enctype="multipart/form-data">
+      <form method="post" action="{CALLBACK_URL}" class="notifyForm" enctype="multipart/form-data">
         <input type="hidden" name="hash" value="{HASH}"/>
         <input type="hidden" name="return_to" value="{CALLBACK_URL}" class="callbackredirect"/>
         <input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="Уведомить о поступлении товара"/>        
@@ -2375,8 +2379,8 @@
         <!-- <input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="Уведомить по Email" /> -->
         <!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
         {ANTISPAM_CODE}
-        <div class="callback-input">     
-          <input id="callback_phone_notify" class="input input-material callback_phone required" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}"  maxlength="50" placeholder="Ваш телефон" autocomplete="off" required>          
+        <div class="callback-input">
+          <input id="callback_phone_notify" class="input input-material required" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}"  maxlength="50" placeholder="Ваш телефон" autocomplete="off" required>          
         </div>
         <div class="pp">
           <input type="checkbox" id="pp-check-callback-notify" class="pp-checkbox checkbox-hidden required" name="pp-check" required="" aria-required="true" checked>
