@@ -2590,7 +2590,7 @@ background: #fff;}
 /** Товары таблицей **/
 .products-grid {position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-pack: start;-ms-flex-pack: start;justify-content: flex-start;-webkit-box-align: stretch;-ms-flex-align: stretch;align-items: stretch;-ms-flex-wrap: wrap;flex-wrap: wrap;text-align: center}
 .products-grid.row .item {margin-bottom: 30px;}
-.products-grid .item {position: relative;}
+.products-grid .item {position: relative;cursor: pointer;}
 .products-grid.owl-carousel .item .item-inner {width: 100%;}
 .products-grid .item .product-deltime {
   height: 14px;
@@ -2695,8 +2695,12 @@ background: #fff;}
 }
 /** Товары списком **/
 .products-list {margin: 0;padding: 0;list-style: none;list-style-position: inside;}
-.products-list .item {position: relative;overflow: hidden;    margin-bottom: 20px;
-min-height: 164px;
+.products-list .item {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+  min-height: 164px;
+  cursor: pointer;
 }
 .products-list .item:hover .item-inner {
   border: 1px solid #2abf99;
@@ -3661,6 +3665,7 @@ min-height: 164px;
   border-radius: 6px;
   overflow: hidden;
   transition: all .3s ease;
+  cursor: pointer;
 }
 .viewed .viewed-items .item-inner {
   position: relative;

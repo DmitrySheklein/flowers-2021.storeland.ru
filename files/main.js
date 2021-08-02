@@ -869,7 +869,13 @@ $(function(){
   });
   // Возврашаем пользователя на страницу с которой был сделан обратный звонок
   $('.callbackredirect').val(document.location.href);
+  $(document).on('click', '.products-grid .item, .products-list .item, .viewed-items .item', function () {
+    var link = $(this).find('.product-name a').attr('href') || $(this).find('a[itemprop="url"]').attr('href');
 
+    if(link){
+      window.location = link;
+    }
+  })
   // Добавление товара в корзину
   $('.wrapper').on('click', '.add-cart', function() {
     var form = $(this).closest('form');
@@ -2868,42 +2874,6 @@ function indexPage() {
     });            
   })
 
-  $(".products-container.pdt-best, .products-container.pdt-new, .products-container.pdt-index ").each(function () {
-    var productId =  $(this).attr('data-id');
-    var $navBlock = $(this).closest('#producttabs').find('.navigation[data-id="'+ productId +'"]');
-
-    // 
-    $(this).find('.products-grid').owlCarousel({        
-      loop: false,
-      rewind: true,
-      lazyLoad: true,
-      nav: true,
-      dots: false,
-      autoplay: false,
-      autoplayTimeout: 3000,
-      autoplayHoverPause: true,
-      navContainer: $navBlock,
-      navText: [, ],        
-      navText: ['<span class="material-icons">chevron_left</span>','<span class="material-icons">chevron_right</span>'],
-      smartSpeed: 500,
-      mouseDrag: true,
-      touchDrag: true,
-      pullDrag: true,
-      responsiveClass: true,
-      responsiveRefreshRate: 100,
-      responsive: {
-        0:{items:1, margin: 15},
-        320:{items:2, margin: 15},
-        480:{items:2, margin: 15},
-        540:{items:2, margin: 15},
-        768:{items:3,margin: 30},
-        992:{items:4,margin: 30},
-        1200:{items:4,margin: 30}
-      },          
-      onInitialized: changeNavBtn
-    });            
-  })  
-
   function changeNavBtn(event){
     var items = event.item.count;
     var size = event.page.size;
@@ -2979,7 +2949,10 @@ function OpenMenu() {
     $('.header-nav, .header-overlay').toggleClass('_visible');
 
     if(getClientWidth() <= 991 ){
-      $('.header-nav').find('.header-nav__search').before($('.header-sectionsList'))
+      $('.header-nav').find('.header-nav__search').before($('.header-sectionsList'));
+      $('.header-nav__tab._catalog').addClass('_active').siblings().removeClass('_active');
+      $('.header-nav__list').hide();
+      $('.header-sectionsList').show();      
     }
   })
   $('.header-overlay, .header-nav__close-btn').on('click', function () {

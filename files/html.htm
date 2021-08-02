@@ -962,9 +962,9 @@
         <div class="container">
             <div class="content">
               <div class="preloader"><span class="content-loading"></span></div>
-              <div class="products-grid owl-carousel">
+              <div class="products-grid row">
                 {% FOR index_page_goods %}
-                <div class="item {% IF index_page_goods.MIN_REST_VALUE=0 %}empty{% ENDIF %} ">
+                <div class="item col-sm-4 col-sms-6 col-smb-6 col-md-3 {% IF index_page_goods.MIN_REST_VALUE=0 %}empty{% ENDIF %} ">
                   <div class="item-inner" itemscope itemtype="https://schema.org/Product">
                     <form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product-form-{index_page_goods.MIN_PRICE_NOW_ID} goodsListForm">
                       <input type="hidden" name="hash" value="{HASH}" />
@@ -1175,9 +1175,9 @@
         <div class="container">
             <div class="content">
               <div class="preloader"><span class="content-loading"></span></div>
-              <div class="products-grid owl-carousel">
+              <div class="products-grid row">
                 {% FOR index_page_new_goods %}
-                <div class="item {% IF index_page_new_goods.MIN_REST_VALUE=0 %}empty{% ENDIF %} ">
+                <div class="item col-sm-4 col-sms-6 col-smb-6 col-md-3 {% IF index_page_new_goods.MIN_REST_VALUE=0 %}empty{% ENDIF %} ">
                   <div class="item-inner" itemscope itemtype="https://schema.org/Product">
                     <form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product-form-{index_page_new_goods.MIN_PRICE_NOW_ID} goodsListForm">
                       <input type="hidden" name="hash" value="{HASH}" />
@@ -1387,9 +1387,9 @@
             <div class="content">
 
               <div class="preloader"><span class="content-loading"></span></div>
-              <div class="products-grid owl-carousel">
+              <div class="products-grid row">
                 {% FOR index_page_favorites_goods %}
-                <div class="item {% IF index_page_favorites_goods.MIN_REST_VALUE=0 %}empty{% ENDIF %}">
+                <div class="item col-sm-4 col-sms-6 col-smb-6 col-md-3 {% IF index_page_favorites_goods.MIN_REST_VALUE=0 %}empty{% ENDIF %}">
                   <div class="item-inner" itemscope itemtype="https://schema.org/Product">
                     <form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product-form-{index_page_favorites_goods.MIN_PRICE_NOW_ID} goodsListForm">
                       <input type="hidden" name="hash" value="{HASH}" />
