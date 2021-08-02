@@ -30,11 +30,43 @@
             <div class="fields">
               <label for="contactEmail" class="required">E-mail <em class="contactRegisterNeedElement" >*</em></label>       
               <div class="input-box">
-                <input id="contactEmail" name="form[contact][email]" value="{ORDER_FORM_CONTACT_EMAIL}" maxlength="255" class="required email input" type="text"/>
-                <input style="display:none" id="contactPassWord" type="password" name="form[contact][pass]" value="{ORDER_FORM_CONTACT_PASS}" maxlength="50" minlength="6" class="input" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()"/>
+                <input id="contactEmail" name="form[contact][email]" value="{ORDER_FORM_CONTACT_EMAIL}" maxlength="255" class="required email input" type="text"/>                
               </div>
             </div>
+            <!-- Если в тарифном плане подключен раздел личного кабинета -->
+            {% IF TARIFF_FEATURE_CLIENT_ROOM %}
+              {% IFNOT CLIENT_IS_LOGIN %}
+              <div class="contactWantRegister" style="display:none;">
+                <input class="checkbox-hidden" type="checkbox" id="contactWantRegister" name="form[contact][want_register]" value="1" {% IF ORDER_FORM_CONTACT_WANT_REGISTER %}checked="checked"{% ENDIF %}>
+                <label class="checkbox-name" for="contactWantRegister">Я хочу зарегистрироваться</label>
+              </div>
+              {% ENDIF %}
+            {% ENDIF %}
+            <!-- Если в тарифном плане подключен раздел личного кабинета -->
+            {% IF TARIFF_FEATURE_CLIENT_ROOM %}
+              {% IFNOT CLIENT_IS_LOGIN %}
+                <div class="contactRegisterNeedElement fields" style="display:none;">
+                  <label for="contactPassWord" class="required">Придумайте пароль<em>*</em></label>
+                  <div class="input-box">
+                    <input id="contactPassWord" type="password" name="form[contact][pass]" value="{ORDER_FORM_CONTACT_PASS}" maxlength="50" minlength="6" class="input {% IF ORDER_FORM_CONTACT_WANT_REGISTER %}required{% ENDIF %}" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()"/>
+                    {% IFNOT user_agent_ie %}
+                      <div class="showPassBlock">
+                        <a href="#" rel="<i class='fal fa-eye-slash' aria-hidden='true'></i>" class="OrderShowPass">
+                          <i class="fal fa-eye" aria-hidden="true"></i>
+                        </a>
+                      </div>
+                    {% ENDIF %}                    
+                  </div>
+                </div>
+                <div class="contactRegisterNeedElement" {% IFNOT ORDER_FORM_CONTACT_WANT_REGISTER %}style="display:none;"{% ENDIF %}>
 
+                  <div id="caps_lock"> 
+                    <span class="fal fa-warning"></span>
+                    <strong>Caps Lock включен.</strong>
+                  </div>
+                </div>
+              {% ENDIF %}
+            {% ENDIF %}
           </div>
         </div>
         <!-- Способ доставки-->
@@ -43,9 +75,7 @@
           <div class="manufacturer-list">
             <select class="mainSelect">
               {% FOR order_delivery %}
-                {% IFNOT order_delivery.NAME = Быстрый заказ %}
                   <option id="deliveryId{order_delivery.ID}" delId="{order_delivery.ID}" name="form[delivery][id]" value="{order_delivery.ID}">{order_delivery.NAME}</option>
-                {% ENDIF %}
               {%ENDFOR%}
             </select>
             <div class="zoneSelect">
