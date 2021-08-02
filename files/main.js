@@ -1546,37 +1546,48 @@ $(function(){
 
 
   // Валидация формы на странице оформления заказа
-  $("#quickform").submit(function(){
+  $("#quickform").submit(function() {
     // Если форма невалидна не отправляем её на сервер
-    if(!$(this).valid()) {
+    if (!$(this).valid()) {
       return false;
     }
-
     // Получаем данные формы, которые будем отправлять на сервер
     var formData = $(this).serializeArray();
     // Сообщаем серверу, что мы пришли через ajax запрос
-    formData.push({name: 'ajax_q', value: 1});
-
+    formData.push({
+      name: 'ajax_q',
+      value: 1
+    });
+    var $btn = $("#quickform").find('button[type="submit"]')
     // Аяксом добавляем товар в корзину и вызываем форму быстрого заказа товара
     $.ajax({
-      type    : "POST",
+      type: "POST",
       dataType: 'json',
-      cache    : false,
-      url  	  : $(this).attr('action'),
-      data		: formData,
+      cache: false,
+      url: $(this).attr('action'),
+      data: formData,
+      timeout: 3000,
+      beforeSend: function() {
+        $btn.addClass('disabled').html('Оформляется')
+      },
       success: function(data) {
         // Если заказ был успешно создан
-        if( data.status == 'ok' ) {
+        if (data.status == 'ok') {
           window.location = data.location;
-        } else if( data.status == 'error' ) {
+        } else if (data.status == 'error') {
           alert(data.message);
+          $btn.removeClass('disabled').html('Оформить заказ')
         } else {
           alert('Во время оформления заказа возникла неизвестная ошибка. Пожалуйста, обратитесь в службу технической поддержки.');
         }
+      },
+      error: function() {
+        $btn.removeClass('disabled').html('Оформить заказ')
       }
     });
-    return false;      
+    return false;
   }).validate();
+
 });
 
 $(function() {
