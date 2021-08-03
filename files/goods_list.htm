@@ -128,25 +128,7 @@
       <div class="toolbar-filter-container"></div>
       <!-- END Верхний блок, изменяющий отображение данных выдачи товаров -->
     {% ENDIF %}
-    
-    <!-- Блок навигации по категориям, вложенным в текущую категорию -->
-    {% IFNOT nested_categories_list_empty %}
-    <div class="categories clear">
-      {% FOR nested_categories_list %}
-        <div class="item">
-          <div class="cat-name" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
-            <a href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">{nested_categories_list.NAME}</a>
-          </div>
-          <div class="cat-image">
-            <a href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
-              <img class="goods-cat-image-medium lozad" data-src="{% IF nested_categories_list.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{nested_categories_list.IMAGE_MEDIUM}{% ENDIF %}">  
-            </a>
-          </div>
-        </div>
-      {% ENDFOR %}
-    </div>
-    {% ENDIF %}
-    
+        
     <!-- Вывод товаров -->
     <div class="products-container">
       <div class="products-ajax">
@@ -280,7 +262,8 @@
                         </span> 
                           <span class="product-deltime-value">
                             {goods.goods_attr_list.VALUE}
-                          </span>                                
+                          </span>     
+                        {break}
                         {% ENDIF %}                   
                         {% ENDFOR %}
                     {% ENDIF %}
@@ -384,7 +367,8 @@
                           </span>      
                           <span class="product-deltime-value">
                             {goods.goods_attr_list.VALUE}
-                          </span>                                
+                          </span>
+                        {break}                                
                         {% ENDIF %}                   
                         {% ENDFOR %}
                     {% ENDIF %}
@@ -805,7 +789,8 @@
                           </span> 
                             <span class="product-deltime-value">
                               {goods.goods_attr_list.VALUE}
-                            </span>                                
+                            </span>
+                          {break}                                
                           {% ENDIF %}                   
                           {% ENDFOR %}
                       {% ENDIF %}

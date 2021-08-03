@@ -27,9 +27,7 @@
   <link async href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/design/fonts.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">  
-  <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
   
   <!-- Стили магазина -->
   <link rel="stylesheet" href="{ASSETS_STYLES_PATH}forall.css" type="text/css" />
@@ -839,7 +837,8 @@
                           </span> 
                             <span class="product-deltime-value">
                               {index_page_sale_goods.goods_attr_list.VALUE}
-                            </span>                                
+                            </span> 
+                          {break}                               
                           {% ENDIF %}                   
                           {% ENDFOR %}
                       {% ENDIF %}
@@ -1092,7 +1091,8 @@
                             </span> 
                               <span class="product-deltime-value">
                                 {index_page_goods.goods_attr_list.VALUE}
-                              </span>                                
+                              </span>     
+                            {break}                            
                             {% ENDIF %}                   
                             {% ENDFOR %}
                         {% ENDIF %}
@@ -1304,7 +1304,8 @@
                           </span> 
                             <span class="product-deltime-value">
                               {index_page_new_goods.goods_attr_list.VALUE}
-                            </span>                                
+                            </span>   
+                          {break}                              
                           {% ENDIF %}                   
                           {% ENDFOR %}
                       {% ENDIF %}
@@ -1517,7 +1518,8 @@
                             </span> 
                               <span class="product-deltime-value">
                                 {index_page_favorites_goods.goods_attr_list.VALUE}
-                              </span>                                
+                              </span>  
+                            {break} 
                             {% ENDIF %}                   
                             {% ENDFOR %}
                         {% ENDIF %}
@@ -2692,7 +2694,12 @@
   // Массив страниц с товарами
   var nextPages = catalog_full.map(el => {
     try {
-      var url = new URL(el.href);
+      var hrefUrl = el.href;
+      if(hrefUrl[0] === '/') {
+        hrefUrl = 'https:' + hrefUrl;
+      }
+      var url = new URL(hrefUrl);
+
       return url.pathname + `?only_body=1&goods_view_type=1`
     } catch (error) {
       console.error(error);
@@ -2772,7 +2779,7 @@
           } else {
             $(this).html('<span class="material-icons">local_shipping</span> Бесплатная доставка');
           }
-          $(this).show()
+          $(this).addClass('_show')
           // console.log(goodsPrice, price)
         })
 

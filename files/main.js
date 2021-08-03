@@ -854,6 +854,10 @@ function catalogFunctions(){
         Addto();
         AddCart();
         quantity();
+        // Установим стоимость доставки
+        if(typeof window.calcDeliveryItemsPrice === 'function'){
+          window.calcDeliveryItemsPrice()
+        }
       }
     });
   });  
