@@ -1640,6 +1640,7 @@ function quickOrder(formSelector) {
 		data		: formData,
 		success: function(data) {
 			$.fancybox({
+        wrapCSS: 'quickOrder',
         content : data,
         // При изменении размера окна изменяем размер окна оформления заказа
         afterShow  : function(){
@@ -2701,15 +2702,15 @@ function indexPage() {
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);     
         // Вывод
         $('.sale-counter').each(function(i, el){
-          $(el).find('.days span').text(days);
-          $(el).find('.hours span').text(hours);
-          $(el).find('.minutes span').text(minutes);
-          $(el).find('.seconds span').text(seconds);
+          $(el).find('.days span.sale-counter-num').text(days);
+          $(el).find('.hours span.sale-counter-num').text(hours);
+          $(el).find('.minutes span.sale-counter-num').text(minutes);
+          $(el).find('.seconds span.sale-counter-num').text(seconds);
         })
         // Счетчик завершен
         if (distance < 0) {
           clearInterval(x);
-          $(el).find('span').text("0");
+          $(el).find('span.sale-counter-num').text("0");
         }
       }
       // Обновление счетчика каждую минуту
