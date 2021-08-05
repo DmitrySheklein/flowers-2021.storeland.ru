@@ -451,6 +451,18 @@
 </script>
 
 <!-- Блок для обновления данных корзины. Не виден пользователю -->
+<div style="display:none;" id="newCartContent">  
+  {% IF CART_COUNT_TOTAL %}
+  <span class="count" data-count="{CART_COUNT_TOTAL}">
+    {CART_COUNT_TOTAL}
+  </span>
+  <span class="title-name">
+    товар{CART_COUNT_TOTAL| gen_word_end("","а","ов")}
+  </span>
+  {% ELSE %}
+    Корзина 
+  {% ENDIF %}
+</div>
 <div style="display:none;" id="newCartCount">
   {CART_COUNT_TOTAL}
 </div>
@@ -500,8 +512,10 @@
 </div>
 <!-- JS обновление данных корзины -->
 <script>
-$('.header .cart .count').html($('#newCartCount').html());
+  // $('.header .cart .count').html($('#newCartCount').html());
+$('.header-toolsCounter').addClass('_active');
 $('.header .cart .price').html($('#newCartPrice').html());
+$('.header .cart .header-toolsContent .title').html($('#newCartContent').html());
 $('.header .cart .dropdown').html($('#newCartData').html());
 </script>
 <!-- end Блок для обновления данных корзины. Не виден пользователю -->

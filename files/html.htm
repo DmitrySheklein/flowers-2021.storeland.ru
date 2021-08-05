@@ -86,8 +86,8 @@
                   <div class="header-phoneSub _work-time">
                     <svg width="300.5" height="300.5" viewBox="0 0 300.5 300.5" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
                       <use xlink:href="#img-time"></use>
-                    </svg>                 
-                    {SETTINGS_STORE_WORK_TIME | htmlspecialcharsdecode}
+                    </svg>
+                    <span class="header-phoneSub-text">{SETTINGS_STORE_WORK_TIME | htmlspecialchars_decode}</span>                   
                   </div>
                   {% ENDIF %} 
                   <!-- Адрес -->
@@ -361,7 +361,7 @@
                       <button class="header-nav__tab _catalog">
                         Каталог
                       </button>
-                      <button class="header-nav__close-btn material-icons">
+                      <button class="header-nav__close-btn material-icons" title="Закрыть">
                           close
                       </button>
                     </div>
@@ -382,7 +382,7 @@
                       <form action="{SEARCH_URL}" method="get" class="searchForm">
                         <input type="hidden" name="goods_search_field_id" value="0">
                         <input required type="text" name="q" value="{SEARCH_QUERY}" class="input header-nav__search-string search-string" placeholder="Поиск по магазину" autocomplete="off">
-                        <button type="reset" title="Закрыть" class="header-nav__search-close">
+                        <button type="reset" title="Очистить" class="header-nav__search-close">
                           <span class="header-searchIcon">
                             <i class="material-icons">
                               close
@@ -1930,8 +1930,7 @@
             </div>           
             </div>
           </div>
-        </div>
-      </div>  
+      </div> 
     {% ENDIF %}
     <!-- /END Основная часть -->
    
@@ -2102,7 +2101,7 @@
                 Режим работы
               </div>            
               <div class="block-contact-content">
-                {SETTINGS_STORE_WORK_TIME}
+                {SETTINGS_STORE_WORK_TIME | htmlspecialchars_decode}
               </div>
             </div>          
             {% ENDIF %}         
@@ -2135,7 +2134,7 @@
                     <meta itemprop="description" content="{% IF recently_viewed_goods.DESCRIPTION_SHORT %}{recently_viewed_goods.DESCRIPTION_SHORT}{% ELSE %}Описание отсутствует{% ENDIF %}">
                     <div class="product-image">
                       <a href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url">
-                        <img src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon owl-lazy" alt="{recently_viewed_goods.NAME}" title="{recently_viewed_goods.NAME}">
+                        <img src="{ASSETS_IMAGES_PATH}loader.gif" data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-small.png?design=flowers{% ELSE %}{recently_viewed_goods.IMAGE_ICON}{% ENDIF %}" class="goods-image-icon lozad" alt="{recently_viewed_goods.NAME}" title="{recently_viewed_goods.NAME}">
                       </a>
                     </div>
                     <div class="product-info">

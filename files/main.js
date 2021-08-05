@@ -642,7 +642,6 @@ function viewed(){
     margin: 15,
     loop: false,
     rewind: true,
-    lazyLoad: true,
     nav: true,
     navContainer: '.viewed .navigation',
     navText: ['<span class="material-icons">chevron_left</span>','<span class="material-icons">chevron_right</span>'],    
@@ -652,7 +651,7 @@ function viewed(){
     onInitialized: changeNavBtn,
     responsive: {
       0:{items:1},
-      320:{items:1},
+      320:{items:2},
       375:{items:2},
       480:{items:2},
       540:{items:2},
@@ -2014,7 +2013,7 @@ function goodspage() {
     lazyLoad: true,
     nav: true,
     dots: false,
-    autoplay: true,
+    autoplay: false,
     autoplayHoverPause: true,
     navContainer: '.related-box .navigation',
     navText: [ , ],      
@@ -2027,7 +2026,7 @@ function goodspage() {
     responsiveRefreshRate: 100,
     responsive: {
       0:{items:1},
-      320:{items:1},
+      320:{items:2},
       375:{items:2},
       480:{items:2},
       540:{items:2},
@@ -2043,10 +2042,9 @@ function goodspage() {
     margin: 15,
     loop: false,
     rewind: true,
-    lazyLoad: true,
     nav: false,
     dots: false,
-    autoplay: true,
+    autoplay: false,
     autoplayTimeout: 3000,
     autoplayHoverPause: true,
     navContainer: '.related-views .navigation',
@@ -2060,8 +2058,9 @@ function goodspage() {
     responsiveRefreshRate: 100,
     responsive: {
       0:{items:1},
-      320:{items:1},
-      480:{items:1},
+      320:{items:2},
+      375:{items:2},
+      480:{items:2},
       540:{items:2},
       768:{items:3},
       992:{items:3},
@@ -2421,7 +2420,7 @@ function ajaxdelete(s){
         });
         // Если корзина пуста
         if($(d).find('.attention').length){
-          $('#page-title .title').html('Корзина покупок пуста')
+          $('#page-title .title').html('<span>Корзина покупок пуста</span>')
         }
         
        }      
