@@ -230,7 +230,7 @@
                         {% IF CART_SUM_NOW %}
                           <span class="price {CURRENCY_CHAR_CODE}">{CART_SUM_NOW | money_format}</span>
                         {% ELSE %}
-                          <span class="price">
+                          <span class="price {CURRENCY_CHAR_CODE}">
                             0 руб.
                           </span>
                         {% ENDIF %}                        
@@ -2058,7 +2058,7 @@
         <div class="block-title">             
           <h2 class="title">
             <span class="title-text">
-              Посетите наш магзин
+              Посетите наш магазин
             </span>
           </h2>          
         </div>    
@@ -2709,6 +2709,7 @@
       path: function() {
         return nextPages[this.loadCount];
       },
+      scrollThreshold: 800, // Отступ для начала загрузки
       append: '.products-container._ajax', // Искомый контейнер с товарами
       history: false,
       status: '.scroller-status'

@@ -1843,7 +1843,10 @@ color: #ff9daf;
 }
 #news .owl-stage {display: -webkit-box;display: -ms-flexbox;display: flex}
 #news .owl-item {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-flex: 1;-ms-flex: 1 0 auto;flex: 1 0 auto}
-#news .block-news .item {position: relative;padding: 0px;height: 100%;}
+#news .block-news .item {
+  position: relative;
+  padding: 0px; 
+}
 #news .block-news .post-content {position: relative;background-color: #fff;text-align: left;min-height: 210px;height: 100%;border: 1px solid #dadada;border-radius: 6px;display: flex;flex-direction: column;  transition: all .3s ease;overflow: hidden;}
 #news .block-news .post-content:hover {
   border: 1px solid #2abf99;  
@@ -1872,13 +1875,41 @@ color: #ff9daf;
   display: flex;
   flex-direction: column;
 }
-#news .block-news .title {display: block;overflow: hidden;margin-bottom: 15px;font-family: 'Arial';font-size: 15px;line-height: 18px;font-weight: 400;color: #ff5d72;text-align: left;
-transition: all .3s ease;
+#news .block-news .title {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 15px;
+  font-family: 'Arial';
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: 400;
+  color: #ff5d72;
+  text-align: left;
+  transition: all .3s ease;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; 
 }
 #news .block-news .title:hover {
   color: #1ca481;  
 }
-#news .block-news .description {font-size: 14px;padding: 0;margin-bottom: 15px;overflow: hidden;line-height: 18px;text-align: left;}
+#news .block-news .description {
+  font-size: 14px;
+  padding: 0;
+  margin-bottom: 15px;
+  overflow: hidden;
+  line-height: 18px;
+  text-align: left;
+  text-overflow: ellipsis;
+  align-items: flex-end;
+  text-decoration: none;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  margin-top: auto;
+  flex-grow: 1;
+  max-height: 35px;
+  -webkit-line-clamp: 2
+}
 #news .block-news .read-more {
   font-size: 14px;
   align-items: center;
@@ -1890,7 +1921,7 @@ transition: all .3s ease;
   color: #fff;
   padding: 0 20px;
   line-height: 25px;
-  margin-top: auto;  
+  margin-top: 0;  
   transition: all .3s ease;
 }
 #news .block-news .read-more:hover {
@@ -1918,7 +1949,7 @@ transition: all .3s ease;
     font-size: 13px;
   }
   #news .block-news .title {
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 #footer {padding-top: 35px;padding-bottom: 30px;margin-top: 0;color: #373737;font-size: 14px;background-color: #f2f5f7;}
