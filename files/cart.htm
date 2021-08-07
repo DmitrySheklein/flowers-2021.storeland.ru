@@ -25,7 +25,7 @@
             <td class="image">
               <a href="{cart_items.GOODS_URL}"  style="position: relative;display:inline-block">
                 {% IFNOT cart_items.distinctive_properties_empty %}<div class="preloader"><span class="content-loading"></span></div>{% ENDIF %}
-                <img class="goods-image-other" src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=flowers{% ELSE %}{cart_items.GOODS_IMAGE_OTHER}{% ENDIF %}">
+                <img class="goods-image-other" src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=flora{% ELSE %}{cart_items.GOODS_IMAGE_OTHER}{% ENDIF %}">
               </a>
             </td> 
             <td class="name"> 
@@ -92,7 +92,7 @@
   {% ENDIF %}
   <div id="globalOrder" style="display: none">
     <div class="content-loading"></div>
-    <div id="OrderAjaxBlock" style="display:none">
+    <div id="OrderAjaxBlock" class="row" style="display:none">
       <!-- Сюда грузится форма оформления быстрого заказа -->
     </div>
   </div>

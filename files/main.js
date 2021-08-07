@@ -327,20 +327,28 @@ $(document).on('click', 'a.empty, .goodsDataMainModificationEmpty', function(evt
   // console.log(goodsMod);
   $('#fancy-notify-goods-mod').val(goodsMod)
   $.fancybox.open($('#fancybox-notify'), {
+    'hideOnContentClick': true,
+    'title': false,    
     padding: 0,
-    autoSize: true,
-    width: '100%',
-    maxWidth: 1100,
-    // content: $('#fancybox-notify').html(),
-    afterShow: function() {
-
-    }
+    autoHeight: true,
+    openMethod: 'slidebottomIn',
+    closeMethod: 'slidebottomOut'     
   });
 })
 
 // Основные функции
 function MainFunctions() {
   $(function(){
+  // Обратный звонок в шапке
+  $(".callback-link").fancybox({
+    'hideOnContentClick': true,
+    'title': false,
+    padding: 0,
+    maxWidth: 420,
+    autoHeight: true,
+    openMethod: 'slidebottomIn',
+    closeMethod: 'slidebottomOut'      
+  });     
   // Стилизация заголовков
   var $title = $('#page-title .block-title h1.title');
   var titleContent = '<span class="title-text">'+ $title.html() +'</span>';
@@ -719,9 +727,9 @@ function initFilterSlider($container) {
       * 1 - right handle
       */ 
       if (handle) {
-          priceInputMax.val( newVal );    
+          priceInputMax.val( newVal ).addClass('_active');    
       } else {
-          priceInputMin.val( newVal );
+          priceInputMin.val( newVal ).addClass('_active');
       }
       
       priceInputsChangeWidthByChars();
@@ -734,6 +742,7 @@ function initFilterSlider($container) {
         newVal = priceFilterMinAvailable;
       }
       priceSliderBlock.noUiSlider.set([newVal, null]);
+      priceInputMin.addClass('_active');
       priceInputsChangeWidthByChars();
     });
     
@@ -744,6 +753,7 @@ function initFilterSlider($container) {
         newVal = priceFilterMaxAvailable;
       }
       priceSliderBlock.noUiSlider.set([null, newVal]);
+      priceInputMax.addClass('_active');
       priceInputsChangeWidthByChars();
     });  
   }
@@ -1838,7 +1848,7 @@ function startOrder(){
     data: quickFormData,
     success: function(data) {
       OrderAjaxBlock.html($(data).find('.quickformfast').wrap('<div></div>').html());
-      $('.formfast').addClass('col-sm-12 col-md-8 col-xs-12');
+      $('#quickform').addClass('col-sm-12 col-md-8 col-xs-12');
       $('.formfast div.col').addClass('col-md-6 col-sm-12');
       $('.formfast-cart').hide();
       // Включаем возможность клика по неактивной кнопке
