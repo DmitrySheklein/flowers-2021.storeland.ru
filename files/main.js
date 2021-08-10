@@ -1651,11 +1651,6 @@ function quickOrder(formSelector) {
 			$.fancybox({
         wrapCSS: 'quickOrder',
         content : data,
-        // При изменении размера окна изменяем размер окна оформления заказа
-        afterShow  : function(){
-          ppModal();
-          return false;
-        }
 			});
 		}
 	});
@@ -3121,7 +3116,7 @@ $(function(){
 
 // Политика конфиденциальности в модальном окне
 function ppModal() {
-  $(".pp a").click(function(event){
+  $(document).on('click', '.pp a', function(event){
     event.preventDefault();
 
     $.fancybox($("#fancybox-pp"), {
