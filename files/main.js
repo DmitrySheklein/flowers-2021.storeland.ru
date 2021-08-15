@@ -867,6 +867,8 @@ function catalogFunctions(){
         if(typeof window.calcDeliveryItemsPrice === 'function'){
           window.calcDeliveryItemsPrice()
         }
+        // Скрыть пустые блоки доставки
+        window.clearEmptyProductDeltime()
       }
     });
   });  
@@ -3184,4 +3186,14 @@ $(function() {
       $(this).addClass("red-block");
   }
   })
+})
+
+window.clearEmptyProductDeltime = function(){
+  $('.product-deltime').filter(function(i, el){
+    return $(el).children().length === 0
+  }).hide()
+}
+
+$(function(){
+  window.clearEmptyProductDeltime();
 })

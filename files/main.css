@@ -1600,7 +1600,11 @@ color: #ff9daf;
     max-width: 225px;
   }
 }
-
+@media (min-width: 481px) and (max-width: 991px){
+  .slideshow-item {
+    background-position: 40% 0;
+  }
+}
 @media (max-width: 481px) {
   .banner-list-inner:before {
     content: '';
@@ -2944,7 +2948,7 @@ background: #fff;}
     display: none;
   }
   .products-list .item:hover .product-shop {
-    border-left: 1px solid transparent;
+    border-left: none;
   }
 }
 .products-list .item .product-shop {
@@ -3274,12 +3278,17 @@ background: #fff;}
   border: 1px solid #dadada;
   border-radius: 4px;
   background: #fff;
+  color: #dadada;
 }
 .thumblist-box .icon {width: 26px;height: 26px;fill: #ff9daf;-webkit-transition: all .3s;transition: all .3s}
 .thumblist-box .owl-next .icon {margin-left: -30px}
 .thumblist-box .owl-prev .icon {margin-right: -30px}
 .thumblist-box .owl-next:hover .material-icons,
 .thumblist-box .owl-prev:hover .material-icons {
+  border-color: #ff9daf;
+}
+.thumblist-box .owl-next:hover,
+.thumblist-box .owl-prev:hover {
   border-color: #ff9daf;
 }
 .thumblist-box .owl-next:hover .material-icons,
@@ -4804,16 +4813,25 @@ background: #fff;}
 .cartTable tbody tr td.name .properties {color: #888}
 .cartTable tbody tr td.closetd {width: 75px;text-align: right;padding: 0 25px}
 .cartTable tbody tr td.closetd a {display:block;}
-.cartTable tbody tr .cart-qty .input {color: #888;border-radius: 0;max-width: 50px;display: inline-block;text-align: center;padding: 8px}
+.cartTable tbody tr .cart-qty .input {border-radius: 0;max-width: 50px;display: inline-block;text-align: center;padding: 8px}
 .cartTable tbody tr .cart-qty .input.red-block {font-size: 19px;color: red;border: 1px red solid;}
 td.cart-qty.red-block:before {content: "шт.";position: absolute;color: red;right: 20px;top: 45px;}
-td.cart-qty:before {right: 20px;top: 45px;content: "шт.";position: absolute;color: #888888;}
+.cart-qty-wrap {position: relative;width: fit-content;margin: 0 auto;}
+.cart-qty-wrap:before {
+  position: absolute;  
+  content: "шт.";
+  left: 100%;
+  top: 12px;
+  margin-left: 15px;
+}
 td.cart-qty {position: relative;}
 @media all and (max-width: 991px) {
     td.cart-qty.red-block:before {top: 15px;right: -35px;}
     .cartTable tbody tr td.cart-price:nth-child(3):after {content: "за штуку товара";}
-    .cartTable tbody tr .cart-qty .input {font-size: 30px;font-weight: bold;}
-    td.cart-qty:before {top: 15px;right: -20px;font-size: 16px;font-weight: 600;}
+    td.cart-qty:before {
+      top: 10px;
+      right: -25px;      
+    }
     .cartTable tbody tr td.cart-qty .input {padding: 0px;}
 }
 .cartTable tfoot tr.discounttr td {padding: 20px 5px 15px;border-bottom: 1px solid #dadada}
@@ -4840,7 +4858,7 @@ td.cart-qty {position: relative;}
   color: #ff9daf;
 }
 .cart-footer .discounttr {display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;margin-bottom: 10px}
-.dotted-line {-webkit-box-flex: 1;-ms-flex-positive: 1;flex-grow: 1;border-bottom: 2px dotted #e8dbcf;margin: 0 10px;margin-bottom: 5px}
+.dotted-line {-webkit-box-flex: 1;-ms-flex-positive: 1;flex-grow: 1;border-bottom: 2px dotted #dadada;margin: 0 10px;margin-bottom: 5px}
 .TotalSum {display: -webkit-box;display: -ms-flexbox;display: flex;margin-bottom: 25px}
 
 /*** Личный кабинет (Страницы) ***/
@@ -5004,8 +5022,13 @@ td.cart-qty {position: relative;}
 .cartTable tbody tr td.cart-price.hide {display: none;}
 .cartTable tbody tr td.cart-price {display: block;position: relative;width: 100%;line-height: 38px;text-align: center;}
 .cartTable tbody tr td.closetd {position: absolute;right: 0;bottom: 0;line-height: 40px;padding: 8px;border-top:none;height: 40px;width: 40px;}
-.cartTable tbody tr td.cart-qty {position: absolute;left: 0;z-index: 1;}
-.cartTable tbody tr td.cart-qty .input {border: 0;background-color: transparent;height: 40px;}
+.cartTable tbody tr td.cart-qty {
+  position: absolute;
+  left: -1px;
+  bottom: -1px;
+  z-index: 1;  
+}
+.cartTable tbody tr td.cart-qty .input {background-color: transparent;height: 40px;}
 .cartTable tfoot tr {display: block;float: left;width: 100%;border-bottom: 1px solid #dadada;}
 .cartTable tfoot tr > td {float: left;}
 .cartTable tfoot tr > td:last-child {float: right;}
