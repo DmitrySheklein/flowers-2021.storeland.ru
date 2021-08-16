@@ -2773,42 +2773,6 @@ function indexPage() {
   // Количество товара для показа 
   var GOODS_INDEX = 8;
   
-  // Весь каталог на главной
-  if(catalog_full){
-    var promises = $.map(catalog_full, function(el){
-        return $.ajax(el.href + '?only_body=1&goods_view_type=1')
-                  .then(function(d){
-                      var $parentGridContainer = $('.products-container.' + el.id).find('.products-grid');
-                      var $data = $(d);
-                      var itemsLength = $data.find('.products-grid .item').length;
-                      
-                      
-                      var $newProducts = $data.find('.products-grid').find('.item').removeClass('col-md-4').addClass('col-md-3').parent();
-                      
-                      $newProducts = $newProducts.html();
-                      
-                      if(!$parentGridContainer.find('.products-grid').length){
-                        $parentGridContainer.append($newProducts);
-                      }
-                      
-                      if(itemsLength > GOODS_INDEX){
-                        $parentGridContainer.append($('<div class="show-more"><button class="button more">Показать все</button></div>'))
-                      }
-                      
-                      lozad().observe();
-                      Addto();
-                      AddCart();
-                      quantity();
-                    });
-    });
-
-    $.when.apply(this, promises)
-      .then(function(){
-          // catalog_full = null;
-          // $('.products-container').show();
-    })
-  }
-  
   // Показать ещё
   $(document).on('click', '.show-more .button', function() {
     var $btn = $(this);
