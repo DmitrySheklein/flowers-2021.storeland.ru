@@ -555,7 +555,9 @@
               {% FOR catalog_full %}
               <!-- Для вывода по названию категории -->
               {% IF catalog_full.NAME = Розы || catalog_full.NAME = Сборные букеты || catalog_full.NAME = Дополнения к букету || catalog_full.NAME = Свадебные композиции %}
-              <!-- Для вывода первых 4х категорий раскомментировать нижнюю строку и (закомментировать предыдущую строку) -->
+              <!-- Для вывода по id категории -->
+              <!-- {% IF catalog_full.ID = 8054950 || catalog_full.ID = 8054951 || catalog_full.ID = 8054952 %} -->
+              <!-- Для вывода первых 4х категорий -->
               <!-- {% IF catalog_full.LEVEL = 0 && catalog_full.HIDE = 0 && catalog_full.index < 5 %} -->
               <div class="banner-list-item lozad"
                {% IF catalog_full.NAME = Розы %}
