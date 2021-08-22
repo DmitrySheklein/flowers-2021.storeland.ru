@@ -110,18 +110,6 @@
     							    {SETTINGS_STORE_PHONE_COUNTRY_CODE1} ({SETTINGS_STORE_PHONE_CITY_CODE1}) {SETTINGS_STORE_PHONE_NUMBER1}
     							  </a>
     							  {% ENDIF %}
-    							  <!-- Телефон -->
-    							  {% IF SETTINGS_STORE_PHONE_NUMBER2 %}
-    							  <a class="header-phoneNum" href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE2}{SETTINGS_STORE_PHONE_CITY_CODE2}{SETTINGS_STORE_PHONE_NUMBER2}">
-    							    {SETTINGS_STORE_PHONE_COUNTRY_CODE2} ({SETTINGS_STORE_PHONE_CITY_CODE2}) {SETTINGS_STORE_PHONE_NUMBER2}
-    							  </a>
-    							  {% ENDIF %}
-    							  <!-- Телефон -->
-    							  {% IF SETTINGS_STORE_PHONE_NUMBER3 %}
-    							  <a class="header-phoneNum" href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE3}{SETTINGS_STORE_PHONE_CITY_CODE3}{SETTINGS_STORE_PHONE_NUMBER3}">
-    							    {SETTINGS_STORE_PHONE_COUNTRY_CODE3} ({SETTINGS_STORE_PHONE_CITY_CODE3}) {SETTINGS_STORE_PHONE_NUMBER3}
-    							  </a>
-    							  {% ENDIF %}
                   </div>
   							  
                   
@@ -534,7 +522,7 @@
     <div class="index-banner">
       <div class="container">
         <div class="index-banner-container">
-          <div class="slideshow">
+          <div class="slideshow _full-width">
             <div class="slideshow-item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide-1.jpg">
               <div class="slideshow-inner">
                 <div class="slideshow-title">
@@ -549,6 +537,8 @@
               </div>
             </div>
           </div>
+          <!-- Включить баннеры на главной заменить 1 на 0 -->
+          {% IF USE_BANNER_LIST = 1 %}
           <div class="banner-list owl-carousel">
             <!-- Для полностью ручной установки категорий заменить 0 на 1 -->
             {% IF BANNER_LIST_FROM_CATEGORY = 0 %}
@@ -646,6 +636,7 @@
             </div>
             {% ENDIF %} 
           </div>
+          {% ENDIF %}
         </div>
       </div>
     </div>
@@ -2251,48 +2242,43 @@
                 <div class="social-links _footer">
                   <span class="social-links-title">Мы на связи:</span>
                   <div class="social-links-wrap">
-                    <a class="social-links-item" href="#" title="Instagram.com" target="_blank">
+                    <a class="social-links-item" href="#" title="Instagram" target="_blank">
                       <svg width="300.5" height="300.5" viewBox="0 0 300.5 300.5" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
                         <use xlink:href="#img-insta"></use>
                       </svg>                                        
                     </a> 					    
-                    <a class="social-links-item" href="#" title="Instagram.com" target="_blank">
+                    <a class="social-links-item" href="#" title="Odnoklassniki" target="_blank">
                       <svg width="300.5" height="300.5" viewBox="0 0 300.5 300.5" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
                         <use xlink:href="#img-odno"></use>
                       </svg>                                        
-                    </a> 					    
-                    <a class="social-links-item" href="#" title="Instagram.com" target="_blank">
-                      <svg width="300.5" height="300.5" viewBox="0 0 300.5 300.5" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
-                        <use xlink:href="#img-odno"></use>
-                      </svg>                                        
-                    </a> 					    
-                    <a class="social-links-item" href="#" title="Instagram.com" target="_blank">
+                    </a> 					    				    
+                    <a class="social-links-item" href="#" title="Skype" target="_blank">
                       <svg width="300.5" height="300.5" viewBox="0 0 300.5 300.5" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
                         <use xlink:href="#img-skype"></use>
                       </svg>                                        
                     </a> 					    
-                    <a class="social-links-item" href="#" title="Instagram.com" target="_blank">
+                    <a class="social-links-item" href="#" title="Telegram" target="_blank">
                       <svg width="300.5" height="300.5" viewBox="0 0 300.5 300.5" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
                         <use xlink:href="#img-teleg"></use>
                       </svg>                                        
                     </a> 					    
-                    <a class="social-links-item" href="#" title="Instagram.com" target="_blank">
+                    <a class="social-links-item" href="#" title="TicTok" target="_blank">
                       <svg width="300.5" height="300.5" viewBox="0 0 300.5 300.5" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
                         <use xlink:href="#img-tiktok"></use>
                       </svg>                                        
                     </a> 					    
-                    <a class="social-links-item" href="#" title="Instagram.com" target="_blank">
+                    <a class="social-links-item" href="#" title="Twitter" target="_blank">
                       <svg width="300.5" height="300.5" viewBox="0 0 300.5 300.5" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
                         <use xlink:href="#img-twit"></use>
                       </svg>                                        
                     </a> 					    
-                    <a class="social-links-item" href="#" title="Instagram.com" target="_blank">
+                    <a class="social-links-item" href="#" title="Viber" target="_blank">
                       <svg width="300.5" height="300.5" viewBox="0 0 300.5 300.5" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
                         <use xlink:href="#img-viber"></use>
                       </svg>                                        
                     </a> 					    
                     </a> 					    
-                    <a class="social-links-item" href="#" title="Instagram.com" target="_blank">
+                    <a class="social-links-item" href="#" title="Whatsapp" target="_blank">
                       <svg width="300.5" height="300.5" viewBox="0 0 300.5 300.5" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin">
                         <use xlink:href="#img-what"></use>
                       </svg>                                        

@@ -2639,7 +2639,9 @@ function indexPage() {
 
   function initIndexBannerList() {
     var $bannerList = $(".banner-list");
-
+    if(!$bannerList.length){
+      return;
+    }
     if(getClientWidth() <= 991){
       // Баннеры на главной
       $bannerList.owlCarousel({

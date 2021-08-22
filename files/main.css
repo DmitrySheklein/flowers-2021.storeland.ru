@@ -1519,7 +1519,10 @@ color: #ff9daf;
 }
 .slideshow {
     width: 680px;
-}      
+}     
+.slideshow._full-width {
+  width: 100%;
+} 
 .slideshow-item {
   height: 400px;
   background-color: #f2f6f7;
