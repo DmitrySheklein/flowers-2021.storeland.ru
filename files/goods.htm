@@ -236,6 +236,25 @@
             </span>            
             Бесплатная доставка
           </div>
+          <!-- Выводим характеристику времени доставки -->
+          <div class="product-deltime">
+            {% IFNOT goods_features_empty %}
+                {% FOR goods_features %}
+                {% IF goods_features.NAME= Время доставки %}                         
+                <span class="product-deltime-name">
+                  Этот букет доставят за
+                </span>                 
+                <span class="product-deltime-name-mobile">
+                  Доставка за
+                </span> 
+                  <span class="product-deltime-value">
+                    {goods_features.VALUE}
+                  </span> 
+                {break}                               
+                {% ENDIF %}                   
+                {% ENDFOR %}
+            {% ENDIF %}
+          </div>          
           <!-- Добавление товара в Корзину -->
           <div class="add-to-box actions {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}add-to-form{% ENDIF %}" >
             <input type="hidden" name="form[goods_mod_id][{GOODS_MOD_ID}]" value="1" class="goodsDataMainModificationId" />
@@ -345,7 +364,7 @@
             <div id="content_2" class="tab-content {% IFNOT GOODS_DESCRIPTION_LARGE %}{% IFNOT GOODS_SEO_DESCRIPTION_SHORT %}{% IFNOT GOODS_SEO_DESCRIPTION_LARGE %}active{% ENDIF %}{% ENDIF %}{% ENDIF %}" {% IF GOODS_DESCRIPTION_LARGE || GOODS_SEO_DESCRIPTION_SHORT || GOODS_SEO_DESCRIPTION_LARGE %}style="display: none;"{% ENDIF %}>
               <table class="table-box">
                 <tbody>
-                  {% FOR goods_features%}
+                  {% FOR goods_features %}
                     <tr>
                       <td class="cell1">{goods_features.NAME}</td>
                       <td class="cell2">{goods_features.VALUE}</td>
