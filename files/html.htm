@@ -2659,58 +2659,60 @@
   <!-- Скрипты ленивой подгрузки товаров на главной -->
   {% IF index_page %}
   <script>
-  var catalog_full = [];
-
-  {% FOR catalog_full %}
-          {% IF catalog_full.LEVEL = 0 && catalog_full.GOODS_COUNT > 0 && catalog_full.HIDE=0 %}
-                  catalog_full.push({
-                  'id': 'pdt-{catalog_full.ID}',
-                  'href': '{catalog_full.URL}',
-                  'name': '{catalog_full.NAME}'
-                  })
-          {% ENDIF %}
-  {% ENDFOR %}
-  // Массив страниц с товарами
-  var nextPages = catalog_full.map(el => {
-    try {
-      var hrefUrl = el.href;
-      if(hrefUrl[0] === '/') {
-        hrefUrl = 'https:' + hrefUrl;
-      }
-      var url = new URL(hrefUrl);
-
-      return url.pathname + `?only_body=1&goods_view_type=1`
-    } catch (error) {
-      console.error(error);
-    }
-  });
-  // Плагин ленивой загрузки
-  $('#scroll-goods-container').infiniteScroll({
-      path: function() {
-        return nextPages[this.loadCount];
-      },
-      scrollThreshold: 800, // Отступ для начала загрузки
-      append: '.products-container._ajax', // Искомый контейнер с товарами
-      history: false,
-      status: '.scroller-status'
-    })
-    .on('load.infiniteScroll', function(event, body, path, response) {
-      // console.log('Loaded: ${ path }');
-    })
-    .on('append.infiniteScroll', function(event, body, path, items, response) {
-      // console.log('Appended ${ items.length } items on ${ path }');
-      if (typeof(lozad) === "function") {
-        lozad().observe();
-      }
-      if (typeof(window.calcDeliveryItemsPrice) === "function") {
-        window.calcDeliveryItemsPrice()
-      }
-      Addto();
-    })
-    .on('error.infiniteScroll', function() {
-      $('.infinite-scroll-error').show()
-    })    
-    .infiniteScroll('loadNextPage');
+    $(function(){
+      var catalog_full = [];
+    
+      {% FOR catalog_full %}
+              {% IF catalog_full.LEVEL = 0 && catalog_full.GOODS_COUNT > 0 && catalog_full.HIDE=0 %}
+                      catalog_full.push({
+                      'id': 'pdt-{catalog_full.ID}',
+                      'href': '{catalog_full.URL}',
+                      'name': '{catalog_full.NAME}'
+                      })
+              {% ENDIF %}
+      {% ENDFOR %}
+      // Массив страниц с товарами
+      var nextPages = catalog_full.map(el => {
+        try {
+          var hrefUrl = el.href;
+          if(hrefUrl[0] === '/') {
+            hrefUrl = 'https:' + hrefUrl;
+          }
+          var url = new URL(hrefUrl);
+    
+          return url.pathname + `?only_body=1&goods_view_type=1`
+        } catch (error) {
+          console.error(error);
+        }
+      });
+      // Плагин ленивой загрузки
+      var $container = $('#scroll-goods-container').infiniteScroll({
+          path: function() {
+            return nextPages[this.loadCount];
+          },
+          scrollThreshold: 800, // Отступ для начала загрузки
+          append: '.products-container._ajax', // Искомый контейнер с товарами
+          history: false,
+          status: '.scroller-status'
+        })
+        .on('load.infiniteScroll', function(event, body, path, response) {
+          // console.log('Loaded: ${ path }');
+        })
+        .on('append.infiniteScroll', function(event, body, path, items, response) {
+          // console.log('Appended ${ items.length } items on ${ path }');
+          if (typeof(lozad) === "function") {
+            lozad().observe();
+          }
+          if (typeof(window.calcDeliveryItemsPrice) === "function") {
+            window.calcDeliveryItemsPrice()
+          }
+          Addto();
+        })
+        .on('error.infiniteScroll', function() {
+          $('.infinite-scroll-error').show()
+        })   
+        .infiniteScroll('loadNextPage');
+    }) 
   </script>
   <style>
   .scroller-status{display:none;padding:0}.scroller-status__message{text-align:center;color:#777}.loader-ellips{font-size:20px;position:relative;width:4em;height:1em;margin:10px auto}.loader-ellips__dot{display:block;width:1em;height:1em;border-radius:.5em;background:#555;background:#e8dbcf;position:absolute;animation-duration:.5s;animation-timing-function:ease;animation-iteration-count:infinite}.loader-ellips__dot:nth-child(1),.loader-ellips__dot:nth-child(2){left:0}.loader-ellips__dot:nth-child(3){left:1.5em}.loader-ellips__dot:nth-child(4){left:3em}@keyframes reveal{from{transform:scale(0.001)}to{transform:scale(1)}}@keyframes slide{to{transform:translateX(1.5em)}}.loader-ellips__dot:nth-child(1){animation-name:reveal}.loader-ellips__dot:nth-child(2),.loader-ellips__dot:nth-child(3){animation-name:slide}.loader-ellips__dot:nth-child(4){animation-name:reveal;animation-direction:reverse}.loader-wheel{font-size:64px;position:relative;height:1em;width:1em;padding-left:.45em;overflow:hidden;margin:0 auto;animation:loader-wheel-rotate .5s steps(12) infinite}.loader-wheel i{display:block;position:absolute;height:.3em;width:.1em;border-radius:.05em;background:#333;opacity:.8;transform:rotate(-30deg);transform-origin:center .5em}@keyframes loader-wheel-rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}

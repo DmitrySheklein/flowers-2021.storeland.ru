@@ -2817,6 +2817,9 @@ color: #ff9daf;
 /** Товары на главной **/
 .products-container {position: relative}
 .products-container .content {width: 100%;position: relative}
+.products-container._ajax:first-child {
+  padding-top: 30px;
+}
 .products-container.pdt-sale {padding-bottom: 30px;margin-top: 15px;}
 .products-container.pdt-sale .item {
   max-width: 99.9%;
