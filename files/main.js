@@ -2880,29 +2880,37 @@ function mainnav(){
      $('.header-sections .header-sectionsList ').append($(this));
    })
   }
-  menuWidth = $('.header-sections').width();
-  menuCount = $('.header-sections .header-sectionsList  li').length + 1;
-  var nextCheck = 0;
-  var CurrentWidthCounter = 0;
-  
-  for(var i=1; i < menuCount;  i++){
-    currentWidth = parseInt(Math.ceil($('.header-sections .header-sectionsList  li:nth-child('+i+')').width())) + 46;
-    nextCheck += currentWidth;
-    if(nextCheck > menuWidth){
-      var a = i;
-      for(a;a < menuCount;a++){
-        $('.header-sections .header-sectionsList  li:nth-child('+ a +')').addClass('mainnav__replaced');
-      }
-      $('.header-sections .header-sectionsList').append('<li class="header-sectionsItem mainnav__more"><a class="header-catalogLink">Еще...</a></li>');
-      $('.header-sections .header-sectionsList').find('.header-sectionsItem.mainnav__more').append('<ul class="overflowMenu header-subcatalog"></ul>')
-      $('.header-sections .mainnav__replaced').each(function(){
-        $('.overflowMenu').append($(this));
-      });
-      menuMorePosition = parseInt($('.mainnav__more').position().left);
-
-      return false;
-    }
+  var menuMaxWidth = 1035;
+  if ($(window).width() < 1200) {
+    menuMaxWidth = 835
   }
+  var menuWidth = $('.header-sections .header-sectionsList').width();
+  if(menuWidth > menuMaxWidth) {
+    menuWidth = menuMaxWidth
+  }
+  var menuCount = $('.header-sections .header-sectionsList  > li.header-sectionsItem').not(':hidden').length;
+  var $menuItems = $('.header-sections .header-sectionsList  > li.header-sectionsItem').not(':hidden');
+  containerWidth = 70;
+  var nextCheck = 0;
+  var menuOverAdd = 0;
+  $menuItems.each(function(i, el){
+     var currentWidth = parseInt(Math.ceil($(el).width()));
+     nextCheck += currentWidth;
+     
+      if(nextCheck + containerWidth > menuWidth && !menuOverAdd){
+        console.log(menuWidth)
+        $(el).addClass('mainnav__replaced');
+        $(el).nextUntil().addClass('mainnav__replaced');
+        $('.header-sections .header-sectionsList').append('<li class="header-sectionsItem mainnav__more"><a class="header-catalogLink">Еще...</a></li>');
+        $('.header-sections .header-sectionsList').find('.header-sectionsItem.mainnav__more').append('<ul class="overflowMenu header-subcatalog"></ul>')
+        $('.header-sections .mainnav__replaced').each(function(){
+          $('.overflowMenu').append($(this));
+        });
+        menuOverAdd = 1;
+        return false;
+      }
+  })
+  $('.header-sections .header-sectionsList').addClass('_active')
 }
 
 // Предзагрузчик

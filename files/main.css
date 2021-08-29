@@ -1294,7 +1294,7 @@ color: #ff9daf;
     margin-right: 0;
   }
   .header-subcatalogCol .header-secondArrow {display:none;}
-  .header-catalogLink {font-size: 15px;line-height: 1.3;padding: 11px 10px;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;color: #373737;margin: 0px 0;margin-right: 3px;transition: all .3s;position: relative;z-index: 1;width: 100%;justify-content: center;}  
+  .header-catalogLink {font-size: 15px;line-height: 1.3;padding: 11px 10px;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: justify;-ms-flex-pack: justify;justify-content: space-between;color: #373737;margin: 0px 0;margin-right: 0px;transition: all .3s;position: relative;z-index: 1;width: 100%;justify-content: center; white-space: nowrap;}  
   .header-catalogLink:last-child {margin-right: 0;}
   .header-sectionsItem  .header-catalogLink .header-linkText {position: relative;}
   .header-subcatalogCol:last-child,
@@ -1375,7 +1375,8 @@ color: #ff9daf;
 }
 /* Пункты меню*/
 .header .header-sections {background-color: transparent;height: 50px;display: flex;}
-.header .header-sectionsList {display: flex;width: 100%;height: 100%;border-collapse: collapse;margin: 0;padding: 0;list-style: none;background-color: transparent;}
+.header .header-sectionsList {visibility: hidden;display: flex;width: 100%;height: 100%;border-collapse: collapse;margin: 0;padding: 0;list-style: none;background-color: transparent;}
+.header .header-sectionsList._active {visibility: visible;}
 .header .header-sectionsItem {position: relative;vertical-align: middle;text-align: center;display: flex;}
 .header .header-sectionsLink {padding: 0 20px;height: 100%;display: block;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-align: center;-ms-flex-align: center;align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;color:#2a3034;transition: all .3s;}
 .header .header-sectionsItem.active .header-sectionsLink,.header .header-sectionsItem:hover .header-sectionsLink{color: #2e2e2e;}
