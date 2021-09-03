@@ -504,10 +504,45 @@
   </div>
   <!-- /END Выпадающая корзина-->
 </div>
-<!-- Объект с доставками -->
-<div id="delivery-object">
+<!-- Скрипт с доставками -->
+<div id="delivery-calc">
   <script>
     var ORDER_DELIVERY = [ {% FOR order_delivery %} { id: '{order_delivery.ID}', name: '{order_delivery.NAME}', price: '{order_delivery.PRICE}', endPrice: '{order_delivery.END_PRICE}', sumLessPrice: '{order_delivery.SUM_LESS_PRICE}', rulesListEmpty: {order_delivery.rules_list_empty}, rulesList: {% IFNOT order_delivery.rules_list_empty %} [ {% FOR rules_list %} { sumMorePrice: '{order_delivery.rules_list.SUM_MORE_PRICE}', price: '{order_delivery.rules_list.PRICE}', }, {% ENDFOR %} ] {% ELSE %} null {% ENDIF %} ,zoneListEmpty: {order_delivery.zone_list_empty}, zoneList : {% IFNOT order_delivery.zone_list_empty %} [ {% FOR zone_list %} { name: '{order_delivery.zone_list.NAME}', zoneId: '{order_delivery.zone_list.ID}', price: '{order_delivery.zone_list.PRICE}', endPrice: '{order_delivery.zone_list.END_PRICE}', zoneRuleListEmpty: {order_delivery.zone_list.zone_rule_list_empty}, zoneRuleList: {% IFNOT order_delivery.zone_list.zone_rule_list_empty %} [ {% FOR zone_rule_list %} { sumMorePrice: '{order_delivery.zone_list.zone_rule_list.SUM_MORE_PRICE}', price: '{order_delivery.zone_list.zone_rule_list.PRICE}' }, {% ENDFOR %} ] {% ELSE %} null {% ENDIF %} }, {% ENDFOR %} ] {% ELSE %} null {% ENDIF %} ,availablePaymentList: {% IFNOT order_delivery.available_payment_list_empty %} [ {% FOR available_payment_list %} { deliveryId: '{order_delivery.ID}', id: '{order_delivery.available_payment_list.ID}', name: '{order_delivery.available_payment_list.NAME}' }, {% ENDFOR %} ] {% ELSE %} null {% ENDIF %}, }, {% ENDFOR %} ]
+    window.calcDeliveryItemsPrice = function () {
+      if(typeof DELIVERY_NAME === 'undefined'){
+        console.error('Не задана переменная с названием доставки');
+        return;
+      }
+      var currentDelivery = $.grep(ORDER_DELIVERY, function(el,n){
+              return el.name === DELIVERY_NAME
+          })[0]
+      if(currentDelivery){
+        $('.product-delivery').each(function () {
+          var goodsPrice = Number($(this).data('price'));
+          var withMods = $(this).data('with-mods');
+          if(!goodsPrice){
+            return
+          }
+          var currentDelRules = $.grep(currentDelivery.rulesList || [], function (el, n) {
+            return goodsPrice >= Number(el.sumMorePrice)
+          })[0];
+          var price = Number(currentDelRules ? currentDelRules.price : currentDelivery.price);
+          var withModText = (withMods) ? 'от ':'';
+          var $priceBlock = $('<span>').addClass('price RUB').html(withModText +'<span>' + price + '</span>');
+          var priceBlockTemplate = $priceBlock.get()[0].outerHTML;
+          var $deliveryBlock = $('<div>').html('<span class="d">Cтоимость доставки:</span><span class="m">Доставка:</span>')
+          if(price){
+            $(this).html('<span class="material-icons">local_shipping</span>' + $deliveryBlock.html() + priceBlockTemplate);
+          } else {
+            $(this).html('<span class="material-icons">local_shipping</span> Бесплатная доставка');
+          }
+          $(this).addClass('_show')
+          // console.log(goodsPrice, price)
+        })
+
+      }
+    }
+    window.calcDeliveryItemsPrice();
   </script>
 </div>
 <!-- JS обновление данных корзины -->

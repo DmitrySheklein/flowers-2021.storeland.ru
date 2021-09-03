@@ -2656,6 +2656,28 @@
   </style>
   <!-- /END Сообщение для инвалидов -->
 
+  <!-- Отключить подсчет доставки для товара (заменить 0 на 1) -->
+  {% IF USE_DELIVERY = 0 %}
+  <script>
+    var DELIVERY_NAME = 'Курьером' // Название доставки из раздела Настройки - Доставка
+    // Получаем данные формы, которые будем отправлять на сервер
+    var formData = $('<form>').serializeArray();
+    // Сообщаем серверу, что мы пришли через ajax запрос
+    formData.push({name: 'ajax_q', value: 1});
+    // Так же сообщим ему, что нужно сразу отобразить форму быстрого заказа 
+    formData.push({name: 'fast_order', value: 1});
+    // Аяксом добавляем товар в корзину и вызываем форму быстрого заказа товара
+    $.ajax({
+      type    : "POST",
+      cache	  : false,
+      url		  : '/cart/add',
+      data		: formData,
+      success: function(data) {   
+        $(data).filter('#delivery-calc').appendTo($('body'));
+      }
+    })  
+  </script>  
+  {% ENDIF %}
   <!-- Скрипты ленивой подгрузки товаров на главной -->
   {% IF index_page %}
   <script>
@@ -2718,61 +2740,7 @@
   .scroller-status{display:none;padding:0}.scroller-status__message{text-align:center;color:#777}.loader-ellips{font-size:20px;position:relative;width:4em;height:1em;margin:10px auto}.loader-ellips__dot{display:block;width:1em;height:1em;border-radius:.5em;background:#555;background:#e8dbcf;position:absolute;animation-duration:.5s;animation-timing-function:ease;animation-iteration-count:infinite}.loader-ellips__dot:nth-child(1),.loader-ellips__dot:nth-child(2){left:0}.loader-ellips__dot:nth-child(3){left:1.5em}.loader-ellips__dot:nth-child(4){left:3em}@keyframes reveal{from{transform:scale(0.001)}to{transform:scale(1)}}@keyframes slide{to{transform:translateX(1.5em)}}.loader-ellips__dot:nth-child(1){animation-name:reveal}.loader-ellips__dot:nth-child(2),.loader-ellips__dot:nth-child(3){animation-name:slide}.loader-ellips__dot:nth-child(4){animation-name:reveal;animation-direction:reverse}.loader-wheel{font-size:64px;position:relative;height:1em;width:1em;padding-left:.45em;overflow:hidden;margin:0 auto;animation:loader-wheel-rotate .5s steps(12) infinite}.loader-wheel i{display:block;position:absolute;height:.3em;width:.1em;border-radius:.05em;background:#333;opacity:.8;transform:rotate(-30deg);transform-origin:center .5em}@keyframes loader-wheel-rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
   </style>
   {% ENDIF %}
-  <!-- Включить учёт доставки Курьером (заменить 1 на 0) -->
-  {% IF USE_DELIVERY = 0 %}
-  <script>
-    var DELIVERY_NAME = 'Курьером' // Название доставки из раздела Настройки - Доставка
-    // Получаем данные формы, которые будем отправлять на сервер
-    var formData = $('<form>').serializeArray();
-    // Сообщаем серверу, что мы пришли через ajax запрос
-    formData.push({name: 'ajax_q', value: 1});
-    // Так же сообщим ему, что нужно сразу отобразить форму быстрого заказа 
-    formData.push({name: 'fast_order', value: 1});
-    // Аяксом добавляем товар в корзину и вызываем форму быстрого заказа товара
-    $.ajax({
-      type    : "POST",
-      cache	  : false,
-      url		  : '/cart/add/',
-      data		: formData,
-      success: function(data) {        
-        $(data).filter('#delivery-object').appendTo($('body'));
-        if(ORDER_DELIVERY){
-          window.calcDeliveryItemsPrice();
-        }
-      }
-    })  
-    window.calcDeliveryItemsPrice = function () {
-      var currentDelivery = $.grep(ORDER_DELIVERY, function(el,n){
-              return el.name === DELIVERY_NAME
-          })[0]
-      if(currentDelivery){
-        $('.product-delivery').each(function () {
-          var goodsPrice = Number($(this).data('price'));
-          var withMods = $(this).data('with-mods');
-          if(!goodsPrice){
-            return
-          }
-          var currentDelRules = $.grep(currentDelivery.rulesList || [], function (el, n) {
-            return goodsPrice >= Number(el.sumMorePrice)
-          })[0];
-          var price = Number(currentDelRules ? currentDelRules.price : currentDelivery.price);
-          var withModText = (withMods) ? 'от ':'';
-          var $priceBlock = $('<span>').addClass('price RUB').html(withModText +'<span>' + price + '</span>');
-          var priceBlockTemplate = $priceBlock.get()[0].outerHTML;
-          var $deliveryBlock = $('<div>').html('<span class="d">Cтоимость доставки:</span><span class="m">Доставка:</span>')
-          if(price){
-            $(this).html('<span class="material-icons">local_shipping</span>' + $deliveryBlock.html() + priceBlockTemplate);
-          } else {
-            $(this).html('<span class="material-icons">local_shipping</span> Бесплатная доставка');
-          }
-          $(this).addClass('_show')
-          // console.log(goodsPrice, price)
-        })
 
-      }
-    }
-  </script>  
-  {% ENDIF %}
   <!-- Overlay -->
   <div class="overlay"></div>  
 
