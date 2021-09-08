@@ -1570,7 +1570,7 @@ color: #ff9daf;
   }
   .slideshow-item {
     padding: 0 25px;
-    background-position: 40% 100%;    
+    background-position: 0% 100%;    
   }
   .banner-list {
     width: calc(100% - 456px - 30px);
@@ -1604,9 +1604,10 @@ color: #ff9daf;
     max-width: 225px;
   }
 }
-@media (min-width: 481px) and (max-width: 991px){
+@media (min-width: 481px) and (max-width: 768px){
   .slideshow-item {
     background-position: 40% 0;
+    background-size: 115%;
   }
 }
 @media (max-width: 481px) {
@@ -1646,6 +1647,8 @@ color: #ff9daf;
   .slideshow-item {
     height: 200px;
     padding: 0 20px;
+    /* background-size: 136%; */
+    /* background-position: 0% 40%; */
   }
   .slideshow-button {
     height: 40px;
@@ -1655,6 +1658,7 @@ color: #ff9daf;
     max-width: 150px; 
     font-size: 16px;
     margin-bottom: 22px;  
+    line-height: 1.15;
   }
 }
 @media (max-width: 320px) {
