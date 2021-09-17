@@ -1589,6 +1589,7 @@ color: #ff9daf;
   }
   .slideshow-item {
     height: 200px;
+    background-position: 0% 60%;
   }
   .slideshow-title {
     display: none;
@@ -1604,9 +1605,9 @@ color: #ff9daf;
     max-width: 225px;
   }
 }
-@media (min-width: 481px) and (max-width: 991px){
+@media (min-width: 481px) and (max-width: 768px){
   .slideshow-item {
-    background-position: 40% 0;
+    background-position: 0% 60%;
   }
 }
 @media (max-width: 481px) {
@@ -1646,6 +1647,7 @@ color: #ff9daf;
   .slideshow-item {
     height: 200px;
     padding: 0 20px;
+    background-position: 0% 0%;
   }
   .slideshow-button {
     height: 40px;
