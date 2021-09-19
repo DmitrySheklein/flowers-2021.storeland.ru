@@ -1570,7 +1570,7 @@ color: #ff9daf;
   }
   .slideshow-item {
     padding: 0 25px;
-    background-position: 0% 100%;    
+    background-position: 40% 100%;    
   }
   .banner-list {
     width: calc(100% - 456px - 30px);
@@ -1585,10 +1585,11 @@ color: #ff9daf;
   }
   .slideshow {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
   }
   .slideshow-item {
     height: 200px;
+    background-position: 0% 60%;
   }
   .slideshow-title {
     display: none;
@@ -1606,8 +1607,7 @@ color: #ff9daf;
 }
 @media (min-width: 481px) and (max-width: 768px){
   .slideshow-item {
-    background-position: 40% 0;
-    background-size: 115%;
+    background-position: 0% 60%;
   }
 }
 @media (max-width: 481px) {
@@ -1647,8 +1647,7 @@ color: #ff9daf;
   .slideshow-item {
     height: 200px;
     padding: 0 20px;
-    /* background-size: 136%; */
-    /* background-position: 0% 40%; */
+    background-position: 0% 0%;
   }
   .slideshow-button {
     height: 40px;
@@ -1658,7 +1657,6 @@ color: #ff9daf;
     max-width: 150px; 
     font-size: 16px;
     margin-bottom: 22px;  
-    line-height: 1.15;
   }
 }
 @media (max-width: 320px) {
@@ -1717,8 +1715,12 @@ color: #ff9daf;
   } 
 }
 @media (max-width: 991px) {
-  #features .main-featuresItem {
+  #features {
+    padding-top: 23px;
+  }
+  #features .features-list .main-featuresItem {
     width: 225px;
+    padding: 0;
   }
   #features .main-featuresInner {
     height: 50px;
@@ -1733,7 +1735,8 @@ color: #ff9daf;
 }
 @media (max-width: 481px) {
   #features {
-    padding-bottom: 35px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
   #features .main-featuresItem {
     width: 195px;
@@ -1902,6 +1905,7 @@ color: #ff9daf;
   }
 }
 @media(max-width:481px) {
+  #producttabs {padding-top: 15px;padding-bottom: 15px;}
   #producttabs .pdt-nav-arrows .navigation .owl-next:after {background: transparent;}
   #producttabs .pdt-nav-arrows .navigation .owl-prev:after {background: transparent;}
   #producttabs .pdt-nav-wrap::before {display: none;}
@@ -2826,6 +2830,11 @@ color: #ff9daf;
   padding-top: 30px;
 }
 .products-container.pdt-sale {padding-bottom: 30px;margin-top: 15px;}
+@media all and (max-width: 481px){
+  .products-container.pdt-sale {
+    padding-bottom: 15px;
+  }
+}
 .products-container.pdt-sale .item {
   max-width: 99.9%;
 }
