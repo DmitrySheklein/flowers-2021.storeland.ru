@@ -3579,6 +3579,7 @@ $(function () {
     }
   }
   $(window).resize($.debounce(300, moveHeaderSectionList));
+  $(".search .search-close").click(hideSearch);
 
   $(document).on("click", function (e) {
     if ($searchForm.hasClass("_active")) {
