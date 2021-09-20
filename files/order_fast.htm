@@ -384,7 +384,7 @@
     <ul class="cart-products-list">
       {% FOR cart_items %}
       <li class="item {% IFNOT cart_items.distinctive_properties_empty %}--with-mod{% ENDIF %}" data-id="{cart_items.GOODS_MOD_ID}">
-        <a href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}" class="product-image"><img src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=tourism{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" class="goods-image-icon"></a>
+        <a href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}" class="product-image"><img src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=flora{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" class="goods-image-icon"></a>
         <div class="product-details">
           <a href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}" class="product-name">{cart_items.GOODS_NAME}</a>
           <div class="product-price">
@@ -480,7 +480,7 @@
       {% FOR cart_items %}
       <li class="item">
         <a data-href="{cart_items.ORDER_LINE_DELETE_URL}" data-count="{cart_items.ORDER_LINE_QUANTITY}" title="Удалить позицию" class="remove x" onclick="removeFromCart($(this))"></a>
-        <a href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}" class="product-image"><img src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=tourism{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" class="goods-image-icon"></a>
+        <a href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}" class="product-image"><img src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=flora{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" class="goods-image-icon"></a>
         <div class="product-details">
           <div class="product-name"><a href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}">{cart_items.GOODS_NAME}</a></div>
           <div class="product-price">
