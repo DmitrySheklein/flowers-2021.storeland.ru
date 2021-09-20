@@ -3569,15 +3569,8 @@ $(function () {
 
   $(".header-searchLink").click(function (e) {
     e.preventDefault();
-    if (getClientWidth() > 991) {
-      $(this).hide();
-      $searchForm.fadeIn().addClass("_active");
-    } else {
-      $(".header-nav, .header-overlay").toggleClass("_visible");
-      $(".header-nav")
-        .find(".header-nav__search")
-        .before($(".header-sectionsList"));
-    }
+    $(this).hide();
+    $searchForm.fadeIn().addClass("_active");
   });
   // Запуск функций при изменении экрана
   function moveHeaderSectionList() {
