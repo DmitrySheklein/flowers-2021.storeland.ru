@@ -3455,6 +3455,7 @@ function OpenMenu() {
         .removeClass("_active");
       $(".header-nav__list").hide();
       $(".header-sectionsList").show();
+      $(".header-sections .header-sectionsList").addClass("_active");
     }
   });
   $(".header-overlay, .header-nav__close-btn").on("click", function () {
