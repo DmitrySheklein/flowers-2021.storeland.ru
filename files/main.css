@@ -978,7 +978,7 @@ color: #ff9daf;
   .header-contacts .header-phoneNum ~ .header-phoneNum {display: block;margin-top: 5px}
   .header .header-contacts {text-align: center}
   
-  .header-contacts .header-phoneCallback:hover {color: #fff}
+
   .header-contacts .header-phoneCallback:after {display: none}
   .header-contacts .header-phoneSub {color: #fff}
   .header-contacts .header-phones {-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;}
